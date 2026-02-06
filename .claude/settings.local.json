@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh search --help:*)",
+      "Bash(gh api --help:*)",
+      "Bash(gh auth --help:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:mcpgolang.com)",
+      "Bash(gh config --help:*)",
+      "Bash(gh org --help:*)",
+      "Bash(gh label --help:*)",
+      "Bash(gh pr merge --help:*)",
+      "Bash(gh help:*)",
+      "WebFetch(domain:mcp-go.dev)",
+      "WebFetch(domain:dev.to)",
+      "Bash(gh:*)",
+      "Bash(go mod init:*)",
+      "Bash(go get:*)",
+      "Bash(go run:*)",
+      "Bash(wc:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(go doc:*)",
+      "Bash(go build:*)",
+      "Bash(make clean:*)",
+      "Bash(make:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Read(//Users/khalid/Development/mcp-go-gh/**)",
+      "Bash(git add:*)"
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+command: auth
+description: Authenticate gh and git with GitHub
+subcommands:
+  - name: login
+    description: Log in to GitHub
+    parameters:
+      - name: hostname
+        type: string
+        flag: --hostname
+        short: -h
+        description: GitHub hostname
+
+      - name: git_protocol
+        type: string
+        flag: --git-protocol
+        short: -p
+        description: Protocol for git operations
+        enum: [https, ssh]
+
+      - name: scopes
+        type: array
+        item_type: string
+        flag: --scopes
+        short: -s
+        description: Additional authentication scopes
+
+      - name: skip_ssh_key
+        type: boolean
+        flag: --skip-ssh-key
+        description: Skip adding SSH key
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open browser for authentication
+
+      - name: with_token
+        type: boolean
+        flag: --with-token
+        description: Read token from standard input
+
+  - name: logout
+    description: Log out of GitHub
+    parameters:
+      - name: hostname
+        type: string
+        flag: --hostname
+        short: -h
+        description: GitHub hostname
+
+      - name: user
+        type: string
+        flag: --user
+        short: -u
+        description: GitHub username
+
+  - name: refresh
+    description: Refresh stored authentication credentials
+    parameters:
+      - name: hostname
+        type: string
+        flag: --hostname
+        short: -h
+        description: GitHub hostname
+
+      - name: insecure_storage
+        type: boolean
+        flag: --insecure-storage
+        description: Save authentication token in plain text
+
+      - name: remove_insecure_storage
+        type: boolean
+        flag: --remove-insecure-storage
+        description: Remove insecurely stored credential
+
+      - name: reset_scopes
+        type: boolean
+        flag: --reset-scopes
+        description: Reset scopes to default
+
+      - name: scopes
+        type: array
+        item_type: string
+        flag: --scopes
+        short: -s
+        description: Additional authentication scopes
+
+  - name: status
+    description: View authentication status
+    parameters:
+      - name: active_account
+        type: boolean
+        flag: --active-account
+        short: -a
+        description: Display the active account
+
+      - name: hostname
+        type: string
+        flag: --hostname
+        short: -h
+        description: GitHub hostname
+
+      - name: show_token
+        type: boolean
+        flag: --show-token
+        short: -t
+        description: Display authentication token
+
+  - name: token
+    description: Print the authentication token
+    parameters:
+      - name: hostname
+        type: string
+        flag: --hostname
+        short: -h
+        description: GitHub hostname
+
+      - name: user
+        type: string
+        flag: --user
+        short: -u
+        description: GitHub username
+
+  - name: setup_git
+    description: Configure git to use GitHub CLI as credential helper
+    parameters:
+      - name: force
+        type: boolean
+        flag: --force
+        short: -f
+        description: Force setup even if already configured
+
+      - name: hostname
+        type: string
+        flag: --hostname
+        short: -h
+        description: GitHub hostname

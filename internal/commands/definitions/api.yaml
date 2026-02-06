@@ -1,0 +1,93 @@
+command: api
+description: Make authenticated GitHub API requests
+subcommands:
+  - name: request
+    description: Make an authenticated HTTP request to the GitHub API and print the response
+    parameters:
+      - name: endpoint
+        type: string
+        description: The API endpoint path or GraphQL query (positional argument)
+        positional: true
+        required: true
+
+      - name: method
+        type: string
+        flag: --method
+        short: -X
+        description: The HTTP method for the request
+        enum: [GET, POST, PUT, PATCH, DELETE, HEAD]
+
+      - name: field
+        type: map
+        flag: -F
+        description: Add typed parameter in key=value format (supports @file)
+
+      - name: raw_field
+        type: map
+        flag: -f
+        description: Add string parameter in key=value format
+
+      - name: header
+        type: map
+        flag: -H
+        description: Add HTTP request header in key:value format
+
+      - name: input
+        type: string
+        flag: --input
+        short: -i
+        description: The file to use as body for the HTTP request
+
+      - name: include
+        type: boolean
+        flag: --include
+        description: Include HTTP response status line and headers
+
+      - name: silent
+        type: boolean
+        flag: --silent
+        description: Do not print the response body
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON response using jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON response using Go template
+
+      - name: paginate
+        type: boolean
+        flag: --paginate
+        description: Make additional HTTP requests to fetch all pages
+
+      - name: slurp
+        type: boolean
+        flag: --slurp
+        description: Use with --paginate to return array of all results
+
+      - name: cache
+        type: string
+        flag: --cache
+        description: Cache the response for a duration
+
+      - name: preview
+        type: array
+        item_type: string
+        flag: --preview
+        short: -p
+        description: GitHub API preview names to opt into
+
+      - name: hostname
+        type: string
+        flag: --hostname
+        description: GitHub hostname for Enterprise
+
+      - name: verbose
+        type: boolean
+        flag: --verbose
+        description: Include full HTTP request and response

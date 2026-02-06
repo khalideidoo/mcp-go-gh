@@ -1,0 +1,328 @@
+command: release
+description: Manage releases
+subcommands:
+  - name: create
+    description: Create a new release
+    parameters:
+      - name: tag
+        type: string
+        description: Tag name (positional argument)
+        positional: true
+        required: true
+
+      - name: draft
+        type: boolean
+        flag: --draft
+        short: -d
+        description: Save the release as a draft
+
+      - name: generate_notes
+        type: boolean
+        flag: --generate-notes
+        description: Automatically generate title and notes
+
+      - name: latest
+        type: boolean
+        flag: --latest
+        description: Mark as latest release
+
+      - name: notes
+        type: string
+        flag: --notes
+        short: -n
+        description: Release notes
+
+      - name: notes_file
+        type: string
+        flag: --notes-file
+        short: -F
+        description: Read release notes from file
+
+      - name: notes_start_tag
+        type: string
+        flag: --notes-start-tag
+        description: Tag to use as the starting point for notes
+
+      - name: prerelease
+        type: boolean
+        flag: --prerelease
+        short: -p
+        description: Mark as a prerelease
+
+      - name: target
+        type: string
+        flag: --target
+        description: Target branch or commit SHA
+
+      - name: title
+        type: string
+        flag: --title
+        short: -t
+        description: Release title
+
+      - name: verify_tag
+        type: boolean
+        flag: --verify-tag
+        description: Abort if the git tag doesn't exist
+
+      - name: discussion_category
+        type: string
+        flag: --discussion-category
+        description: Start a discussion in the specified category
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: list
+    description: List releases in a repository
+    parameters:
+      - name: exclude_drafts
+        type: boolean
+        flag: --exclude-drafts
+        description: Exclude draft releases
+
+      - name: exclude_pre_releases
+        type: boolean
+        flag: --exclude-pre-releases
+        description: Exclude pre-releases
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of items to fetch
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: view
+    description: View information about a release
+    parameters:
+      - name: tag
+        type: string
+        description: The tag name or "latest" (positional argument)
+        positional: true
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open the release in the browser
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: delete
+    description: Delete a release
+    parameters:
+      - name: tag
+        type: string
+        description: Tag name (positional argument)
+        positional: true
+        required: true
+
+      - name: cleanup_tag
+        type: boolean
+        flag: --cleanup-tag
+        short: -y
+        description: Delete the associated git tag
+
+      - name: yes
+        type: boolean
+        flag: --yes
+        description: Skip the confirmation prompt
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: download
+    description: Download release assets
+    parameters:
+      - name: tag
+        type: string
+        description: The tag name or "latest" (positional argument)
+        positional: true
+
+      - name: archive
+        type: string
+        flag: --archive
+        short: -A
+        description: Download archive format
+        enum: [tar.gz, zip]
+
+      - name: clobber
+        type: boolean
+        flag: --clobber
+        description: Overwrite existing files
+
+      - name: dir
+        type: string
+        flag: --dir
+        short: -D
+        description: Directory to download files into
+
+      - name: output
+        type: string
+        flag: --output
+        short: -O
+        description: Save a single asset to a file
+
+      - name: pattern
+        type: array
+        item_type: string
+        flag: --pattern
+        short: -p
+        description: Download only assets matching glob pattern
+
+      - name: skip_existing
+        type: boolean
+        flag: --skip-existing
+        description: Skip downloading files that exist
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: upload
+    description: Upload assets to a release
+    parameters:
+      - name: tag
+        type: string
+        description: Tag name (positional argument)
+        positional: true
+        required: true
+
+      - name: assets
+        type: array
+        item_type: string
+        description: Asset files to upload (positional arguments)
+        positional: true
+
+      - name: clobber
+        type: boolean
+        flag: --clobber
+        description: Overwrite existing assets
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: edit
+    description: Edit a release
+    parameters:
+      - name: tag
+        type: string
+        description: Tag name (positional argument)
+        positional: true
+        required: true
+
+      - name: draft
+        type: boolean
+        flag: --draft
+        description: Mark release as a draft
+
+      - name: latest
+        type: boolean
+        flag: --latest
+        description: Mark as the latest release
+
+      - name: notes
+        type: string
+        flag: --notes
+        short: -n
+        description: Release notes
+
+      - name: notes_file
+        type: string
+        flag: --notes-file
+        short: -F
+        description: Read release notes from file
+
+      - name: prerelease
+        type: boolean
+        flag: --prerelease
+        description: Mark as a prerelease
+
+      - name: tag_name
+        type: string
+        flag: --tag
+        description: Target tag to edit
+
+      - name: target
+        type: string
+        flag: --target
+        description: Target branch or commit SHA
+
+      - name: title
+        type: string
+        flag: --title
+        short: -t
+        description: Release title
+
+      - name: discussion_category
+        type: string
+        flag: --discussion-category
+        description: Discussion category
+
+      - name: verify_tag
+        type: boolean
+        flag: --verify-tag
+        description: Verify the git tag exists
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository

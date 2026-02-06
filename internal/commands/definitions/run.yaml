@@ -1,0 +1,266 @@
+command: run
+description: Manage workflow runs
+subcommands:
+  - name: list
+    description: List recent workflow runs
+    parameters:
+      - name: branch
+        type: string
+        flag: --branch
+        short: -b
+        description: Filter runs by branch
+
+      - name: commit
+        type: string
+        flag: --commit
+        short: -c
+        description: Filter runs by commit SHA
+
+      - name: created
+        type: string
+        flag: --created
+        description: Filter by creation date
+
+      - name: event
+        type: string
+        flag: --event
+        short: -e
+        description: Filter runs by event type
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of runs to fetch
+
+      - name: status
+        type: string
+        flag: --status
+        short: -s
+        description: Filter by status
+        enum: [queued, in_progress, completed, waiting]
+
+      - name: user
+        type: string
+        flag: --user
+        short: -u
+        description: Filter by user who triggered run
+
+      - name: workflow
+        type: string
+        flag: --workflow
+        short: -w
+        description: Filter by workflow
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: view
+    description: View a summary of a workflow run
+    parameters:
+      - name: run_id
+        type: string
+        description: Run ID or number (positional argument)
+        positional: true
+
+      - name: attempt
+        type: integer
+        flag: --attempt
+        description: Show specific attempt number
+
+      - name: exit_status
+        type: boolean
+        flag: --exit-status
+        description: Exit with non-zero status if run failed
+
+      - name: job
+        type: string
+        flag: --job
+        short: -j
+        description: View specific job ID
+
+      - name: log
+        type: boolean
+        flag: --log
+        description: View full log
+
+      - name: log_failed
+        type: boolean
+        flag: --log-failed
+        description: View log for failed steps
+
+      - name: verbose
+        type: boolean
+        flag: --verbose
+        short: -v
+        description: Show more information
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open run in the browser
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: watch
+    description: Watch a run until it completes
+    parameters:
+      - name: run_id
+        type: string
+        description: Run ID or number (positional argument)
+        positional: true
+
+      - name: exit_status
+        type: boolean
+        flag: --exit-status
+        description: Exit with non-zero status if run fails
+
+      - name: interval
+        type: integer
+        flag: --interval
+        short: -i
+        description: Refresh interval in seconds
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: rerun
+    description: Rerun a run
+    parameters:
+      - name: run_id
+        type: string
+        description: Run ID or number (positional argument)
+        positional: true
+
+      - name: debug
+        type: boolean
+        flag: --debug
+        short: -d
+        description: Rerun with debug logging
+
+      - name: failed
+        type: boolean
+        flag: --failed
+        description: Rerun only failed jobs
+
+      - name: job
+        type: string
+        flag: --job
+        short: -j
+        description: Rerun specific job ID
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: cancel
+    description: Cancel a workflow run
+    parameters:
+      - name: run_id
+        type: string
+        description: Run ID or number (positional argument)
+        positional: true
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: delete
+    description: Delete a workflow run
+    parameters:
+      - name: run_id
+        type: string
+        description: Run ID or number (positional argument)
+        positional: true
+        required: true
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository
+
+  - name: download
+    description: Download artifacts from a run
+    parameters:
+      - name: run_id
+        type: string
+        description: Run ID or number (positional argument)
+        positional: true
+
+      - name: dir
+        type: string
+        flag: --dir
+        short: -D
+        description: Download directory
+
+      - name: name
+        type: array
+        item_type: string
+        flag: --name
+        short: -n
+        description: Download specific artifacts by name
+
+      - name: pattern
+        type: array
+        item_type: string
+        flag: --pattern
+        short: -p
+        description: Download artifacts matching pattern
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository

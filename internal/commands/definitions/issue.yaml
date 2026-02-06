@@ -1,0 +1,491 @@
+command: issue
+description: Manage issues
+subcommands:
+  - name: create
+    description: Create a new issue
+    parameters:
+      - name: title
+        type: string
+        flag: --title
+        short: -t
+        description: Title for the issue
+
+      - name: body
+        type: string
+        flag: --body
+        short: -b
+        description: Body text for the issue
+
+      - name: body_file
+        type: string
+        flag: --body-file
+        short: -F
+        description: Read body text from file (use - for stdin)
+
+      - name: assignee
+        type: array
+        item_type: string
+        flag: --assignee
+        short: -a
+        description: Assign people by their login (use @me for self)
+
+      - name: label
+        type: array
+        item_type: string
+        flag: --label
+        short: -l
+        description: Add labels by name
+
+      - name: milestone
+        type: string
+        flag: --milestone
+        short: -m
+        description: Add the issue to a milestone by name
+
+      - name: project
+        type: array
+        item_type: string
+        flag: --project
+        short: -p
+        description: Add the issue to projects by title
+
+      - name: template
+        type: string
+        flag: --template
+        short: -T
+        description: Template file to use as starting body text
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open the web browser to create an issue
+
+      - name: recover
+        type: string
+        flag: --recover
+        description: Recover input from a failed run
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: list
+    description: List issues in a repository
+    parameters:
+      - name: assignee
+        type: string
+        flag: --assignee
+        short: -a
+        description: Filter by assignee
+
+      - name: author
+        type: string
+        flag: --author
+        short: -A
+        description: Filter by author
+
+      - name: label
+        type: array
+        item_type: string
+        flag: --label
+        short: -l
+        description: Filter by label
+
+      - name: mention
+        type: string
+        flag: --mention
+        description: Filter by mention of a user
+
+      - name: milestone
+        type: string
+        flag: --milestone
+        short: -m
+        description: Filter by milestone number or title
+
+      - name: state
+        type: string
+        flag: --state
+        short: -s
+        description: Filter by state
+        enum: [open, closed, all]
+
+      - name: search
+        type: string
+        flag: --search
+        short: -S
+        description: Search issues with a query
+
+      - name: app
+        type: string
+        flag: --app
+        description: Filter by GitHub App author
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of items to fetch
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: List issues in the web browser
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: view
+    description: View an issue
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: comments
+        type: boolean
+        flag: --comments
+        short: -c
+        description: View issue comments
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open issue in the browser
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: close
+    description: Close an issue
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: comment
+        type: string
+        flag: --comment
+        short: -c
+        description: Leave a closing comment
+
+      - name: reason
+        type: string
+        flag: --reason
+        short: -r
+        description: Reason for closing
+        enum: [completed, "not planned"]
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: comment
+    description: Add a comment to an issue
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: body
+        type: string
+        flag: --body
+        short: -b
+        description: The comment body text
+
+      - name: body_file
+        type: string
+        flag: --body-file
+        short: -F
+        description: Read body from file (use - for stdin)
+
+      - name: editor
+        type: boolean
+        flag: --editor
+        short: -e
+        description: Skip prompts and open text editor for body
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Add comment in the web browser
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: delete
+    description: Delete an issue
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: yes
+        type: boolean
+        flag: --yes
+        description: Skip the confirmation prompt
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: edit
+    description: Edit an issue
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: title
+        type: string
+        flag: --title
+        short: -t
+        description: Set the new title
+
+      - name: body
+        type: string
+        flag: --body
+        short: -b
+        description: Set the new body
+
+      - name: body_file
+        type: string
+        flag: --body-file
+        short: -F
+        description: Read body from file (use - for stdin)
+
+      - name: add_assignee
+        type: array
+        item_type: string
+        flag: --add-assignee
+        description: Add assignees by their login
+
+      - name: remove_assignee
+        type: array
+        item_type: string
+        flag: --remove-assignee
+        description: Remove assignees by their login
+
+      - name: add_label
+        type: array
+        item_type: string
+        flag: --add-label
+        description: Add labels by name
+
+      - name: remove_label
+        type: array
+        item_type: string
+        flag: --remove-label
+        description: Remove labels by name
+
+      - name: add_project
+        type: array
+        item_type: string
+        flag: --add-project
+        description: Add the issue to projects by title
+
+      - name: remove_project
+        type: array
+        item_type: string
+        flag: --remove-project
+        description: Remove the issue from projects by title
+
+      - name: milestone
+        type: string
+        flag: --milestone
+        short: -m
+        description: Edit the milestone (name or number)
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: lock
+    description: Lock issue conversation
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: reason
+        type: string
+        flag: --reason
+        short: -r
+        description: Reason for locking
+        enum: ["off-topic", spam, resolved, "too heated"]
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: pin
+    description: Pin an issue to a repository
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: reopen
+    description: Reopen a closed issue
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: comment
+        type: string
+        flag: --comment
+        short: -c
+        description: Add a reopening comment
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: status
+    description: Show status of relevant issues
+    parameters:
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: transfer
+    description: Transfer issue to another repository
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: destination
+        type: string
+        description: Destination repository in OWNER/REPO format (positional argument)
+        positional: true
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select source repository in OWNER/REPO format
+
+  - name: unlock
+    description: Unlock issue conversation
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format
+
+  - name: unpin
+    description: Unpin an issue from a repository
+    parameters:
+      - name: number
+        type: string
+        description: Issue number or URL (positional argument)
+        positional: true
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select target repository in OWNER/REPO format

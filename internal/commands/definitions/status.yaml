@@ -1,0 +1,18 @@
+command: status
+description: Print information about relevant issues, pull requests, and notifications
+subcommands:
+  - name: status
+    description: Show status of relevant issues, pull requests, and notifications
+    parameters:
+      - name: exclude
+        type: array
+        item_type: string
+        flag: --exclude
+        short: -e
+        description: Comma separated list of repos to exclude in owner/name format
+
+      - name: org
+        type: string
+        flag: --org
+        short: -o
+        description: Report status within an organization

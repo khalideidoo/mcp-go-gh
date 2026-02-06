@@ -1,0 +1,64 @@
+command: browse
+description: Open repository in the browser
+subcommands:
+  - name: browse
+    description: Open repository, issue, pull request, or file in the browser
+    parameters:
+      - name: target
+        type: string
+        description: Target to browse (number, path, or commit SHA) (positional)
+        positional: true
+
+      - name: actions
+        type: boolean
+        flag: --actions
+        short: -a
+        description: Open repository actions
+
+      - name: branch
+        type: string
+        flag: --branch
+        short: -b
+        description: Select another branch by passing in the branch name
+
+      - name: commit
+        type: string
+        flag: --commit
+        short: -c
+        description: Select another commit by passing in the commit SHA
+
+      - name: no_browser
+        type: boolean
+        flag: --no-browser
+        short: -n
+        description: Print destination URL instead of opening the browser
+
+      - name: projects
+        type: boolean
+        flag: --projects
+        short: -p
+        description: Open repository projects
+
+      - name: releases
+        type: boolean
+        flag: --releases
+        short: -r
+        description: Open repository releases
+
+      - name: settings
+        type: boolean
+        flag: --settings
+        short: -s
+        description: Open repository settings
+
+      - name: wiki
+        type: boolean
+        flag: --wiki
+        short: -w
+        description: Open repository wiki
+
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository in OWNER/REPO format

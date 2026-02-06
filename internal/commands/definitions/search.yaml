@@ -1,0 +1,463 @@
+command: search
+description: Search for repositories, issues, and pull requests
+subcommands:
+  - name: repos
+    description: Search for repositories
+    parameters:
+      - name: query
+        type: string
+        description: Search query (positional argument)
+        positional: true
+        required: true
+
+      - name: archived
+        type: boolean
+        flag: --archived
+        description: Include archived repositories
+
+      - name: created
+        type: string
+        flag: --created
+        description: Filter by creation date
+
+      - name: followers
+        type: string
+        flag: --followers
+        description: Filter by number of followers
+
+      - name: forks
+        type: string
+        flag: --forks
+        description: Filter by number of forks
+
+      - name: good_first_issue
+        type: string
+        flag: --good-first-issue
+        description: Filter by number of good first issues
+
+      - name: help_wanted_issues
+        type: string
+        flag: --help-wanted-issues
+        description: Filter by number of help wanted issues
+
+      - name: include_forks
+        type: string
+        flag: --include-forks
+        description: Include forks
+        enum: [true, false, only]
+
+      - name: language
+        type: string
+        flag: --language
+        description: Filter by programming language
+
+      - name: license
+        type: array
+        item_type: string
+        flag: --license
+        description: Filter by license
+
+      - name: match
+        type: string
+        flag: --match
+        description: Restrict search to specific field
+        enum: [name, description, readme]
+
+      - name: number_topics
+        type: string
+        flag: --number-topics
+        description: Filter by number of topics
+
+      - name: order
+        type: string
+        flag: --order
+        description: Order of results
+        enum: [asc, desc]
+
+      - name: owner
+        type: array
+        item_type: string
+        flag: --owner
+        description: Filter by owner
+
+      - name: size
+        type: string
+        flag: --size
+        description: Filter by size in KB
+
+      - name: sort
+        type: string
+        flag: --sort
+        description: Sort results
+        enum: [forks, help-wanted-issues, stars, updated]
+
+      - name: stars
+        type: string
+        flag: --stars
+        description: Filter by number of stars
+
+      - name: topic
+        type: array
+        item_type: string
+        flag: --topic
+        description: Filter by topic
+
+      - name: updated
+        type: string
+        flag: --updated
+        description: Filter by last update date
+
+      - name: visibility
+        type: array
+        item_type: string
+        flag: --visibility
+        description: Filter by visibility
+        enum: [public, private, internal]
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of results
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open search in browser
+
+  - name: issues
+    description: Search for issues
+    parameters:
+      - name: query
+        type: string
+        description: Search query (positional argument)
+        positional: true
+        required: true
+
+      - name: assignee
+        type: string
+        flag: --assignee
+        description: Filter by assignee
+
+      - name: author
+        type: string
+        flag: --author
+        description: Filter by author
+
+      - name: closed
+        type: string
+        flag: --closed
+        description: Filter by closed date
+
+      - name: comments
+        type: string
+        flag: --comments
+        description: Filter by number of comments
+
+      - name: created
+        type: string
+        flag: --created
+        description: Filter by created date
+
+      - name: include_prs
+        type: boolean
+        flag: --include-prs
+        description: Include pull requests
+
+      - name: label
+        type: array
+        item_type: string
+        flag: --label
+        description: Filter by label
+
+      - name: locked
+        type: boolean
+        flag: --locked
+        description: Filter by locked status
+
+      - name: match
+        type: string
+        flag: --match
+        description: Restrict search to specific field
+        enum: [title, body, comments]
+
+      - name: mentions
+        type: string
+        flag: --mentions
+        description: Filter by user mentions
+
+      - name: milestone
+        type: string
+        flag: --milestone
+        description: Filter by milestone
+
+      - name: no_assignee
+        type: boolean
+        flag: --no-assignee
+        description: Filter by missing assignee
+
+      - name: no_label
+        type: boolean
+        flag: --no-label
+        description: Filter by missing label
+
+      - name: no_milestone
+        type: boolean
+        flag: --no-milestone
+        description: Filter by missing milestone
+
+      - name: no_project
+        type: boolean
+        flag: --no-project
+        description: Filter by missing project
+
+      - name: order
+        type: string
+        flag: --order
+        description: Order of results
+        enum: [asc, desc]
+
+      - name: owner
+        type: array
+        item_type: string
+        flag: --owner
+        description: Filter by repository owner
+
+      - name: repo
+        type: array
+        item_type: string
+        flag: --repo
+        description: Filter by repository
+
+      - name: sort
+        type: string
+        flag: --sort
+        description: Sort results
+        enum: [comments, created, updated, reactions]
+
+      - name: state
+        type: string
+        flag: --state
+        description: Filter by state
+        enum: [open, closed]
+
+      - name: updated
+        type: string
+        flag: --updated
+        description: Filter by updated date
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of results
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open search in browser
+
+  - name: prs
+    description: Search for pull requests
+    parameters:
+      - name: query
+        type: string
+        description: Search query (positional argument)
+        positional: true
+        required: true
+
+      - name: archived
+        type: boolean
+        flag: --archived
+        description: Filter by archived repositories
+
+      - name: assignee
+        type: string
+        flag: --assignee
+        description: Filter by assignee
+
+      - name: author
+        type: string
+        flag: --author
+        description: Filter by author
+
+      - name: base
+        type: string
+        flag: --base
+        description: Filter by base branch
+
+      - name: closed
+        type: string
+        flag: --closed
+        description: Filter by closed date
+
+      - name: comments
+        type: string
+        flag: --comments
+        description: Filter by number of comments
+
+      - name: created
+        type: string
+        flag: --created
+        description: Filter by created date
+
+      - name: draft
+        type: boolean
+        flag: --draft
+        description: Filter by draft PRs
+
+      - name: head
+        type: string
+        flag: --head
+        description: Filter by head branch
+
+      - name: label
+        type: array
+        item_type: string
+        flag: --label
+        description: Filter by label
+
+      - name: locked
+        type: boolean
+        flag: --locked
+        description: Filter by locked status
+
+      - name: match
+        type: string
+        flag: --match
+        description: Restrict search to specific field
+        enum: [title, body, comments]
+
+      - name: merged
+        type: boolean
+        flag: --merged
+        description: Filter by merged PRs
+
+      - name: merged_at
+        type: string
+        flag: --merged-at
+        description: Filter by merge date
+
+      - name: milestone
+        type: string
+        flag: --milestone
+        description: Filter by milestone
+
+      - name: order
+        type: string
+        flag: --order
+        description: Order of results
+        enum: [asc, desc]
+
+      - name: owner
+        type: array
+        item_type: string
+        flag: --owner
+        description: Filter by repository owner
+
+      - name: repo
+        type: array
+        item_type: string
+        flag: --repo
+        description: Filter by repository
+
+      - name: review
+        type: string
+        flag: --review
+        description: Filter by review status
+        enum: [none, required, approved, changes_requested]
+
+      - name: reviewed_by
+        type: string
+        flag: --reviewed-by
+        description: Filter by reviewer
+
+      - name: sort
+        type: string
+        flag: --sort
+        description: Sort results
+        enum: [comments, created, updated, reactions]
+
+      - name: state
+        type: string
+        flag: --state
+        description: Filter by state
+        enum: [open, closed, merged]
+
+      - name: team_review
+        type: string
+        flag: --team-review
+        description: Filter by team requested to review
+
+      - name: updated
+        type: string
+        flag: --updated
+        description: Filter by updated date
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of results
+
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open search in browser

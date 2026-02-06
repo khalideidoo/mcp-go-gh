@@ -1,0 +1,676 @@
+command: project
+description: Work with GitHub Projects
+subcommands:
+  - name: create
+    description: Create a project
+    parameters:
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: title
+        type: string
+        flag: --title
+        description: Title for the project
+        required: true
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+  - name: list
+    description: List the projects for an owner
+    parameters:
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: closed
+        type: boolean
+        flag: --closed
+        description: Include closed projects
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of projects to fetch
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open projects list in the browser
+
+  - name: view
+    description: View a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open project in the browser
+
+  - name: edit
+    description: Edit a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: title
+        type: string
+        flag: --title
+        description: New title for the project
+
+      - name: description
+        type: string
+        flag: --description
+        short: -d
+        description: New description for the project
+
+      - name: readme
+        type: string
+        flag: --readme
+        description: New README for the project
+
+      - name: visibility
+        type: string
+        flag: --visibility
+        description: Change project visibility
+        enum: [PUBLIC, PRIVATE]
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+  - name: close
+    description: Close a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: undo
+        type: boolean
+        flag: --undo
+        description: Reopen a closed project
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: delete
+    description: Delete a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: copy
+    description: Copy a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number to copy (positional)
+        positional: true
+        required: true
+
+      - name: source_owner
+        type: string
+        flag: --source-owner
+        description: Login of the source owner
+        required: true
+
+      - name: target_owner
+        type: string
+        flag: --target-owner
+        description: Login of the target owner
+        required: true
+
+      - name: title
+        type: string
+        flag: --title
+        description: Title for the new project
+
+      - name: drafts
+        type: boolean
+        flag: --drafts
+        description: Include draft issues when copying
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: field-list
+    description: List the fields in a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of fields to fetch
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+  - name: field-create
+    description: Create a field in a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: name
+        type: string
+        flag: --name
+        description: Name of the field
+        required: true
+
+      - name: data_type
+        type: string
+        flag: --data-type
+        description: DataType of the field
+        required: true
+        enum: [TEXT, NUMBER, DATE, SINGLE_SELECT, ITERATION]
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: field-delete
+    description: Delete a field in a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: id
+        type: string
+        flag: --id
+        description: ID of the field to delete
+        required: true
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: item-list
+    description: List the items in a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of items to fetch
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+  - name: item-add
+    description: Add a pull request or issue to a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: url
+        type: string
+        flag: --url
+        description: URL of the issue or pull request to add
+        required: true
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+  - name: item-create
+    description: Create a draft issue item in a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: title
+        type: string
+        flag: --title
+        description: Title of the draft issue
+        required: true
+
+      - name: body
+        type: string
+        flag: --body
+        description: Body of the draft issue
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: item-edit
+    description: Edit an item in a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: id
+        type: string
+        flag: --id
+        description: ID of the item to edit
+        required: true
+
+      - name: field_id
+        type: string
+        flag: --field-id
+        description: ID of the field to update
+
+      - name: text
+        type: string
+        flag: --text
+        description: Text value for the field
+
+      - name: number_value
+        type: string
+        flag: --number
+        description: Number value for the field
+
+      - name: date
+        type: string
+        flag: --date
+        description: Date value for the field (YYYY-MM-DD)
+
+      - name: single_select_option_id
+        type: string
+        flag: --single-select-option-id
+        description: ID of the single select option value
+
+      - name: iteration_id
+        type: string
+        flag: --iteration-id
+        description: ID of the iteration value
+
+      - name: clear
+        type: boolean
+        flag: --clear
+        description: Clear the field value
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: item-delete
+    description: Delete an item from a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: id
+        type: string
+        flag: --id
+        description: ID of the item to delete
+        required: true
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: item-archive
+    description: Archive an item in a project
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: id
+        type: string
+        flag: --id
+        description: ID of the item to archive
+        required: true
+
+      - name: undo
+        type: boolean
+        flag: --undo
+        description: Unarchive an item
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: link
+    description: Link a project to a repository or team
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: repo
+        type: string
+        flag: --repo
+        description: Repository to link to the project (OWNER/REPO)
+
+      - name: team
+        type: string
+        flag: --team
+        description: Team to link to the project (ORG/TEAM)
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: unlink
+    description: Unlink a project from a repository or team
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: repo
+        type: string
+        flag: --repo
+        description: Repository to unlink from the project (OWNER/REPO)
+
+      - name: team
+        type: string
+        flag: --team
+        description: Team to unlink from the project (ORG/TEAM)
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]
+
+  - name: mark-template
+    description: Mark a project as a template
+    parameters:
+      - name: number
+        type: string
+        description: Project number (positional)
+        positional: true
+        required: true
+
+      - name: owner
+        type: string
+        flag: --owner
+        description: Login of the owner (use @me for current user)
+        required: true
+
+      - name: undo
+        type: boolean
+        flag: --undo
+        description: Unmark the project as a template
+
+      - name: format
+        type: string
+        flag: --format
+        description: Output format
+        enum: [json]

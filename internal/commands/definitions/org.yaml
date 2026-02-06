@@ -1,0 +1,23 @@
+command: org
+description: Work with GitHub organizations
+subcommands:
+  - name: list
+    description: List organizations for the authenticated user
+    parameters:
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
