@@ -1,4 +1,4 @@
-module github.com/khalid/mcp-go-gh
+module github.com/khalideidoo/mcp-go-gh
 
 go 1.25.6
 

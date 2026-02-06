@@ -4,7 +4,7 @@ package generated
 import (
 	"context"
 	"fmt"
-	"github.com/khalid/mcp-go-gh/internal/executor"
+	"github.com/khalideidoo/mcp-go-gh/internal/executor"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 )
 

@@ -49,7 +49,7 @@ The server exposes the following `gh` CLI command groups:
 
 ```bash
 # Clone the repository
-git clone https://github.com/khalid/mcp-go-gh.git
+git clone https://github.com/khalideidoo/mcp-go-gh.git
 cd mcp-go-gh
 
 # Build the server
@@ -62,7 +62,7 @@ make install
 ### Using Go Install
 
 ```bash
-go install github.com/khalid/mcp-go-gh/cmd/mcp-go-gh@latest
+go install github.com/khalideidoo/mcp-go-gh/cmd/mcp-go-gh@latest
 ```
 
 ## Usage

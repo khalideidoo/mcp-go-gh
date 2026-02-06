@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/khalid/mcp-go-gh/internal/executor"
+	"github.com/khalideidoo/mcp-go-gh/internal/executor"
 )
 
 {{range .Subcommands}}
@@ -89,7 +89,7 @@ package generated
 
 import (
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/khalid/mcp-go-gh/internal/executor"
+	"github.com/khalideidoo/mcp-go-gh/internal/executor"
 )
 
 // RegisterAllTools registers all generated gh command tools

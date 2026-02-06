@@ -26,7 +26,8 @@
       "Bash(ls:*)",
       "Bash(grep:*)",
       "Read(//Users/khalid/Development/mcp-go-gh/**)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
