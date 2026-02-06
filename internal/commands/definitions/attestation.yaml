@@ -1,0 +1,134 @@
+command: attestation
+description: Download and verify artifact attestations
+subcommands:
+  - name: verify
+    description: Verify the integrity and provenance of an artifact using attestations
+    parameters:
+      - name: artifact
+        type: string
+        description: File path or OCI URI of artifact to verify (positional argument)
+        positional: true
+        required: true
+      - name: bundle
+        type: string
+        flag: --bundle
+        short: -b
+        description: Path to bundle on disk for offline verification
+      - name: bundle_from_oci
+        type: boolean
+        flag: --bundle-from-oci
+        description: Fetch attestations from the artifact's OCI registry
+      - name: cert_identity
+        type: string
+        flag: --cert-identity
+        description: Enforce that the identity in the certificate's SAN matches the provided value
+      - name: cert_identity_regex
+        type: string
+        flag: --cert-identity-regex
+        description: Enforce that the identity in the certificate's SAN matches the provided regex
+      - name: cert_oidc_issuer
+        type: string
+        flag: --cert-oidc-issuer
+        description: Issuer of the OIDC token
+      - name: custom_trusted_root
+        type: string
+        flag: --custom-trusted-root
+        description: Path to a custom trusted root file
+      - name: deny_self_hosted_runners
+        type: boolean
+        flag: --deny-self-hosted-runners
+        description: Fail verification for attestations generated on self-hosted runners
+      - name: digest_alg
+        type: string
+        flag: --digest-alg
+        short: -d
+        description: Algorithm used to compute artifact digest
+        enum:
+          - sha256
+          - sha512
+      - name: hostname
+        type: string
+        flag: --hostname
+        description: Configure host to use
+      - name: owner
+        type: string
+        flag: --owner
+        short: -o
+        description: GitHub organization to scope attestation lookup by
+      - name: predicate_type
+        type: string
+        flag: --predicate-type
+        description: Filter attestations by provided predicate type
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Repository name in OWNER/REPO format
+      - name: signer_repo
+        type: string
+        flag: --signer-repo
+        description: Repository of reusable workflow that signed attestation
+      - name: signer_workflow
+        type: string
+        flag: --signer-workflow
+        description: Path to reusable workflow that signed attestation
+
+  - name: download
+    description: Download attestations associated with an artifact for offline use
+    parameters:
+      - name: artifact
+        type: string
+        description: File path or OCI URI of artifact (positional argument)
+        positional: true
+        required: true
+      - name: digest_alg
+        type: string
+        flag: --digest-alg
+        short: -d
+        description: Algorithm used to compute artifact digest
+        enum:
+          - sha256
+          - sha512
+      - name: hostname
+        type: string
+        flag: --hostname
+        description: Configure host to use
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of attestations to fetch
+      - name: owner
+        type: string
+        flag: --owner
+        short: -o
+        description: GitHub organization to scope attestation lookup by
+      - name: predicate_type
+        type: string
+        flag: --predicate-type
+        description: Filter attestations by provided predicate type
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Repository name in OWNER/REPO format
+
+  - name: trusted-root
+    description: Output trusted_root.jsonl contents for offline verification
+    parameters:
+      - name: hostname
+        type: string
+        flag: --hostname
+        description: Configure host to use
+      - name: tuf_root
+        type: string
+        flag: --tuf-root
+        description: Path to the TUF root.json file on disk
+      - name: tuf_url
+        type: string
+        flag: --tuf-url
+        description: URL to the TUF repository mirror
+      - name: verify_only
+        type: boolean
+        flag: --verify-only
+        description: Don't output trusted_root.jsonl contents

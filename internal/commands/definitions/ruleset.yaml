@@ -1,0 +1,81 @@
+command: ruleset
+description: View information about GitHub repository rulesets
+subcommands:
+  - name: list
+    description: List GitHub rulesets for a repository or organization
+    parameters:
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of rulesets to list
+      - name: org
+        type: string
+        flag: --org
+        short: -o
+        description: List organization-wide rulesets for the provided organization
+      - name: parents
+        type: boolean
+        flag: --parents
+        short: -p
+        description: Whether to include rulesets configured at higher levels that also apply
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open the list of rulesets in the web browser
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository in OWNER/REPO format
+
+  - name: view
+    description: View information about a GitHub ruleset
+    parameters:
+      - name: ruleset_id
+        type: string
+        description: Ruleset ID (positional argument)
+        positional: true
+      - name: org
+        type: string
+        flag: --org
+        short: -o
+        description: Organization name if the provided ID is an organization-level ruleset
+      - name: parents
+        type: boolean
+        flag: --parents
+        short: -p
+        description: Whether to include rulesets configured at higher levels that also apply
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open the ruleset in the browser
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository in OWNER/REPO format
+
+  - name: check
+    description: View information about GitHub rules that apply to a given branch
+    parameters:
+      - name: branch
+        type: string
+        description: Branch name to check (positional argument)
+        positional: true
+      - name: default
+        type: boolean
+        flag: --default
+        description: Check rules on default branch
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Open the branch rules page in a web browser
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Select repository in OWNER/REPO format

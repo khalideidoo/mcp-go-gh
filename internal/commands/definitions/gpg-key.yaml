@@ -1,0 +1,33 @@
+command: gpg-key
+description: Manage GPG keys registered with your GitHub account
+subcommands:
+  - name: list
+    description: Lists GPG keys in your GitHub account
+    parameters: []
+
+  - name: add
+    description: Add a GPG key to your GitHub account
+    parameters:
+      - name: key_file
+        type: string
+        description: Path to GPG key file (positional argument)
+        positional: true
+      - name: title
+        type: string
+        flag: --title
+        short: -t
+        description: Title for the new key
+
+  - name: delete
+    description: Delete a GPG key from your GitHub account
+    parameters:
+      - name: key_id
+        type: string
+        description: GPG key ID (positional argument)
+        positional: true
+        required: true
+      - name: yes
+        type: boolean
+        flag: --yes
+        short: -y
+        description: Skip the confirmation prompt

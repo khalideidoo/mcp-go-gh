@@ -8,7 +8,16 @@ import (
 
 // RegisterAllTools registers all generated gh command tools
 func RegisterAllTools(server *mcp.Server, exec *executor.Executor) {
+	RegisterAliasListTool(server, exec)
+	RegisterAliasSetTool(server, exec)
+	RegisterAliasDeleteTool(server, exec)
+	RegisterAliasImportTool(server, exec)
+
 	RegisterApiRequestTool(server, exec)
+
+	RegisterAttestationVerifyTool(server, exec)
+	RegisterAttestationDownloadTool(server, exec)
+	RegisterAttestationTrustedRootTool(server, exec)
 
 	RegisterAuthLoginTool(server, exec)
 	RegisterAuthLogoutTool(server, exec)
@@ -21,6 +30,27 @@ func RegisterAllTools(server *mcp.Server, exec *executor.Executor) {
 
 	RegisterCacheListTool(server, exec)
 	RegisterCacheDeleteTool(server, exec)
+
+	RegisterCodespaceListTool(server, exec)
+	RegisterCodespaceCreateTool(server, exec)
+	RegisterCodespaceDeleteTool(server, exec)
+	RegisterCodespaceViewTool(server, exec)
+	RegisterCodespaceStopTool(server, exec)
+	RegisterCodespaceSshTool(server, exec)
+	RegisterCodespaceLogsTool(server, exec)
+	RegisterCodespacePortsTool(server, exec)
+	RegisterCodespaceEditTool(server, exec)
+	RegisterCodespaceRebuildTool(server, exec)
+	RegisterCodespaceCodeTool(server, exec)
+	RegisterCodespaceJupyterTool(server, exec)
+	RegisterCodespaceCpTool(server, exec)
+
+	RegisterCompletionCompletionTool(server, exec)
+
+	RegisterConfigListTool(server, exec)
+	RegisterConfigGetTool(server, exec)
+	RegisterConfigSetTool(server, exec)
+	RegisterConfigClearCacheTool(server, exec)
 
 	RegisterExtensionListTool(server, exec)
 	RegisterExtensionInstallTool(server, exec)
@@ -37,6 +67,10 @@ func RegisterAllTools(server *mcp.Server, exec *executor.Executor) {
 	RegisterGistEditTool(server, exec)
 	RegisterGistDeleteTool(server, exec)
 	RegisterGistCloneTool(server, exec)
+
+	RegisterGpgKeyListTool(server, exec)
+	RegisterGpgKeyAddTool(server, exec)
+	RegisterGpgKeyDeleteTool(server, exec)
 
 	RegisterIssueCreateTool(server, exec)
 	RegisterIssueListTool(server, exec)
@@ -116,6 +150,10 @@ func RegisterAllTools(server *mcp.Server, exec *executor.Executor) {
 	RegisterRepoRenameTool(server, exec)
 	RegisterRepoSyncTool(server, exec)
 
+	RegisterRulesetListTool(server, exec)
+	RegisterRulesetViewTool(server, exec)
+	RegisterRulesetCheckTool(server, exec)
+
 	RegisterRunListTool(server, exec)
 	RegisterRunViewTool(server, exec)
 	RegisterRunWatchTool(server, exec)
@@ -131,6 +169,10 @@ func RegisterAllTools(server *mcp.Server, exec *executor.Executor) {
 	RegisterSecretListTool(server, exec)
 	RegisterSecretSetTool(server, exec)
 	RegisterSecretRemoveTool(server, exec)
+
+	RegisterSshKeyListTool(server, exec)
+	RegisterSshKeyAddTool(server, exec)
+	RegisterSshKeyDeleteTool(server, exec)
 
 	RegisterStatusStatusTool(server, exec)
 

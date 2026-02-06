@@ -4,7 +4,7 @@ A lightweight, comprehensive Go-based MCP (Model Context Protocol) server that w
 
 ## Features
 
-- **Comprehensive Coverage**: 118 MCP tools covering 19 major `gh` command groups
+- **Complete Coverage**: 152 MCP tools covering 27 `gh` command groups - **100% of stable gh CLI commands**
 - **Type-Safe**: Go structs with automatic JSON schema generation
 - **Code Generated**: YAML definitions drive automatic Go code generation
 - **Maintainable**: Easy to update when `gh` CLI evolves
@@ -12,29 +12,43 @@ A lightweight, comprehensive Go-based MCP (Model Context Protocol) server that w
 
 ## Supported Commands
 
-The server exposes the following `gh` CLI command groups:
+The server exposes **100% of stable gh CLI commands** across 27 command groups:
 
-- **project** (19 commands): GitHub Projects v2 management
-- **pr** (14 commands): Pull request management
-- **issue** (14 commands): Issue management
-- **repo** (11 commands): Repository operations
-- **extension** (8 commands): Extension management
-- **release** (7 commands): Release management
-- **run** (7 commands): Workflow run management
-- **auth** (6 commands): Authentication
-- **gist** (6 commands): Gist management
-- **workflow** (5 commands): GitHub Actions workflows
-- **label** (5 commands): Label management
-- **variable** (4 commands): Actions variables
-- **search** (3 commands): Search repos, issues, and PRs
-- **secret** (3 commands): Secrets management
-- **cache** (2 commands): Actions cache management
-- **api** (1 command): Raw GitHub API access
-- **browse** (1 command): Open in browser
-- **org** (1 command): Organization management
-- **status** (1 command): Show relevant items
+### Core Commands
+- **project** (19): GitHub Projects v2 - full CRUD, fields, and items
+- **pr** (14): Pull request management
+- **issue** (14): Issue tracking and management
+- **codespace** (13): Codespace creation and management
+- **repo** (11): Repository operations
+- **extension** (8): Extension installation and management
+- **release** (7): Release management
+- **run** (7): Workflow run management
+- **auth** (6): Authentication and setup
+- **gist** (6): Gist management
 
-**Total: 118 MCP tools**
+### Actions & Workflow Commands
+- **workflow** (5): GitHub Actions workflow management
+- **variable** (4): Actions variables
+- **secret** (3): Secrets management
+- **cache** (2): Actions cache operations
+
+### Additional Commands
+- **label** (5): Label management
+- **alias** (4): Command shortcuts
+- **config** (4): Configuration management
+- **attestation** (3): Artifact attestations
+- **gpg-key** (3): GPG key management
+- **ruleset** (3): Repository rulesets
+- **search** (3): Search repos, issues, and PRs
+- **ssh-key** (3): SSH key management
+- **cache** (2): Actions cache management
+- **api** (1): Raw GitHub API access
+- **browse** (1): Open resources in browser
+- **completion** (1): Shell completion
+- **org** (1): Organization operations
+- **status** (1): Status overview
+
+**Total: 152 MCP tools = 100% stable command coverage** ✅
 
 ## Prerequisites
 

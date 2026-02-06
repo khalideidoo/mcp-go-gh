@@ -1,0 +1,53 @@
+command: alias
+description: Create shortcuts for gh commands
+subcommands:
+  - name: list
+    description: List your aliases
+    parameters: []
+
+  - name: set
+    description: Create a shortcut for a gh command
+    parameters:
+      - name: alias
+        type: string
+        description: Alias name (positional argument)
+        positional: true
+        required: true
+      - name: expansion
+        type: string
+        description: Expansion string (positional argument)
+        positional: true
+        required: true
+      - name: clobber
+        type: boolean
+        flag: --clobber
+        description: Overwrite existing aliases of the same name
+      - name: shell
+        type: boolean
+        flag: --shell
+        short: -s
+        description: Declare an alias to be passed through a shell interpreter
+
+  - name: delete
+    description: Delete set aliases
+    parameters:
+      - name: alias
+        type: string
+        description: Alias name to delete (positional argument)
+        positional: true
+      - name: all
+        type: boolean
+        flag: --all
+        description: Delete all aliases
+
+  - name: import
+    description: Import aliases from a YAML file
+    parameters:
+      - name: filename
+        type: string
+        description: Path to YAML file containing aliases (positional argument)
+        positional: true
+      - name: clobber
+        type: boolean
+        flag: --clobber
+        description: Overwrite existing aliases of the same name

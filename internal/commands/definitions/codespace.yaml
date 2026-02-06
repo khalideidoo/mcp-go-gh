@@ -1,0 +1,432 @@
+command: codespace
+description: Connect to and manage codespaces
+subcommands:
+  - name: list
+    description: List codespaces of the authenticated user
+    parameters:
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+      - name: limit
+        type: integer
+        flag: --limit
+        short: -L
+        description: Maximum number of codespaces to list
+      - name: org
+        type: string
+        flag: --org
+        short: -o
+        description: The login handle of the organization to list codespaces for (admin-only)
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Repository name with owner (user/repo)
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+      - name: user
+        type: string
+        flag: --user
+        short: -u
+        description: The username to list codespaces for (used with --org)
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: List codespaces in the web browser
+
+  - name: create
+    description: Create a codespace
+    parameters:
+      - name: branch
+        type: string
+        flag: --branch
+        short: -b
+        description: Repository branch
+      - name: default_permissions
+        type: boolean
+        flag: --default-permissions
+        description: Do not prompt to accept additional permissions requested by the codespace
+      - name: devcontainer_path
+        type: string
+        flag: --devcontainer-path
+        description: Path to the devcontainer.json file to use when creating codespace
+      - name: display_name
+        type: string
+        flag: --display-name
+        short: -d
+        description: Display name for the codespace (48 characters or less)
+      - name: idle_timeout
+        type: string
+        flag: --idle-timeout
+        description: Allowed inactivity before codespace is stopped (e.g. "10m", "1h")
+      - name: location
+        type: string
+        flag: --location
+        short: -l
+        description: Location (EastUs|SouthEastAsia|WestEurope|WestUs2)
+      - name: machine
+        type: string
+        flag: --machine
+        short: -m
+        description: Hardware specifications for the VM
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Repository name with owner (user/repo)
+      - name: retention_period
+        type: string
+        flag: --retention-period
+        description: Allowed time after shutting down before auto-deletion (e.g. "1h", "72h")
+      - name: status
+        type: boolean
+        flag: --status
+        short: -s
+        description: Show status of post-create command and dotfiles
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Create codespace from browser
+
+  - name: delete
+    description: Delete codespaces based on selection criteria
+    parameters:
+      - name: all
+        type: boolean
+        flag: --all
+        description: Delete all codespaces
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: days
+        type: integer
+        flag: --days
+        description: Delete codespaces older than N days
+      - name: force
+        type: boolean
+        flag: --force
+        short: -f
+        description: Skip confirmation for codespaces that contain unsaved changes
+      - name: org
+        type: string
+        flag: --org
+        short: -o
+        description: The login handle of the organization (admin-only)
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+      - name: user
+        type: string
+        flag: --user
+        short: -u
+        description: The username to delete codespaces for (used with --org)
+
+  - name: view
+    description: View details about a codespace
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+  - name: stop
+    description: Stop a running codespace
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: org
+        type: string
+        flag: --org
+        short: -o
+        description: The login handle of the organization (admin-only)
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+      - name: user
+        type: string
+        flag: --user
+        short: -u
+        description: The username to stop codespace for (used with --org)
+
+  - name: ssh
+    description: SSH into a codespace
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: config
+        type: boolean
+        flag: --config
+        description: Write OpenSSH configuration to stdout
+      - name: debug
+        type: boolean
+        flag: --debug
+        short: -d
+        description: Log debug data to a file
+      - name: debug_file
+        type: string
+        flag: --debug-file
+        description: Path of the file log to
+      - name: profile
+        type: string
+        flag: --profile
+        description: Name of the SSH profile to use
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+      - name: server_port
+        type: integer
+        flag: --server-port
+        description: SSH server port number (0 => pick unused)
+
+  - name: logs
+    description: Access codespace logs
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: follow
+        type: boolean
+        flag: --follow
+        short: -f
+        description: Tail and follow the logs
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+
+  - name: ports
+    description: List ports in a codespace
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: jq
+        type: string
+        flag: --jq
+        short: -q
+        description: Filter JSON output using a jq expression
+      - name: json
+        type: array
+        item_type: string
+        flag: --json
+        description: Output JSON with the specified fields
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+      - name: template
+        type: string
+        flag: --template
+        short: -t
+        description: Format JSON output using a Go template
+
+  - name: edit
+    description: Edit a codespace
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: display_name
+        type: string
+        flag: --display-name
+        short: -d
+        description: Set the display name
+      - name: machine
+        type: string
+        flag: --machine
+        short: -m
+        description: Set hardware specifications for the VM
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+
+  - name: rebuild
+    description: Rebuild a codespace
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: full
+        type: boolean
+        flag: --full
+        description: Perform a full rebuild
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+
+  - name: code
+    description: Open a codespace in Visual Studio Code
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: insiders
+        type: boolean
+        flag: --insiders
+        description: Use the insiders version of Visual Studio Code
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+      - name: web
+        type: boolean
+        flag: --web
+        short: -w
+        description: Use the web version of Visual Studio Code
+
+  - name: jupyter
+    description: Open a codespace in JupyterLab
+    parameters:
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner
+
+  - name: cp
+    description: Copy files between local and remote file systems
+    parameters:
+      - name: sources
+        type: array
+        item_type: string
+        description: Source paths (positional arguments)
+        positional: true
+        required: true
+      - name: codespace
+        type: string
+        flag: --codespace
+        short: -c
+        description: Name of the codespace
+      - name: expand
+        type: boolean
+        flag: --expand
+        short: -e
+        description: Expand remote file names on remote shell
+      - name: profile
+        type: string
+        flag: --profile
+        short: -p
+        description: Name of the SSH profile to use
+      - name: recursive
+        type: boolean
+        flag: --recursive
+        short: -r
+        description: Recursively copy directories
+      - name: repo
+        type: string
+        flag: --repo
+        short: -R
+        description: Filter codespace selection by repository name (user/repo)
+      - name: repo_owner
+        type: string
+        flag: --repo-owner
+        description: Filter codespace selection by repository owner

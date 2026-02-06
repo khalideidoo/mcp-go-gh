@@ -1,0 +1,17 @@
+command: completion
+description: Generate shell completion scripts for GitHub CLI commands
+subcommands:
+  - name: completion
+    description: Generate shell completion scripts
+    parameters:
+      - name: shell
+        type: string
+        flag: --shell
+        short: -s
+        description: Shell type
+        required: true
+        enum:
+          - bash
+          - zsh
+          - fish
+          - powershell

@@ -1,0 +1,48 @@
+command: config
+description: Display or change configuration settings for gh
+subcommands:
+  - name: list
+    description: Print a list of configuration keys and values
+    parameters:
+      - name: host
+        type: string
+        flag: --host
+        short: -h
+        description: Get per-host configuration
+
+  - name: get
+    description: Print the value of a given configuration key
+    parameters:
+      - name: key
+        type: string
+        description: Configuration key (positional argument)
+        positional: true
+        required: true
+      - name: host
+        type: string
+        flag: --host
+        short: -h
+        description: Get per-host setting
+
+  - name: set
+    description: Update configuration with a value for the given key
+    parameters:
+      - name: key
+        type: string
+        description: Configuration key (positional argument)
+        positional: true
+        required: true
+      - name: value
+        type: string
+        description: Configuration value (positional argument)
+        positional: true
+        required: true
+      - name: host
+        type: string
+        flag: --host
+        short: -h
+        description: Set per-host setting
+
+  - name: clear-cache
+    description: Clear the cli cache
+    parameters: []
