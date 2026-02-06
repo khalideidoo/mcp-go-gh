@@ -35,10 +35,10 @@ func RegisterExtensionListTool(server *mcp.Server, exec *executor.Executor) {
 
 // ExtensionInstallArgs defines parameters for gh extension install
 type ExtensionInstallArgs struct {
-	Force bool   `json:"force,omitempty" jsonschema:"description=Force upgrade extension, or ignore if latest already installed"`
-	Pin   string `json:"pin,omitempty" jsonschema:"description=Pin extension to a release tag or commit ref"`
+	Force bool   `json:"force,omitempty" jsonschema:"Force upgrade extension, or ignore if latest already installed"`
+	Pin   string `json:"pin,omitempty" jsonschema:"Pin extension to a release tag or commit ref"`
 
-	Repository string `json:"repository,omitempty" jsonschema:"description=Repository in OWNER/REPO format or URL (positional argument),required"`
+	Repository string `json:"repository,omitempty" jsonschema:"Repository in OWNER/REPO format or URL (positional argument)"`
 }
 
 // RegisterExtensionInstallTool registers the gh extension install tool
@@ -77,7 +77,7 @@ func RegisterExtensionInstallTool(server *mcp.Server, exec *executor.Executor) {
 
 // ExtensionRemoveArgs defines parameters for gh extension remove
 type ExtensionRemoveArgs struct {
-	Name string `json:"name,omitempty" jsonschema:"description=Name of the extension (positional argument),required"`
+	Name string `json:"name,omitempty" jsonschema:"Name of the extension (positional argument)"`
 }
 
 // RegisterExtensionRemoveTool registers the gh extension remove tool
@@ -108,11 +108,11 @@ func RegisterExtensionRemoveTool(server *mcp.Server, exec *executor.Executor) {
 
 // ExtensionUpgradeArgs defines parameters for gh extension upgrade
 type ExtensionUpgradeArgs struct {
-	All    bool `json:"all,omitempty" jsonschema:"description=Upgrade all extensions"`
-	DryRun bool `json:"dry_run,omitempty" jsonschema:"description=Only display upgrades"`
-	Force  bool `json:"force,omitempty" jsonschema:"description=Force upgrade extension"`
+	All    bool `json:"all,omitempty" jsonschema:"Upgrade all extensions"`
+	DryRun bool `json:"dry_run,omitempty" jsonschema:"Only display upgrades"`
+	Force  bool `json:"force,omitempty" jsonschema:"Force upgrade extension"`
 
-	Name string `json:"name,omitempty" jsonschema:"description=Name of the extension to upgrade (positional argument)"`
+	Name string `json:"name,omitempty" jsonschema:"Name of the extension to upgrade (positional argument)"`
 }
 
 // RegisterExtensionUpgradeTool registers the gh extension upgrade tool
@@ -155,17 +155,17 @@ func RegisterExtensionUpgradeTool(server *mcp.Server, exec *executor.Executor) {
 
 // ExtensionSearchArgs defines parameters for gh extension search
 type ExtensionSearchArgs struct {
-	License  []string `json:"license,omitempty" jsonschema:"description=Filter based on license type"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of extensions to fetch"`
-	Order    string   `json:"order,omitempty" jsonschema:"description=Order of repositories returned,enum=asc,enum=desc"`
-	Owner    []string `json:"owner,omitempty" jsonschema:"description=Filter on owner"`
-	Sort     string   `json:"sort,omitempty" jsonschema:"description=Sort fetched repositories,enum=forks,enum=help-wanted-issues,enum=stars,enum=updated,enum=best-match"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool     `json:"web,omitempty" jsonschema:"description=Open the search query in the web browser"`
+	License  []string `json:"license,omitempty" jsonschema:"Filter based on license type"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"Maximum number of extensions to fetch"`
+	Order    string   `json:"order,omitempty" jsonschema:"Order of repositories returned"`
+	Owner    []string `json:"owner,omitempty" jsonschema:"Filter on owner"`
+	Sort     string   `json:"sort,omitempty" jsonschema:"Sort fetched repositories"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool     `json:"web,omitempty" jsonschema:"Open the search query in the web browser"`
 
-	Query string `json:"query,omitempty" jsonschema:"description=Search query (positional argument)"`
+	Query string `json:"query,omitempty" jsonschema:"Search query (positional argument)"`
 }
 
 // RegisterExtensionSearchTool registers the gh extension search tool
@@ -232,9 +232,9 @@ func RegisterExtensionSearchTool(server *mcp.Server, exec *executor.Executor) {
 
 // ExtensionCreateArgs defines parameters for gh extension create
 type ExtensionCreateArgs struct {
-	Precompiled string `json:"precompiled,omitempty" jsonschema:"description=Create a precompiled extension,enum=go,enum=other"`
+	Precompiled string `json:"precompiled,omitempty" jsonschema:"Create a precompiled extension"`
 
-	Name string `json:"name,omitempty" jsonschema:"description=Name of the extension (positional argument)"`
+	Name string `json:"name,omitempty" jsonschema:"Name of the extension (positional argument)"`
 }
 
 // RegisterExtensionCreateTool registers the gh extension create tool
@@ -269,7 +269,7 @@ func RegisterExtensionCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // ExtensionExecArgs defines parameters for gh extension exec
 type ExtensionExecArgs struct {
-	Name string `json:"name,omitempty" jsonschema:"description=Name of the extension to execute (positional argument),required"`
+	Name string `json:"name,omitempty" jsonschema:"Name of the extension to execute (positional argument)"`
 }
 
 // RegisterExtensionExecTool registers the gh extension exec tool

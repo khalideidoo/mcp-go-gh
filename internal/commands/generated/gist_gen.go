@@ -10,12 +10,12 @@ import (
 
 // GistCreateArgs defines parameters for gh gist create
 type GistCreateArgs struct {
-	Desc     string `json:"desc,omitempty" jsonschema:"description=Description for the gist"`
-	Filename string `json:"filename,omitempty" jsonschema:"description=Provide a filename for stdin content"`
-	Public   bool   `json:"public,omitempty" jsonschema:"description=List the gist publicly"`
-	Web      bool   `json:"web,omitempty" jsonschema:"description=Open in web browser"`
+	Desc     string `json:"desc,omitempty" jsonschema:"Description for the gist"`
+	Filename string `json:"filename,omitempty" jsonschema:"Provide a filename for stdin content"`
+	Public   bool   `json:"public,omitempty" jsonschema:"List the gist publicly"`
+	Web      bool   `json:"web,omitempty" jsonschema:"Open in web browser"`
 
-	Files []string `json:"files,omitempty" jsonschema:"description=Files to include in gist (positional arguments)"`
+	Files []string `json:"files,omitempty" jsonschema:"Files to include in gist (positional arguments)"`
 }
 
 // RegisterGistCreateTool registers the gh gist create tool
@@ -60,12 +60,12 @@ func RegisterGistCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // GistListArgs defines parameters for gh gist list
 type GistListArgs struct {
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of gists to fetch"`
-	Public   bool     `json:"public,omitempty" jsonschema:"description=Show only public gists"`
-	Secret   bool     `json:"secret,omitempty" jsonschema:"description=Show only secret gists"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"Maximum number of gists to fetch"`
+	Public   bool     `json:"public,omitempty" jsonschema:"Show only public gists"`
+	Secret   bool     `json:"secret,omitempty" jsonschema:"Show only secret gists"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 }
 
 // RegisterGistListTool registers the gh gist list tool
@@ -115,12 +115,12 @@ func RegisterGistListTool(server *mcp.Server, exec *executor.Executor) {
 
 // GistViewArgs defines parameters for gh gist view
 type GistViewArgs struct {
-	Filename string `json:"filename,omitempty" jsonschema:"description=Display a single file from the gist"`
-	Files    bool   `json:"files,omitempty" jsonschema:"description=List file names from the gist"`
-	Raw      bool   `json:"raw,omitempty" jsonschema:"description=Print raw instead of rendered gist contents"`
-	Web      bool   `json:"web,omitempty" jsonschema:"description=Open gist in the browser"`
+	Filename string `json:"filename,omitempty" jsonschema:"Display a single file from the gist"`
+	Files    bool   `json:"files,omitempty" jsonschema:"List file names from the gist"`
+	Raw      bool   `json:"raw,omitempty" jsonschema:"Print raw instead of rendered gist contents"`
+	Web      bool   `json:"web,omitempty" jsonschema:"Open gist in the browser"`
 
-	Gist string `json:"gist,omitempty" jsonschema:"description=Gist ID or URL (positional argument),required"`
+	Gist string `json:"gist,omitempty" jsonschema:"Gist ID or URL (positional argument)"`
 }
 
 // RegisterGistViewTool registers the gh gist view tool
@@ -167,12 +167,12 @@ func RegisterGistViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // GistEditArgs defines parameters for gh gist edit
 type GistEditArgs struct {
-	Add      []string `json:"add,omitempty" jsonschema:"description=Add a new file to the gist"`
-	Desc     string   `json:"desc,omitempty" jsonschema:"description=New description for the gist"`
-	Filename string   `json:"filename,omitempty" jsonschema:"description=Select a file to edit"`
-	Remove   []string `json:"remove,omitempty" jsonschema:"description=Remove a file from the gist"`
+	Add      []string `json:"add,omitempty" jsonschema:"Add a new file to the gist"`
+	Desc     string   `json:"desc,omitempty" jsonschema:"New description for the gist"`
+	Filename string   `json:"filename,omitempty" jsonschema:"Select a file to edit"`
+	Remove   []string `json:"remove,omitempty" jsonschema:"Remove a file from the gist"`
 
-	Gist string `json:"gist,omitempty" jsonschema:"description=Gist ID or URL (positional argument),required"`
+	Gist string `json:"gist,omitempty" jsonschema:"Gist ID or URL (positional argument)"`
 }
 
 // RegisterGistEditTool registers the gh gist edit tool
@@ -219,7 +219,7 @@ func RegisterGistEditTool(server *mcp.Server, exec *executor.Executor) {
 
 // GistDeleteArgs defines parameters for gh gist delete
 type GistDeleteArgs struct {
-	Gist string `json:"gist,omitempty" jsonschema:"description=Gist ID or URL (positional argument),required"`
+	Gist string `json:"gist,omitempty" jsonschema:"Gist ID or URL (positional argument)"`
 }
 
 // RegisterGistDeleteTool registers the gh gist delete tool
@@ -250,8 +250,8 @@ func RegisterGistDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // GistCloneArgs defines parameters for gh gist clone
 type GistCloneArgs struct {
-	Gist      string `json:"gist,omitempty" jsonschema:"description=Gist ID or URL (positional argument),required"`
-	Directory string `json:"directory,omitempty" jsonschema:"description=Directory to clone into (positional argument)"`
+	Gist      string `json:"gist,omitempty" jsonschema:"Gist ID or URL (positional argument)"`
+	Directory string `json:"directory,omitempty" jsonschema:"Directory to clone into (positional argument)"`
 }
 
 // RegisterGistCloneTool registers the gh gist clone tool

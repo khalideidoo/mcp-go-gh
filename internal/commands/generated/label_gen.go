@@ -10,12 +10,12 @@ import (
 
 // LabelCreateArgs defines parameters for gh label create
 type LabelCreateArgs struct {
-	Color       string `json:"color,omitempty" jsonschema:"description=Color of the label (6 character hex value)"`
-	Description string `json:"description,omitempty" jsonschema:"description=Description of the label"`
-	Force       bool   `json:"force,omitempty" jsonschema:"description=Update the label color and description if label already exists"`
-	Repo        string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Color       string `json:"color,omitempty" jsonschema:"Color of the label (6 character hex value)"`
+	Description string `json:"description,omitempty" jsonschema:"Description of the label"`
+	Force       bool   `json:"force,omitempty" jsonschema:"Update the label color and description if label already exists"`
+	Repo        string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	Name string `json:"name,omitempty" jsonschema:"description=Name of the label (positional),required"`
+	Name string `json:"name,omitempty" jsonschema:"Name of the label (positional)"`
 }
 
 // RegisterLabelCreateTool registers the gh label create tool
@@ -62,12 +62,12 @@ func RegisterLabelCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // LabelListArgs defines parameters for gh label list
 type LabelListArgs struct {
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of labels to fetch"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool     `json:"web,omitempty" jsonschema:"description=Open labels in the web browser"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"Maximum number of labels to fetch"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool     `json:"web,omitempty" jsonschema:"Open labels in the web browser"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 }
 
 // RegisterLabelListTool registers the gh label list tool
@@ -117,12 +117,12 @@ func RegisterLabelListTool(server *mcp.Server, exec *executor.Executor) {
 
 // LabelEditArgs defines parameters for gh label edit
 type LabelEditArgs struct {
-	Color       string `json:"color,omitempty" jsonschema:"description=Color of the label (6 character hex value)"`
-	Description string `json:"description,omitempty" jsonschema:"description=Description of the label"`
-	NewName     string `json:"new_name,omitempty" jsonschema:"description=New name of the label"`
-	Repo        string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Color       string `json:"color,omitempty" jsonschema:"Color of the label (6 character hex value)"`
+	Description string `json:"description,omitempty" jsonschema:"Description of the label"`
+	NewName     string `json:"new_name,omitempty" jsonschema:"New name of the label"`
+	Repo        string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	Name string `json:"name,omitempty" jsonschema:"description=Current name of the label (positional),required"`
+	Name string `json:"name,omitempty" jsonschema:"Current name of the label (positional)"`
 }
 
 // RegisterLabelEditTool registers the gh label edit tool
@@ -169,10 +169,10 @@ func RegisterLabelEditTool(server *mcp.Server, exec *executor.Executor) {
 
 // LabelDeleteArgs defines parameters for gh label delete
 type LabelDeleteArgs struct {
-	Yes  bool   `json:"yes,omitempty" jsonschema:"description=Skip the confirmation prompt"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Yes  bool   `json:"yes,omitempty" jsonschema:"Skip the confirmation prompt"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	Name string `json:"name,omitempty" jsonschema:"description=Name of the label (positional),required"`
+	Name string `json:"name,omitempty" jsonschema:"Name of the label (positional)"`
 }
 
 // RegisterLabelDeleteTool registers the gh label delete tool
@@ -211,10 +211,10 @@ func RegisterLabelDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // LabelCloneArgs defines parameters for gh label clone
 type LabelCloneArgs struct {
-	Force bool   `json:"force,omitempty" jsonschema:"description=Overwrite labels in the destination repository"`
-	Repo  string `json:"repo,omitempty" jsonschema:"description=Destination repository in OWNER/REPO format"`
+	Force bool   `json:"force,omitempty" jsonschema:"Overwrite labels in the destination repository"`
+	Repo  string `json:"repo,omitempty" jsonschema:"Destination repository in OWNER/REPO format"`
 
-	SourceRepository string `json:"source_repository,omitempty" jsonschema:"description=Source repository in OWNER/REPO format (positional),required"`
+	SourceRepository string `json:"source_repository,omitempty" jsonschema:"Source repository in OWNER/REPO format (positional)"`
 }
 
 // RegisterLabelCloneTool registers the gh label clone tool

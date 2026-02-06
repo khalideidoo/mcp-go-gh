@@ -1,4 +1,4 @@
-.PHONY: all generate build test clean install help
+.PHONY: all generate build test clean install help lint lint-fix
 
 # Default target
 all: generate build
@@ -6,7 +6,7 @@ all: generate build
 # Generate Go code from YAML definitions
 generate:
 	@echo "Generating Go code from YAML definitions..."
-	@go run tools/gen/*.go
+	@go run tools/gen/main.go tools/gen/codegen.go tools/gen/parser.go tools/gen/templates.go tools/gen/types.go
 
 # Build the MCP server binary
 build:
@@ -46,8 +46,13 @@ fmt:
 
 # Run linter
 lint:
-	@echo "Running linter..."
-	@golangci-lint run || echo "golangci-lint not installed, skipping..."
+	@echo "Running golangci-lint v2..."
+	@golangci-lint run
+
+# Run linter with auto-fix
+lint-fix:
+	@echo "Running golangci-lint v2 with auto-fix..."
+	@golangci-lint run --fix
 
 # Build for multiple platforms
 build-all:
@@ -70,6 +75,7 @@ help:
 	@echo "  install     - Install binary to GOPATH/bin"
 	@echo "  deps        - Install and tidy dependencies"
 	@echo "  fmt         - Format code"
-	@echo "  lint        - Run linter"
+	@echo "  lint        - Run golangci-lint v2"
+	@echo "  lint-fix    - Run golangci-lint v2 with auto-fix"
 	@echo "  build-all   - Build for multiple platforms"
 	@echo "  help        - Show this help message"

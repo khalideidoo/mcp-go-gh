@@ -10,9 +10,9 @@ import (
 
 // OrgListArgs defines parameters for gh org list
 type OrgListArgs struct {
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 }
 
 // RegisterOrgListTool registers the gh org list tool

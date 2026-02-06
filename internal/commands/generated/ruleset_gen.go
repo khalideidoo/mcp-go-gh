@@ -10,11 +10,11 @@ import (
 
 // RulesetListArgs defines parameters for gh ruleset list
 type RulesetListArgs struct {
-	Limit   int    `json:"limit,omitempty" jsonschema:"description=Maximum number of rulesets to list"`
-	Org     string `json:"org,omitempty" jsonschema:"description=List organization-wide rulesets for the provided organization"`
-	Parents bool   `json:"parents,omitempty" jsonschema:"description=Whether to include rulesets configured at higher levels that also apply"`
-	Web     bool   `json:"web,omitempty" jsonschema:"description=Open the list of rulesets in the web browser"`
-	Repo    string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Limit   int    `json:"limit,omitempty" jsonschema:"Maximum number of rulesets to list"`
+	Org     string `json:"org,omitempty" jsonschema:"List organization-wide rulesets for the provided organization"`
+	Parents bool   `json:"parents,omitempty" jsonschema:"Whether to include rulesets configured at higher levels that also apply"`
+	Web     bool   `json:"web,omitempty" jsonschema:"Open the list of rulesets in the web browser"`
+	Repo    string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 }
 
 // RegisterRulesetListTool registers the gh ruleset list tool
@@ -60,12 +60,12 @@ func RegisterRulesetListTool(server *mcp.Server, exec *executor.Executor) {
 
 // RulesetViewArgs defines parameters for gh ruleset view
 type RulesetViewArgs struct {
-	Org     string `json:"org,omitempty" jsonschema:"description=Organization name if the provided ID is an organization-level ruleset"`
-	Parents bool   `json:"parents,omitempty" jsonschema:"description=Whether to include rulesets configured at higher levels that also apply"`
-	Web     bool   `json:"web,omitempty" jsonschema:"description=Open the ruleset in the browser"`
-	Repo    string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Org     string `json:"org,omitempty" jsonschema:"Organization name if the provided ID is an organization-level ruleset"`
+	Parents bool   `json:"parents,omitempty" jsonschema:"Whether to include rulesets configured at higher levels that also apply"`
+	Web     bool   `json:"web,omitempty" jsonschema:"Open the ruleset in the browser"`
+	Repo    string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	RulesetId string `json:"ruleset_id,omitempty" jsonschema:"description=Ruleset ID (positional argument)"`
+	RulesetId string `json:"ruleset_id,omitempty" jsonschema:"Ruleset ID (positional argument)"`
 }
 
 // RegisterRulesetViewTool registers the gh ruleset view tool
@@ -112,11 +112,11 @@ func RegisterRulesetViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // RulesetCheckArgs defines parameters for gh ruleset check
 type RulesetCheckArgs struct {
-	Default bool   `json:"default,omitempty" jsonschema:"description=Check rules on default branch"`
-	Web     bool   `json:"web,omitempty" jsonschema:"description=Open the branch rules page in a web browser"`
-	Repo    string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Default bool   `json:"default,omitempty" jsonschema:"Check rules on default branch"`
+	Web     bool   `json:"web,omitempty" jsonschema:"Open the branch rules page in a web browser"`
+	Repo    string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	Branch string `json:"branch,omitempty" jsonschema:"description=Branch name to check (positional argument)"`
+	Branch string `json:"branch,omitempty" jsonschema:"Branch name to check (positional argument)"`
 }
 
 // RegisterRulesetCheckTool registers the gh ruleset check tool

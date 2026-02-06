@@ -35,10 +35,10 @@ func RegisterSshKeyListTool(server *mcp.Server, exec *executor.Executor) {
 
 // SshKeyAddArgs defines parameters for gh ssh-key add
 type SshKeyAddArgs struct {
-	Title string `json:"title,omitempty" jsonschema:"description=Title for the new key"`
-	Type  string `json:"type,omitempty" jsonschema:"description=Type of the SSH key,enum=authentication,enum=signing"`
+	Title string `json:"title,omitempty" jsonschema:"Title for the new key"`
+	Type  string `json:"type,omitempty" jsonschema:"Type of the SSH key"`
 
-	KeyFile string `json:"key_file,omitempty" jsonschema:"description=Path to SSH key file (positional argument)"`
+	KeyFile string `json:"key_file,omitempty" jsonschema:"Path to SSH key file (positional argument)"`
 }
 
 // RegisterSshKeyAddTool registers the gh ssh-key add tool
@@ -77,9 +77,9 @@ func RegisterSshKeyAddTool(server *mcp.Server, exec *executor.Executor) {
 
 // SshKeyDeleteArgs defines parameters for gh ssh-key delete
 type SshKeyDeleteArgs struct {
-	Yes bool `json:"yes,omitempty" jsonschema:"description=Skip the confirmation prompt"`
+	Yes bool `json:"yes,omitempty" jsonschema:"Skip the confirmation prompt"`
 
-	Id string `json:"id,omitempty" jsonschema:"description=SSH key ID (positional argument),required"`
+	Id string `json:"id,omitempty" jsonschema:"SSH key ID (positional argument)"`
 }
 
 // RegisterSshKeyDeleteTool registers the gh ssh-key delete tool

@@ -1,0 +1,139 @@
+# golangci-lint v2 configuration
+# See https://golangci-lint.run/docs/configuration/file/
+
+version: "2"
+
+run:
+  timeout: 5m
+  go: "1.25.6"
+  tests: true
+  build-tags: []
+  modules-download-mode: readonly
+
+linters:
+  # Use standard linters as baseline
+  default: standard
+
+  # Enable additional linters
+  enable:
+    # Bug detection (these are already in 'standard' but listed for clarity)
+    - errcheck        # Check for unchecked errors
+    - govet           # Official Go tool
+    - ineffassign     # Detect ineffectual assignments
+    - staticcheck     # Advanced static analysis (includes gosimple in v2)
+    - unused          # Find unused code
+
+    # Code quality
+    - gocyclo         # Check cyclomatic complexity
+    - misspell        # Fix common spelling mistakes
+    - revive          # Fast, configurable linter
+    - unconvert       # Remove unnecessary type conversions
+    - unparam         # Find unused function parameters
+
+    # Bug detection
+    - bodyclose       # Check HTTP response bodies are closed
+    - errname         # Check error naming conventions
+    - nilerr          # Find code returning nil even if checking err
+    - nilnil          # Check returning nil even if checking error
+
+    # Style
+    - goconst         # Find repeated strings that could be constants
+    - godot           # Check comments end in period
+    - whitespace      # Detect leading/trailing whitespace
+
+    # Performance
+    - prealloc        # Find slice declarations that could be preallocated
+
+    # Security
+    - gosec           # Security checker
+
+  settings:
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+      exclude-functions:
+        - (io.Closer).Close
+
+    govet:
+      enable-all: true
+      disable:
+        - shadow  # Too many false positives
+
+    gocyclo:
+      min-complexity: 15
+
+    revive:
+      rules:
+        - name: exported
+          disabled: true  # Allow unexported return types
+        - name: package-comments
+          disabled: true  # Not all packages need comments
+        - name: var-naming
+          arguments:
+            - ["ID", "URL", "API", "MCP", "CLI", "GH"]  # Allow common initialisms
+
+    goconst:
+      min-len: 3
+      min-occurrences: 3
+
+    misspell:
+      locale: US
+
+    gosec:
+      excludes:
+        - G204  # Subprocess launched with variable - expected for gh CLI wrapper
+
+    prealloc:
+      simple: true
+      range-loops: true
+      for-loops: false
+
+  exclusions:
+    # Exclude generated files
+    generated: strict
+
+    # Custom exclusion rules
+    rules:
+      # Exclude some linters from test files
+      - path: _test\.go
+        linters:
+          - gocyclo
+          - errcheck
+          - gosec
+          - goconst
+
+      # Exclude generated files
+      - path: _gen\.go$
+        linters:
+          - all
+
+      # Exclude main.go from some linters
+      - path: cmd/.*main\.go
+        linters:
+          - errcheck
+
+formatters:
+  enable:
+    - goimports       # Auto-import and format
+    - gci             # Control Go import order
+    - gofmt           # Standard Go formatter
+
+  settings:
+    gci:
+      sections:
+        - standard  # Standard library
+        - default   # Third-party packages
+        - prefix(github.com/khalideidoo/mcp-go-gh)  # This project
+
+issues:
+  max-issues-per-linter: 50
+  max-same-issues: 3
+  new: false
+  fix: false
+
+output:
+  formats:
+    text:
+      path: stdout
+      print-linter-name: true
+      print-issued-lines: true

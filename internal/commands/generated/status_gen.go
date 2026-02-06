@@ -10,8 +10,8 @@ import (
 
 // StatusStatusArgs defines parameters for gh status status
 type StatusStatusArgs struct {
-	Exclude []string `json:"exclude,omitempty" jsonschema:"description=Comma separated list of repos to exclude in owner/name format"`
-	Org     string   `json:"org,omitempty" jsonschema:"description=Report status within an organization"`
+	Exclude []string `json:"exclude,omitempty" jsonschema:"Comma separated list of repos to exclude in owner/name format"`
+	Org     string   `json:"org,omitempty" jsonschema:"Report status within an organization"`
 }
 
 // RegisterStatusStatusTool registers the gh status status tool

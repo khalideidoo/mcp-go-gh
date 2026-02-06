@@ -5,9 +5,10 @@ import (
 	"log/slog"
 	"os"
 
+	"github.com/modelcontextprotocol/go-sdk/mcp"
+
 	"github.com/khalideidoo/mcp-go-gh/internal/commands/generated"
 	"github.com/khalideidoo/mcp-go-gh/internal/executor"
-	"github.com/modelcontextprotocol/go-sdk/mcp"
 )
 
 func main() {

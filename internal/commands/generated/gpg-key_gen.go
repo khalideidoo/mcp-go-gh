@@ -35,9 +35,9 @@ func RegisterGpgKeyListTool(server *mcp.Server, exec *executor.Executor) {
 
 // GpgKeyAddArgs defines parameters for gh gpg-key add
 type GpgKeyAddArgs struct {
-	Title string `json:"title,omitempty" jsonschema:"description=Title for the new key"`
+	Title string `json:"title,omitempty" jsonschema:"Title for the new key"`
 
-	KeyFile string `json:"key_file,omitempty" jsonschema:"description=Path to GPG key file (positional argument)"`
+	KeyFile string `json:"key_file,omitempty" jsonschema:"Path to GPG key file (positional argument)"`
 }
 
 // RegisterGpgKeyAddTool registers the gh gpg-key add tool
@@ -72,9 +72,9 @@ func RegisterGpgKeyAddTool(server *mcp.Server, exec *executor.Executor) {
 
 // GpgKeyDeleteArgs defines parameters for gh gpg-key delete
 type GpgKeyDeleteArgs struct {
-	Yes bool `json:"yes,omitempty" jsonschema:"description=Skip the confirmation prompt"`
+	Yes bool `json:"yes,omitempty" jsonschema:"Skip the confirmation prompt"`
 
-	KeyId string `json:"key_id,omitempty" jsonschema:"description=GPG key ID (positional argument),required"`
+	KeyId string `json:"key_id,omitempty" jsonschema:"GPG key ID (positional argument)"`
 }
 
 // RegisterGpgKeyDeleteTool registers the gh gpg-key delete tool

@@ -10,11 +10,11 @@ import (
 
 // ProjectCreateArgs defines parameters for gh project create
 type ProjectCreateArgs struct {
-	Owner    string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Title    string `json:"title,omitempty" jsonschema:"description=Title for the project,required"`
-	Format   string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
-	Jq       string `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Owner    string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Title    string `json:"title,omitempty" jsonschema:"Title for the project"`
+	Format   string `json:"format,omitempty" jsonschema:"Output format"`
+	Jq       string `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 }
 
 // RegisterProjectCreateTool registers the gh project create tool
@@ -60,13 +60,13 @@ func RegisterProjectCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectListArgs defines parameters for gh project list
 type ProjectListArgs struct {
-	Owner    string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Closed   bool   `json:"closed,omitempty" jsonschema:"description=Include closed projects"`
-	Limit    int    `json:"limit,omitempty" jsonschema:"description=Maximum number of projects to fetch"`
-	Format   string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
-	Jq       string `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool   `json:"web,omitempty" jsonschema:"description=Open projects list in the browser"`
+	Owner    string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Closed   bool   `json:"closed,omitempty" jsonschema:"Include closed projects"`
+	Limit    int    `json:"limit,omitempty" jsonschema:"Maximum number of projects to fetch"`
+	Format   string `json:"format,omitempty" jsonschema:"Output format"`
+	Jq       string `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool   `json:"web,omitempty" jsonschema:"Open projects list in the browser"`
 }
 
 // RegisterProjectListTool registers the gh project list tool
@@ -120,13 +120,13 @@ func RegisterProjectListTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectViewArgs defines parameters for gh project view
 type ProjectViewArgs struct {
-	Owner    string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Format   string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
-	Jq       string `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool   `json:"web,omitempty" jsonschema:"description=Open project in the browser"`
+	Owner    string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Format   string `json:"format,omitempty" jsonschema:"Output format"`
+	Jq       string `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool   `json:"web,omitempty" jsonschema:"Open project in the browser"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectViewTool registers the gh project view tool
@@ -177,16 +177,16 @@ func RegisterProjectViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectEditArgs defines parameters for gh project edit
 type ProjectEditArgs struct {
-	Owner       string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Title       string `json:"title,omitempty" jsonschema:"description=New title for the project"`
-	Description string `json:"description,omitempty" jsonschema:"description=New description for the project"`
-	Readme      string `json:"readme,omitempty" jsonschema:"description=New README for the project"`
-	Visibility  string `json:"visibility,omitempty" jsonschema:"description=Change project visibility,enum=PUBLIC,enum=PRIVATE"`
-	Format      string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
-	Jq          string `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template    string `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Owner       string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Title       string `json:"title,omitempty" jsonschema:"New title for the project"`
+	Description string `json:"description,omitempty" jsonschema:"New description for the project"`
+	Readme      string `json:"readme,omitempty" jsonschema:"New README for the project"`
+	Visibility  string `json:"visibility,omitempty" jsonschema:"Change project visibility"`
+	Format      string `json:"format,omitempty" jsonschema:"Output format"`
+	Jq          string `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template    string `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectEditTool registers the gh project edit tool
@@ -249,11 +249,11 @@ func RegisterProjectEditTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectCloseArgs defines parameters for gh project close
 type ProjectCloseArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Undo   bool   `json:"undo,omitempty" jsonschema:"description=Reopen a closed project"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Undo   bool   `json:"undo,omitempty" jsonschema:"Reopen a closed project"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectCloseTool registers the gh project close tool
@@ -296,10 +296,10 @@ func RegisterProjectCloseTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectDeleteArgs defines parameters for gh project delete
 type ProjectDeleteArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectDeleteTool registers the gh project delete tool
@@ -338,13 +338,13 @@ func RegisterProjectDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectCopyArgs defines parameters for gh project copy
 type ProjectCopyArgs struct {
-	SourceOwner string `json:"source_owner,omitempty" jsonschema:"description=Login of the source owner,required"`
-	TargetOwner string `json:"target_owner,omitempty" jsonschema:"description=Login of the target owner,required"`
-	Title       string `json:"title,omitempty" jsonschema:"description=Title for the new project"`
-	Drafts      bool   `json:"drafts,omitempty" jsonschema:"description=Include draft issues when copying"`
-	Format      string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	SourceOwner string `json:"source_owner,omitempty" jsonschema:"Login of the source owner"`
+	TargetOwner string `json:"target_owner,omitempty" jsonschema:"Login of the target owner"`
+	Title       string `json:"title,omitempty" jsonschema:"Title for the new project"`
+	Drafts      bool   `json:"drafts,omitempty" jsonschema:"Include draft issues when copying"`
+	Format      string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number to copy (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number to copy (positional)"`
 }
 
 // RegisterProjectCopyTool registers the gh project copy tool
@@ -395,13 +395,13 @@ func RegisterProjectCopyTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectFieldListArgs defines parameters for gh project field-list
 type ProjectFieldListArgs struct {
-	Owner    string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Limit    int    `json:"limit,omitempty" jsonschema:"description=Maximum number of fields to fetch"`
-	Format   string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
-	Jq       string `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Owner    string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Limit    int    `json:"limit,omitempty" jsonschema:"Maximum number of fields to fetch"`
+	Format   string `json:"format,omitempty" jsonschema:"Output format"`
+	Jq       string `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectFieldListTool registers the gh project field-list tool
@@ -452,12 +452,12 @@ func RegisterProjectFieldListTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectFieldCreateArgs defines parameters for gh project field-create
 type ProjectFieldCreateArgs struct {
-	Owner    string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Name     string `json:"name,omitempty" jsonschema:"description=Name of the field,required"`
-	DataType string `json:"data_type,omitempty" jsonschema:"description=DataType of the field,required,enum=TEXT,enum=NUMBER,enum=DATE,enum=SINGLE_SELECT,enum=ITERATION"`
-	Format   string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner    string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Name     string `json:"name,omitempty" jsonschema:"Name of the field"`
+	DataType string `json:"data_type,omitempty" jsonschema:"DataType of the field"`
+	Format   string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectFieldCreateTool registers the gh project field-create tool
@@ -504,11 +504,11 @@ func RegisterProjectFieldCreateTool(server *mcp.Server, exec *executor.Executor)
 
 // ProjectFieldDeleteArgs defines parameters for gh project field-delete
 type ProjectFieldDeleteArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Id     string `json:"id,omitempty" jsonschema:"description=ID of the field to delete,required"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Id     string `json:"id,omitempty" jsonschema:"ID of the field to delete"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectFieldDeleteTool registers the gh project field-delete tool
@@ -551,13 +551,13 @@ func RegisterProjectFieldDeleteTool(server *mcp.Server, exec *executor.Executor)
 
 // ProjectItemListArgs defines parameters for gh project item-list
 type ProjectItemListArgs struct {
-	Owner    string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Limit    int    `json:"limit,omitempty" jsonschema:"description=Maximum number of items to fetch"`
-	Format   string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
-	Jq       string `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Owner    string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Limit    int    `json:"limit,omitempty" jsonschema:"Maximum number of items to fetch"`
+	Format   string `json:"format,omitempty" jsonschema:"Output format"`
+	Jq       string `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectItemListTool registers the gh project item-list tool
@@ -608,13 +608,13 @@ func RegisterProjectItemListTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectItemAddArgs defines parameters for gh project item-add
 type ProjectItemAddArgs struct {
-	Owner    string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Url      string `json:"url,omitempty" jsonschema:"description=URL of the issue or pull request to add,required"`
-	Format   string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
-	Jq       string `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Owner    string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Url      string `json:"url,omitempty" jsonschema:"URL of the issue or pull request to add"`
+	Format   string `json:"format,omitempty" jsonschema:"Output format"`
+	Jq       string `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectItemAddTool registers the gh project item-add tool
@@ -665,12 +665,12 @@ func RegisterProjectItemAddTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectItemCreateArgs defines parameters for gh project item-create
 type ProjectItemCreateArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Title  string `json:"title,omitempty" jsonschema:"description=Title of the draft issue,required"`
-	Body   string `json:"body,omitempty" jsonschema:"description=Body of the draft issue"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Title  string `json:"title,omitempty" jsonschema:"Title of the draft issue"`
+	Body   string `json:"body,omitempty" jsonschema:"Body of the draft issue"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectItemCreateTool registers the gh project item-create tool
@@ -717,18 +717,18 @@ func RegisterProjectItemCreateTool(server *mcp.Server, exec *executor.Executor) 
 
 // ProjectItemEditArgs defines parameters for gh project item-edit
 type ProjectItemEditArgs struct {
-	Owner                string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Id                   string `json:"id,omitempty" jsonschema:"description=ID of the item to edit,required"`
-	FieldId              string `json:"field_id,omitempty" jsonschema:"description=ID of the field to update"`
-	Text                 string `json:"text,omitempty" jsonschema:"description=Text value for the field"`
-	NumberValue          string `json:"number_value,omitempty" jsonschema:"description=Number value for the field"`
-	Date                 string `json:"date,omitempty" jsonschema:"description=Date value for the field (YYYY-MM-DD)"`
-	SingleSelectOptionId string `json:"single_select_option_id,omitempty" jsonschema:"description=ID of the single select option value"`
-	IterationId          string `json:"iteration_id,omitempty" jsonschema:"description=ID of the iteration value"`
-	Clear                bool   `json:"clear,omitempty" jsonschema:"description=Clear the field value"`
-	Format               string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner                string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Id                   string `json:"id,omitempty" jsonschema:"ID of the item to edit"`
+	FieldId              string `json:"field_id,omitempty" jsonschema:"ID of the field to update"`
+	Text                 string `json:"text,omitempty" jsonschema:"Text value for the field"`
+	NumberValue          string `json:"number_value,omitempty" jsonschema:"Number value for the field"`
+	Date                 string `json:"date,omitempty" jsonschema:"Date value for the field (YYYY-MM-DD)"`
+	SingleSelectOptionId string `json:"single_select_option_id,omitempty" jsonschema:"ID of the single select option value"`
+	IterationId          string `json:"iteration_id,omitempty" jsonschema:"ID of the iteration value"`
+	Clear                bool   `json:"clear,omitempty" jsonschema:"Clear the field value"`
+	Format               string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectItemEditTool registers the gh project item-edit tool
@@ -799,11 +799,11 @@ func RegisterProjectItemEditTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectItemDeleteArgs defines parameters for gh project item-delete
 type ProjectItemDeleteArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Id     string `json:"id,omitempty" jsonschema:"description=ID of the item to delete,required"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Id     string `json:"id,omitempty" jsonschema:"ID of the item to delete"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectItemDeleteTool registers the gh project item-delete tool
@@ -846,12 +846,12 @@ func RegisterProjectItemDeleteTool(server *mcp.Server, exec *executor.Executor) 
 
 // ProjectItemArchiveArgs defines parameters for gh project item-archive
 type ProjectItemArchiveArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Id     string `json:"id,omitempty" jsonschema:"description=ID of the item to archive,required"`
-	Undo   bool   `json:"undo,omitempty" jsonschema:"description=Unarchive an item"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Id     string `json:"id,omitempty" jsonschema:"ID of the item to archive"`
+	Undo   bool   `json:"undo,omitempty" jsonschema:"Unarchive an item"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectItemArchiveTool registers the gh project item-archive tool
@@ -898,12 +898,12 @@ func RegisterProjectItemArchiveTool(server *mcp.Server, exec *executor.Executor)
 
 // ProjectLinkArgs defines parameters for gh project link
 type ProjectLinkArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Repo   string `json:"repo,omitempty" jsonschema:"description=Repository to link to the project (OWNER/REPO)"`
-	Team   string `json:"team,omitempty" jsonschema:"description=Team to link to the project (ORG/TEAM)"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Repo   string `json:"repo,omitempty" jsonschema:"Repository to link to the project (OWNER/REPO)"`
+	Team   string `json:"team,omitempty" jsonschema:"Team to link to the project (ORG/TEAM)"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectLinkTool registers the gh project link tool
@@ -950,12 +950,12 @@ func RegisterProjectLinkTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectUnlinkArgs defines parameters for gh project unlink
 type ProjectUnlinkArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Repo   string `json:"repo,omitempty" jsonschema:"description=Repository to unlink from the project (OWNER/REPO)"`
-	Team   string `json:"team,omitempty" jsonschema:"description=Team to unlink from the project (ORG/TEAM)"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Repo   string `json:"repo,omitempty" jsonschema:"Repository to unlink from the project (OWNER/REPO)"`
+	Team   string `json:"team,omitempty" jsonschema:"Team to unlink from the project (ORG/TEAM)"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectUnlinkTool registers the gh project unlink tool
@@ -1002,11 +1002,11 @@ func RegisterProjectUnlinkTool(server *mcp.Server, exec *executor.Executor) {
 
 // ProjectMarkTemplateArgs defines parameters for gh project mark-template
 type ProjectMarkTemplateArgs struct {
-	Owner  string `json:"owner,omitempty" jsonschema:"description=Login of the owner (use @me for current user),required"`
-	Undo   bool   `json:"undo,omitempty" jsonschema:"description=Unmark the project as a template"`
-	Format string `json:"format,omitempty" jsonschema:"description=Output format,enum=json"`
+	Owner  string `json:"owner,omitempty" jsonschema:"Login of the owner (use @me for current user)"`
+	Undo   bool   `json:"undo,omitempty" jsonschema:"Unmark the project as a template"`
+	Format string `json:"format,omitempty" jsonschema:"Output format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Project number (positional),required"`
+	Number string `json:"number,omitempty" jsonschema:"Project number (positional)"`
 }
 
 // RegisterProjectMarkTemplateTool registers the gh project mark-template tool

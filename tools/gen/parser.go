@@ -8,7 +8,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// ParseDefinitions reads all YAML files from a directory
+// ParseDefinitions reads all YAML files from a directory.
 func ParseDefinitions(dir string) ([]CommandDefinition, error) {
 	var definitions []CommandDefinition
 
@@ -28,8 +28,9 @@ func ParseDefinitions(dir string) ([]CommandDefinition, error) {
 	return definitions, nil
 }
 
-// parseDefinitionFile reads and parses a single YAML file
+// parseDefinitionFile reads and parses a single YAML file.
 func parseDefinitionFile(path string) (CommandDefinition, error) {
+	// #nosec G304 -- path is from filepath.Glob, which is safe
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return CommandDefinition{}, fmt.Errorf("failed to read file: %w", err)

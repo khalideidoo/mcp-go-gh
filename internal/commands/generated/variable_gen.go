@@ -10,15 +10,15 @@ import (
 
 // VariableSetArgs defines parameters for gh variable set
 type VariableSetArgs struct {
-	Body       string   `json:"body,omitempty" jsonschema:"description=The value for the variable (reads from stdin if not specified)"`
-	EnvFile    string   `json:"env_file,omitempty" jsonschema:"description=Load variable names and values from a dotenv-formatted file"`
-	Env        string   `json:"env,omitempty" jsonschema:"description=Set deployment environment variable"`
-	Org        string   `json:"org,omitempty" jsonschema:"description=Set organization variable"`
-	Repos      []string `json:"repos,omitempty" jsonschema:"description=List of repositories that can access an organization variable"`
-	Visibility string   `json:"visibility,omitempty" jsonschema:"description=Set visibility for an organization variable,enum=all,enum=private,enum=selected"`
-	Repo       string   `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Body       string   `json:"body,omitempty" jsonschema:"The value for the variable (reads from stdin if not specified)"`
+	EnvFile    string   `json:"env_file,omitempty" jsonschema:"Load variable names and values from a dotenv-formatted file"`
+	Env        string   `json:"env,omitempty" jsonschema:"Set deployment environment variable"`
+	Org        string   `json:"org,omitempty" jsonschema:"Set organization variable"`
+	Repos      []string `json:"repos,omitempty" jsonschema:"List of repositories that can access an organization variable"`
+	Visibility string   `json:"visibility,omitempty" jsonschema:"Set visibility for an organization variable"`
+	Repo       string   `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	VariableName string `json:"variable_name,omitempty" jsonschema:"description=Name of the variable (positional),required"`
+	VariableName string `json:"variable_name,omitempty" jsonschema:"Name of the variable (positional)"`
 }
 
 // RegisterVariableSetTool registers the gh variable set tool
@@ -77,12 +77,12 @@ func RegisterVariableSetTool(server *mcp.Server, exec *executor.Executor) {
 
 // VariableListArgs defines parameters for gh variable list
 type VariableListArgs struct {
-	Env      string   `json:"env,omitempty" jsonschema:"description=List variables for an environment"`
-	Org      string   `json:"org,omitempty" jsonschema:"description=List variables for an organization"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Env      string   `json:"env,omitempty" jsonschema:"List variables for an environment"`
+	Org      string   `json:"org,omitempty" jsonschema:"List variables for an organization"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 }
 
 // RegisterVariableListTool registers the gh variable list tool
@@ -132,11 +132,11 @@ func RegisterVariableListTool(server *mcp.Server, exec *executor.Executor) {
 
 // VariableGetArgs defines parameters for gh variable get
 type VariableGetArgs struct {
-	Env  string `json:"env,omitempty" jsonschema:"description=Get variable for an environment"`
-	Org  string `json:"org,omitempty" jsonschema:"description=Get organization variable"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Env  string `json:"env,omitempty" jsonschema:"Get variable for an environment"`
+	Org  string `json:"org,omitempty" jsonschema:"Get organization variable"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	VariableName string `json:"variable_name,omitempty" jsonschema:"description=Name of the variable (positional),required"`
+	VariableName string `json:"variable_name,omitempty" jsonschema:"Name of the variable (positional)"`
 }
 
 // RegisterVariableGetTool registers the gh variable get tool
@@ -179,11 +179,11 @@ func RegisterVariableGetTool(server *mcp.Server, exec *executor.Executor) {
 
 // VariableDeleteArgs defines parameters for gh variable delete
 type VariableDeleteArgs struct {
-	Env  string `json:"env,omitempty" jsonschema:"description=Delete variable from an environment"`
-	Org  string `json:"org,omitempty" jsonschema:"description=Delete organization variable"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Env  string `json:"env,omitempty" jsonschema:"Delete variable from an environment"`
+	Org  string `json:"org,omitempty" jsonschema:"Delete organization variable"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	VariableName string `json:"variable_name,omitempty" jsonschema:"description=Name of the variable (positional),required"`
+	VariableName string `json:"variable_name,omitempty" jsonschema:"Name of the variable (positional)"`
 }
 
 // RegisterVariableDeleteTool registers the gh variable delete tool

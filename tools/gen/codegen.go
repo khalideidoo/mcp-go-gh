@@ -10,10 +10,14 @@ import (
 	"text/template"
 )
 
-// GenerateCode generates Go code for all command definitions
+const (
+	typeString = "string"
+)
+
+// GenerateCode generates Go code for all command definitions.
 func GenerateCode(definitions []CommandDefinition, outputDir string) error {
 	// Ensure output directory exists
-	if err := os.MkdirAll(outputDir, 0755); err != nil {
+	if err := os.MkdirAll(outputDir, 0750); err != nil {
 		return fmt.Errorf("failed to create output directory: %w", err)
 	}
 
@@ -32,7 +36,7 @@ func GenerateCode(definitions []CommandDefinition, outputDir string) error {
 	return nil
 }
 
-// generateCommandFile generates a Go file for a single command group
+// generateCommandFile generates a Go file for a single command group.
 func generateCommandFile(def CommandDefinition, outputDir string) error {
 	tmpl, err := template.New("command").Funcs(templateFuncs()).Parse(commandTemplate)
 	if err != nil {
@@ -54,7 +58,7 @@ func generateCommandFile(def CommandDefinition, outputDir string) error {
 
 	// Write to file
 	filename := filepath.Join(outputDir, fmt.Sprintf("%s_gen.go", def.Command))
-	if err := os.WriteFile(filename, formatted, 0644); err != nil {
+	if err := os.WriteFile(filename, formatted, 0600); err != nil {
 		return fmt.Errorf("failed to write file: %w", err)
 	}
 
@@ -62,7 +66,7 @@ func generateCommandFile(def CommandDefinition, outputDir string) error {
 	return nil
 }
 
-// generateRegistry generates the registry.go file that registers all tools
+// generateRegistry generates the registry.go file that registers all tools.
 func generateRegistry(definitions []CommandDefinition, outputDir string) error {
 	tmpl, err := template.New("registry").Funcs(templateFuncs()).Parse(registryTemplate)
 	if err != nil {
@@ -81,7 +85,7 @@ func generateRegistry(definitions []CommandDefinition, outputDir string) error {
 	}
 
 	filename := filepath.Join(outputDir, "registry_gen.go")
-	if err := os.WriteFile(filename, formatted, 0644); err != nil {
+	if err := os.WriteFile(filename, formatted, 0600); err != nil {
 		return fmt.Errorf("failed to write file: %w", err)
 	}
 
@@ -89,7 +93,7 @@ func generateRegistry(definitions []CommandDefinition, outputDir string) error {
 	return nil
 }
 
-// templateFuncs returns custom template functions
+// templateFuncs returns custom template functions.
 func templateFuncs() template.FuncMap {
 	return template.FuncMap{
 		"toTitle":        toTitle,
@@ -104,7 +108,7 @@ func templateFuncs() template.FuncMap {
 	}
 }
 
-// toTitle converts string to TitleCase
+// toTitle converts string to TitleCase.
 func toTitle(s string) string {
 	// Replace hyphens with underscores first, then split on underscores
 	s = strings.ReplaceAll(s, "-", "_")
@@ -117,7 +121,7 @@ func toTitle(s string) string {
 	return strings.Join(parts, "")
 }
 
-// toCamel converts string to camelCase
+// toCamel converts string to camelCase.
 func toCamel(s string) string {
 	title := toTitle(s)
 	if len(title) > 0 {
@@ -126,22 +130,22 @@ func toCamel(s string) string {
 	return title
 }
 
-// toSnake converts string to snake_case
+// toSnake converts string to snake_case.
 func toSnake(s string) string {
 	return strings.ReplaceAll(s, "-", "_")
 }
 
-// goType returns the Go type for a parameter type
+// goType returns the Go type for a parameter type.
 func goType(param Parameter) string {
 	switch param.Type {
-	case "string":
-		return "string"
+	case typeString:
+		return typeString
 	case "integer":
 		return "int"
 	case "boolean":
 		return "bool"
 	case "array":
-		itemType := "string"
+		itemType := typeString
 		if param.ItemType != "" {
 			switch param.ItemType {
 			case "integer":
@@ -156,7 +160,7 @@ func goType(param Parameter) string {
 	}
 }
 
-// jsonTag generates the JSON struct tag
+// jsonTag generates the JSON struct tag.
 func jsonTag(param Parameter) string {
 	name := toSnake(param.Name)
 	tag := fmt.Sprintf(`json:"%s,omitempty"`, name)
@@ -164,23 +168,18 @@ func jsonTag(param Parameter) string {
 }
 
 // schemaTag generates the jsonschema struct tag
+// The google/jsonschema-go package expects just the description text, not key=value format.
 func schemaTag(param Parameter) string {
-	parts := []string{fmt.Sprintf("description=%s", param.Description)}
+	// Escape quotes in description to prevent tag parsing issues
+	description := strings.ReplaceAll(param.Description, `"`, `'`)
 
-	if param.Required {
-		parts = append(parts, "required")
-	}
-
-	if len(param.Enum) > 0 {
-		for _, val := range param.Enum {
-			parts = append(parts, fmt.Sprintf("enum=%s", val))
-		}
-	}
-
-	return fmt.Sprintf(`jsonschema:"%s"`, strings.Join(parts, ","))
+	// The jsonschema tag should contain just the description text
+	// Required fields are inferred from json:"field" vs json:"field,omitempty"
+	// Enum validation is not supported via struct tags in google/jsonschema-go
+	return fmt.Sprintf(`jsonschema:"%s"`, description)
 }
 
-// hasPositional checks if subcommand has positional arguments
+// hasPositional checks if subcommand has positional arguments.
 func hasPositional(sub Subcommand) bool {
 	for _, param := range sub.Parameters {
 		if param.Positional {
@@ -190,7 +189,7 @@ func hasPositional(sub Subcommand) bool {
 	return false
 }
 
-// nonPositional returns non-positional parameters
+// nonPositional returns non-positional parameters.
 func nonPositional(params []Parameter) []Parameter {
 	var result []Parameter
 	for _, param := range params {
@@ -201,7 +200,7 @@ func nonPositional(params []Parameter) []Parameter {
 	return result
 }
 
-// positionalArgs returns positional parameters
+// positionalArgs returns positional parameters.
 func positionalArgs(params []Parameter) []Parameter {
 	var result []Parameter
 	for _, param := range params {

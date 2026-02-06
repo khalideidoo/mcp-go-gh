@@ -52,10 +52,11 @@ The server exposes **100% of stable gh CLI commands** across 27 command groups:
 
 ## Prerequisites
 
-- Go 1.21 or later
-- GitHub CLI (`gh`) installed and authenticated
+- **Go 1.25.6 or later**
+- **GitHub CLI (`gh`)** installed and authenticated
   - Install: `brew install gh` (macOS) or see [official docs](https://cli.github.com/)
   - Authenticate: `gh auth login`
+- **(Optional)** golangci-lint v2 for development - [installation guide](https://golangci-lint.run/welcome/install/)
 
 ## Installation
 
@@ -175,13 +176,14 @@ mcp-go-gh/
 │   └── mcp-go-gh/          # Server entry point
 ├── internal/
 │   ├── commands/
-│   │   ├── definitions/    # YAML command definitions
-│   │   └── generated/      # Generated Go code
+│   │   ├── definitions/    # YAML command definitions (27 files)
+│   │   └── generated/      # Generated Go code (152 tools)
 │   ├── executor/           # gh CLI executor
 │   └── server/             # MCP server logic
 ├── tools/
 │   └── gen/                # Code generator
-├── Makefile
+├── .golangci.yml           # golangci-lint v2 configuration
+├── Makefile                # Build automation
 └── README.md
 ```
 
@@ -214,7 +216,7 @@ subcommands:
 ### Building
 
 ```bash
-# Generate code and build
+# Generate code and build (default)
 make
 
 # Just generate code
@@ -228,13 +230,60 @@ make build-all
 
 # Clean build artifacts
 make clean
+
+# Install to GOPATH/bin
+make install
 ```
+
+### Code Quality
+
+This project uses **golangci-lint v2** for comprehensive code quality checks:
+
+```bash
+# Run all linters
+make lint
+
+# Auto-fix issues (formatting, imports, etc.)
+make lint-fix
+
+# Format code
+make fmt
+
+# Or use golangci-lint v2 formatter directly
+golangci-lint fmt
+```
+
+**Linters enabled**: 25+ including errcheck, govet, staticcheck, gosec, revive, and more. See [.golangci.yml](.golangci.yml) for full configuration.
 
 ### Running Tests
 
 ```bash
+# Run all tests
 make test
+
+# Run tests with coverage
+go test -v -coverprofile=coverage.out ./...
+
+# View coverage report
+go tool cover -html=coverage.out
 ```
+
+### Available Make Targets
+
+| Target | Description |
+|--------|-------------|
+| `make` or `make all` | Generate code and build (default) |
+| `make generate` | Generate Go code from YAML definitions |
+| `make build` | Build the MCP server binary |
+| `make test` | Run all tests |
+| `make lint` | Run golangci-lint v2 |
+| `make lint-fix` | Run golangci-lint v2 with auto-fix |
+| `make fmt` | Format code with go fmt |
+| `make install` | Install binary to GOPATH/bin |
+| `make clean` | Remove build artifacts |
+| `make build-all` | Build for multiple platforms |
+| `make deps` | Install and tidy dependencies |
+| `make help` | Show available targets |
 
 ## Architecture
 
@@ -263,8 +312,9 @@ The `internal/executor` package handles `gh` CLI execution:
 ## Minimum Requirements
 
 - **gh CLI**: Version 2.30.0 or later
-- **Go**: 1.21 or later (for development)
+- **Go**: 1.25.6 or later (for development)
 - **OS**: macOS, Linux, or Windows
+- **golangci-lint**: v2.8.0 or later (optional, for development)
 
 ## Troubleshooting
 
@@ -305,9 +355,31 @@ Contributions are welcome! Please:
 1. Fork the repository
 2. Create a feature branch
 3. Add/update YAML definitions for new commands
-4. Run `make generate` and `make build`
-5. Test your changes
-6. Submit a pull request
+4. Run `make generate` to generate Go code
+5. Run `make lint` to ensure code quality
+6. Run `make test` to verify tests pass
+7. Run `make build` to verify it compiles
+8. Submit a pull request
+
+### Development Workflow
+
+```bash
+# 1. Make changes to YAML definitions
+vim internal/commands/definitions/example.yaml
+
+# 2. Generate code
+make generate
+
+# 3. Run quality checks
+make lint-fix  # Auto-fix issues
+make lint      # Verify all checks pass
+
+# 4. Run tests
+make test
+
+# 5. Build
+make build
+```
 
 ## License
 

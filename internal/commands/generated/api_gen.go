@@ -10,23 +10,23 @@ import (
 
 // ApiRequestArgs defines parameters for gh api request
 type ApiRequestArgs struct {
-	Method   string            `json:"method,omitempty" jsonschema:"description=The HTTP method for the request,enum=GET,enum=POST,enum=PUT,enum=PATCH,enum=DELETE,enum=HEAD"`
-	Field    map[string]string `json:"field,omitempty" jsonschema:"description=Add typed parameter in key=value format (supports @file)"`
-	RawField map[string]string `json:"raw_field,omitempty" jsonschema:"description=Add string parameter in key=value format"`
-	Header   map[string]string `json:"header,omitempty" jsonschema:"description=Add HTTP request header in key:value format"`
-	Input    string            `json:"input,omitempty" jsonschema:"description=The file to use as body for the HTTP request"`
-	Include  bool              `json:"include,omitempty" jsonschema:"description=Include HTTP response status line and headers"`
-	Silent   bool              `json:"silent,omitempty" jsonschema:"description=Do not print the response body"`
-	Jq       string            `json:"jq,omitempty" jsonschema:"description=Filter JSON response using jq expression"`
-	Template string            `json:"template,omitempty" jsonschema:"description=Format JSON response using Go template"`
-	Paginate bool              `json:"paginate,omitempty" jsonschema:"description=Make additional HTTP requests to fetch all pages"`
-	Slurp    bool              `json:"slurp,omitempty" jsonschema:"description=Use with --paginate to return array of all results"`
-	Cache    string            `json:"cache,omitempty" jsonschema:"description=Cache the response for a duration"`
-	Preview  []string          `json:"preview,omitempty" jsonschema:"description=GitHub API preview names to opt into"`
-	Hostname string            `json:"hostname,omitempty" jsonschema:"description=GitHub hostname for Enterprise"`
-	Verbose  bool              `json:"verbose,omitempty" jsonschema:"description=Include full HTTP request and response"`
+	Method   string            `json:"method,omitempty" jsonschema:"The HTTP method for the request"`
+	Field    map[string]string `json:"field,omitempty" jsonschema:"Add typed parameter in key=value format (supports @file)"`
+	RawField map[string]string `json:"raw_field,omitempty" jsonschema:"Add string parameter in key=value format"`
+	Header   map[string]string `json:"header,omitempty" jsonschema:"Add HTTP request header in key:value format"`
+	Input    string            `json:"input,omitempty" jsonschema:"The file to use as body for the HTTP request"`
+	Include  bool              `json:"include,omitempty" jsonschema:"Include HTTP response status line and headers"`
+	Silent   bool              `json:"silent,omitempty" jsonschema:"Do not print the response body"`
+	Jq       string            `json:"jq,omitempty" jsonschema:"Filter JSON response using jq expression"`
+	Template string            `json:"template,omitempty" jsonschema:"Format JSON response using Go template"`
+	Paginate bool              `json:"paginate,omitempty" jsonschema:"Make additional HTTP requests to fetch all pages"`
+	Slurp    bool              `json:"slurp,omitempty" jsonschema:"Use with --paginate to return array of all results"`
+	Cache    string            `json:"cache,omitempty" jsonschema:"Cache the response for a duration"`
+	Preview  []string          `json:"preview,omitempty" jsonschema:"GitHub API preview names to opt into"`
+	Hostname string            `json:"hostname,omitempty" jsonschema:"GitHub hostname for Enterprise"`
+	Verbose  bool              `json:"verbose,omitempty" jsonschema:"Include full HTTP request and response"`
 
-	Endpoint string `json:"endpoint,omitempty" jsonschema:"description=The API endpoint path or GraphQL query (positional argument),required"`
+	Endpoint string `json:"endpoint,omitempty" jsonschema:"The API endpoint path or GraphQL query (positional argument)"`
 }
 
 // RegisterApiRequestTool registers the gh api request tool

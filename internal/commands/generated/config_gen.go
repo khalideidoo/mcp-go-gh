@@ -10,7 +10,7 @@ import (
 
 // ConfigListArgs defines parameters for gh config list
 type ConfigListArgs struct {
-	Host string `json:"host,omitempty" jsonschema:"description=Get per-host configuration"`
+	Host string `json:"host,omitempty" jsonschema:"Get per-host configuration"`
 }
 
 // RegisterConfigListTool registers the gh config list tool
@@ -40,9 +40,9 @@ func RegisterConfigListTool(server *mcp.Server, exec *executor.Executor) {
 
 // ConfigGetArgs defines parameters for gh config get
 type ConfigGetArgs struct {
-	Host string `json:"host,omitempty" jsonschema:"description=Get per-host setting"`
+	Host string `json:"host,omitempty" jsonschema:"Get per-host setting"`
 
-	Key string `json:"key,omitempty" jsonschema:"description=Configuration key (positional argument),required"`
+	Key string `json:"key,omitempty" jsonschema:"Configuration key (positional argument)"`
 }
 
 // RegisterConfigGetTool registers the gh config get tool
@@ -77,10 +77,10 @@ func RegisterConfigGetTool(server *mcp.Server, exec *executor.Executor) {
 
 // ConfigSetArgs defines parameters for gh config set
 type ConfigSetArgs struct {
-	Host string `json:"host,omitempty" jsonschema:"description=Set per-host setting"`
+	Host string `json:"host,omitempty" jsonschema:"Set per-host setting"`
 
-	Key   string `json:"key,omitempty" jsonschema:"description=Configuration key (positional argument),required"`
-	Value string `json:"value,omitempty" jsonschema:"description=Configuration value (positional argument),required"`
+	Key   string `json:"key,omitempty" jsonschema:"Configuration key (positional argument)"`
+	Value string `json:"value,omitempty" jsonschema:"Configuration value (positional argument)"`
 }
 
 // RegisterConfigSetTool registers the gh config set tool

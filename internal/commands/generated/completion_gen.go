@@ -10,7 +10,7 @@ import (
 
 // CompletionCompletionArgs defines parameters for gh completion completion
 type CompletionCompletionArgs struct {
-	Shell string `json:"shell,omitempty" jsonschema:"description=Shell type,required,enum=bash,enum=zsh,enum=fish,enum=powershell"`
+	Shell string `json:"shell,omitempty" jsonschema:"Shell type"`
 }
 
 // RegisterCompletionCompletionTool registers the gh completion completion tool

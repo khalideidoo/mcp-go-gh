@@ -10,18 +10,18 @@ import (
 
 // RunListArgs defines parameters for gh run list
 type RunListArgs struct {
-	Branch   string   `json:"branch,omitempty" jsonschema:"description=Filter runs by branch"`
-	Commit   string   `json:"commit,omitempty" jsonschema:"description=Filter runs by commit SHA"`
-	Created  string   `json:"created,omitempty" jsonschema:"description=Filter by creation date"`
-	Event    string   `json:"event,omitempty" jsonschema:"description=Filter runs by event type"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of runs to fetch"`
-	Status   string   `json:"status,omitempty" jsonschema:"description=Filter by status,enum=queued,enum=in_progress,enum=completed,enum=waiting"`
-	User     string   `json:"user,omitempty" jsonschema:"description=Filter by user who triggered run"`
-	Workflow string   `json:"workflow,omitempty" jsonschema:"description=Filter by workflow"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Branch   string   `json:"branch,omitempty" jsonschema:"Filter runs by branch"`
+	Commit   string   `json:"commit,omitempty" jsonschema:"Filter runs by commit SHA"`
+	Created  string   `json:"created,omitempty" jsonschema:"Filter by creation date"`
+	Event    string   `json:"event,omitempty" jsonschema:"Filter runs by event type"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"Maximum number of runs to fetch"`
+	Status   string   `json:"status,omitempty" jsonschema:"Filter by status"`
+	User     string   `json:"user,omitempty" jsonschema:"Filter by user who triggered run"`
+	Workflow string   `json:"workflow,omitempty" jsonschema:"Filter by workflow"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select repository"`
 }
 
 // RegisterRunListTool registers the gh run list tool
@@ -95,19 +95,19 @@ func RegisterRunListTool(server *mcp.Server, exec *executor.Executor) {
 
 // RunViewArgs defines parameters for gh run view
 type RunViewArgs struct {
-	Attempt    int      `json:"attempt,omitempty" jsonschema:"description=Show specific attempt number"`
-	ExitStatus bool     `json:"exit_status,omitempty" jsonschema:"description=Exit with non-zero status if run failed"`
-	Job        string   `json:"job,omitempty" jsonschema:"description=View specific job ID"`
-	Log        bool     `json:"log,omitempty" jsonschema:"description=View full log"`
-	LogFailed  bool     `json:"log_failed,omitempty" jsonschema:"description=View log for failed steps"`
-	Verbose    bool     `json:"verbose,omitempty" jsonschema:"description=Show more information"`
-	Web        bool     `json:"web,omitempty" jsonschema:"description=Open run in the browser"`
-	Json       []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq         string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template   string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo       string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Attempt    int      `json:"attempt,omitempty" jsonschema:"Show specific attempt number"`
+	ExitStatus bool     `json:"exit_status,omitempty" jsonschema:"Exit with non-zero status if run failed"`
+	Job        string   `json:"job,omitempty" jsonschema:"View specific job ID"`
+	Log        bool     `json:"log,omitempty" jsonschema:"View full log"`
+	LogFailed  bool     `json:"log_failed,omitempty" jsonschema:"View log for failed steps"`
+	Verbose    bool     `json:"verbose,omitempty" jsonschema:"Show more information"`
+	Web        bool     `json:"web,omitempty" jsonschema:"Open run in the browser"`
+	Json       []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq         string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template   string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo       string   `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	RunId string `json:"run_id,omitempty" jsonschema:"description=Run ID or number (positional argument)"`
+	RunId string `json:"run_id,omitempty" jsonschema:"Run ID or number (positional argument)"`
 }
 
 // RegisterRunViewTool registers the gh run view tool
@@ -182,11 +182,11 @@ func RegisterRunViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // RunWatchArgs defines parameters for gh run watch
 type RunWatchArgs struct {
-	ExitStatus bool   `json:"exit_status,omitempty" jsonschema:"description=Exit with non-zero status if run fails"`
-	Interval   int    `json:"interval,omitempty" jsonschema:"description=Refresh interval in seconds"`
-	Repo       string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	ExitStatus bool   `json:"exit_status,omitempty" jsonschema:"Exit with non-zero status if run fails"`
+	Interval   int    `json:"interval,omitempty" jsonschema:"Refresh interval in seconds"`
+	Repo       string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	RunId string `json:"run_id,omitempty" jsonschema:"description=Run ID or number (positional argument)"`
+	RunId string `json:"run_id,omitempty" jsonschema:"Run ID or number (positional argument)"`
 }
 
 // RegisterRunWatchTool registers the gh run watch tool
@@ -229,12 +229,12 @@ func RegisterRunWatchTool(server *mcp.Server, exec *executor.Executor) {
 
 // RunRerunArgs defines parameters for gh run rerun
 type RunRerunArgs struct {
-	Debug  bool   `json:"debug,omitempty" jsonschema:"description=Rerun with debug logging"`
-	Failed bool   `json:"failed,omitempty" jsonschema:"description=Rerun only failed jobs"`
-	Job    string `json:"job,omitempty" jsonschema:"description=Rerun specific job ID"`
-	Repo   string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Debug  bool   `json:"debug,omitempty" jsonschema:"Rerun with debug logging"`
+	Failed bool   `json:"failed,omitempty" jsonschema:"Rerun only failed jobs"`
+	Job    string `json:"job,omitempty" jsonschema:"Rerun specific job ID"`
+	Repo   string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	RunId string `json:"run_id,omitempty" jsonschema:"description=Run ID or number (positional argument)"`
+	RunId string `json:"run_id,omitempty" jsonschema:"Run ID or number (positional argument)"`
 }
 
 // RegisterRunRerunTool registers the gh run rerun tool
@@ -281,9 +281,9 @@ func RegisterRunRerunTool(server *mcp.Server, exec *executor.Executor) {
 
 // RunCancelArgs defines parameters for gh run cancel
 type RunCancelArgs struct {
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	RunId string `json:"run_id,omitempty" jsonschema:"description=Run ID or number (positional argument)"`
+	RunId string `json:"run_id,omitempty" jsonschema:"Run ID or number (positional argument)"`
 }
 
 // RegisterRunCancelTool registers the gh run cancel tool
@@ -318,9 +318,9 @@ func RegisterRunCancelTool(server *mcp.Server, exec *executor.Executor) {
 
 // RunDeleteArgs defines parameters for gh run delete
 type RunDeleteArgs struct {
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	RunId string `json:"run_id,omitempty" jsonschema:"description=Run ID or number (positional argument),required"`
+	RunId string `json:"run_id,omitempty" jsonschema:"Run ID or number (positional argument)"`
 }
 
 // RegisterRunDeleteTool registers the gh run delete tool
@@ -355,12 +355,12 @@ func RegisterRunDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // RunDownloadArgs defines parameters for gh run download
 type RunDownloadArgs struct {
-	Dir     string   `json:"dir,omitempty" jsonschema:"description=Download directory"`
-	Name    []string `json:"name,omitempty" jsonschema:"description=Download specific artifacts by name"`
-	Pattern []string `json:"pattern,omitempty" jsonschema:"description=Download artifacts matching pattern"`
-	Repo    string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Dir     string   `json:"dir,omitempty" jsonschema:"Download directory"`
+	Name    []string `json:"name,omitempty" jsonschema:"Download specific artifacts by name"`
+	Pattern []string `json:"pattern,omitempty" jsonschema:"Download artifacts matching pattern"`
+	Repo    string   `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	RunId string `json:"run_id,omitempty" jsonschema:"description=Run ID or number (positional argument)"`
+	RunId string `json:"run_id,omitempty" jsonschema:"Run ID or number (positional argument)"`
 }
 
 // RegisterRunDownloadTool registers the gh run download tool

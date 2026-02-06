@@ -10,22 +10,22 @@ import (
 
 // AttestationVerifyArgs defines parameters for gh attestation verify
 type AttestationVerifyArgs struct {
-	Bundle                string `json:"bundle,omitempty" jsonschema:"description=Path to bundle on disk for offline verification"`
-	BundleFromOci         bool   `json:"bundle_from_oci,omitempty" jsonschema:"description=Fetch attestations from the artifact's OCI registry"`
-	CertIdentity          string `json:"cert_identity,omitempty" jsonschema:"description=Enforce that the identity in the certificate's SAN matches the provided value"`
-	CertIdentityRegex     string `json:"cert_identity_regex,omitempty" jsonschema:"description=Enforce that the identity in the certificate's SAN matches the provided regex"`
-	CertOidcIssuer        string `json:"cert_oidc_issuer,omitempty" jsonschema:"description=Issuer of the OIDC token"`
-	CustomTrustedRoot     string `json:"custom_trusted_root,omitempty" jsonschema:"description=Path to a custom trusted root file"`
-	DenySelfHostedRunners bool   `json:"deny_self_hosted_runners,omitempty" jsonschema:"description=Fail verification for attestations generated on self-hosted runners"`
-	DigestAlg             string `json:"digest_alg,omitempty" jsonschema:"description=Algorithm used to compute artifact digest,enum=sha256,enum=sha512"`
-	Hostname              string `json:"hostname,omitempty" jsonschema:"description=Configure host to use"`
-	Owner                 string `json:"owner,omitempty" jsonschema:"description=GitHub organization to scope attestation lookup by"`
-	PredicateType         string `json:"predicate_type,omitempty" jsonschema:"description=Filter attestations by provided predicate type"`
-	Repo                  string `json:"repo,omitempty" jsonschema:"description=Repository name in OWNER/REPO format"`
-	SignerRepo            string `json:"signer_repo,omitempty" jsonschema:"description=Repository of reusable workflow that signed attestation"`
-	SignerWorkflow        string `json:"signer_workflow,omitempty" jsonschema:"description=Path to reusable workflow that signed attestation"`
+	Bundle                string `json:"bundle,omitempty" jsonschema:"Path to bundle on disk for offline verification"`
+	BundleFromOci         bool   `json:"bundle_from_oci,omitempty" jsonschema:"Fetch attestations from the artifact's OCI registry"`
+	CertIdentity          string `json:"cert_identity,omitempty" jsonschema:"Enforce that the identity in the certificate's SAN matches the provided value"`
+	CertIdentityRegex     string `json:"cert_identity_regex,omitempty" jsonschema:"Enforce that the identity in the certificate's SAN matches the provided regex"`
+	CertOidcIssuer        string `json:"cert_oidc_issuer,omitempty" jsonschema:"Issuer of the OIDC token"`
+	CustomTrustedRoot     string `json:"custom_trusted_root,omitempty" jsonschema:"Path to a custom trusted root file"`
+	DenySelfHostedRunners bool   `json:"deny_self_hosted_runners,omitempty" jsonschema:"Fail verification for attestations generated on self-hosted runners"`
+	DigestAlg             string `json:"digest_alg,omitempty" jsonschema:"Algorithm used to compute artifact digest"`
+	Hostname              string `json:"hostname,omitempty" jsonschema:"Configure host to use"`
+	Owner                 string `json:"owner,omitempty" jsonschema:"GitHub organization to scope attestation lookup by"`
+	PredicateType         string `json:"predicate_type,omitempty" jsonschema:"Filter attestations by provided predicate type"`
+	Repo                  string `json:"repo,omitempty" jsonschema:"Repository name in OWNER/REPO format"`
+	SignerRepo            string `json:"signer_repo,omitempty" jsonschema:"Repository of reusable workflow that signed attestation"`
+	SignerWorkflow        string `json:"signer_workflow,omitempty" jsonschema:"Path to reusable workflow that signed attestation"`
 
-	Artifact string `json:"artifact,omitempty" jsonschema:"description=File path or OCI URI of artifact to verify (positional argument),required"`
+	Artifact string `json:"artifact,omitempty" jsonschema:"File path or OCI URI of artifact to verify (positional argument)"`
 }
 
 // RegisterAttestationVerifyTool registers the gh attestation verify tool
@@ -112,14 +112,14 @@ func RegisterAttestationVerifyTool(server *mcp.Server, exec *executor.Executor) 
 
 // AttestationDownloadArgs defines parameters for gh attestation download
 type AttestationDownloadArgs struct {
-	DigestAlg     string `json:"digest_alg,omitempty" jsonschema:"description=Algorithm used to compute artifact digest,enum=sha256,enum=sha512"`
-	Hostname      string `json:"hostname,omitempty" jsonschema:"description=Configure host to use"`
-	Limit         int    `json:"limit,omitempty" jsonschema:"description=Maximum number of attestations to fetch"`
-	Owner         string `json:"owner,omitempty" jsonschema:"description=GitHub organization to scope attestation lookup by"`
-	PredicateType string `json:"predicate_type,omitempty" jsonschema:"description=Filter attestations by provided predicate type"`
-	Repo          string `json:"repo,omitempty" jsonschema:"description=Repository name in OWNER/REPO format"`
+	DigestAlg     string `json:"digest_alg,omitempty" jsonschema:"Algorithm used to compute artifact digest"`
+	Hostname      string `json:"hostname,omitempty" jsonschema:"Configure host to use"`
+	Limit         int    `json:"limit,omitempty" jsonschema:"Maximum number of attestations to fetch"`
+	Owner         string `json:"owner,omitempty" jsonschema:"GitHub organization to scope attestation lookup by"`
+	PredicateType string `json:"predicate_type,omitempty" jsonschema:"Filter attestations by provided predicate type"`
+	Repo          string `json:"repo,omitempty" jsonschema:"Repository name in OWNER/REPO format"`
 
-	Artifact string `json:"artifact,omitempty" jsonschema:"description=File path or OCI URI of artifact (positional argument),required"`
+	Artifact string `json:"artifact,omitempty" jsonschema:"File path or OCI URI of artifact (positional argument)"`
 }
 
 // RegisterAttestationDownloadTool registers the gh attestation download tool
@@ -174,10 +174,10 @@ func RegisterAttestationDownloadTool(server *mcp.Server, exec *executor.Executor
 
 // AttestationTrustedRootArgs defines parameters for gh attestation trusted-root
 type AttestationTrustedRootArgs struct {
-	Hostname   string `json:"hostname,omitempty" jsonschema:"description=Configure host to use"`
-	TufRoot    string `json:"tuf_root,omitempty" jsonschema:"description=Path to the TUF root.json file on disk"`
-	TufUrl     string `json:"tuf_url,omitempty" jsonschema:"description=URL to the TUF repository mirror"`
-	VerifyOnly bool   `json:"verify_only,omitempty" jsonschema:"description=Don't output trusted_root.jsonl contents"`
+	Hostname   string `json:"hostname,omitempty" jsonschema:"Configure host to use"`
+	TufRoot    string `json:"tuf_root,omitempty" jsonschema:"Path to the TUF root.json file on disk"`
+	TufUrl     string `json:"tuf_url,omitempty" jsonschema:"URL to the TUF repository mirror"`
+	VerifyOnly bool   `json:"verify_only,omitempty" jsonschema:"Don't output trusted_root.jsonl contents"`
 }
 
 // RegisterAttestationTrustedRootTool registers the gh attestation trusted-root tool

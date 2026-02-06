@@ -10,12 +10,12 @@ import (
 
 // AuthLoginArgs defines parameters for gh auth login
 type AuthLoginArgs struct {
-	Hostname    string   `json:"hostname,omitempty" jsonschema:"description=GitHub hostname"`
-	GitProtocol string   `json:"git_protocol,omitempty" jsonschema:"description=Protocol for git operations,enum=https,enum=ssh"`
-	Scopes      []string `json:"scopes,omitempty" jsonschema:"description=Additional authentication scopes"`
-	SkipSshKey  bool     `json:"skip_ssh_key,omitempty" jsonschema:"description=Skip adding SSH key"`
-	Web         bool     `json:"web,omitempty" jsonschema:"description=Open browser for authentication"`
-	WithToken   bool     `json:"with_token,omitempty" jsonschema:"description=Read token from standard input"`
+	Hostname    string   `json:"hostname,omitempty" jsonschema:"GitHub hostname"`
+	GitProtocol string   `json:"git_protocol,omitempty" jsonschema:"Protocol for git operations"`
+	Scopes      []string `json:"scopes,omitempty" jsonschema:"Additional authentication scopes"`
+	SkipSshKey  bool     `json:"skip_ssh_key,omitempty" jsonschema:"Skip adding SSH key"`
+	Web         bool     `json:"web,omitempty" jsonschema:"Open browser for authentication"`
+	WithToken   bool     `json:"with_token,omitempty" jsonschema:"Read token from standard input"`
 }
 
 // RegisterAuthLoginTool registers the gh auth login tool
@@ -65,8 +65,8 @@ func RegisterAuthLoginTool(server *mcp.Server, exec *executor.Executor) {
 
 // AuthLogoutArgs defines parameters for gh auth logout
 type AuthLogoutArgs struct {
-	Hostname string `json:"hostname,omitempty" jsonschema:"description=GitHub hostname"`
-	User     string `json:"user,omitempty" jsonschema:"description=GitHub username"`
+	Hostname string `json:"hostname,omitempty" jsonschema:"GitHub hostname"`
+	User     string `json:"user,omitempty" jsonschema:"GitHub username"`
 }
 
 // RegisterAuthLogoutTool registers the gh auth logout tool
@@ -100,11 +100,11 @@ func RegisterAuthLogoutTool(server *mcp.Server, exec *executor.Executor) {
 
 // AuthRefreshArgs defines parameters for gh auth refresh
 type AuthRefreshArgs struct {
-	Hostname              string   `json:"hostname,omitempty" jsonschema:"description=GitHub hostname"`
-	InsecureStorage       bool     `json:"insecure_storage,omitempty" jsonschema:"description=Save authentication token in plain text"`
-	RemoveInsecureStorage bool     `json:"remove_insecure_storage,omitempty" jsonschema:"description=Remove insecurely stored credential"`
-	ResetScopes           bool     `json:"reset_scopes,omitempty" jsonschema:"description=Reset scopes to default"`
-	Scopes                []string `json:"scopes,omitempty" jsonschema:"description=Additional authentication scopes"`
+	Hostname              string   `json:"hostname,omitempty" jsonschema:"GitHub hostname"`
+	InsecureStorage       bool     `json:"insecure_storage,omitempty" jsonschema:"Save authentication token in plain text"`
+	RemoveInsecureStorage bool     `json:"remove_insecure_storage,omitempty" jsonschema:"Remove insecurely stored credential"`
+	ResetScopes           bool     `json:"reset_scopes,omitempty" jsonschema:"Reset scopes to default"`
+	Scopes                []string `json:"scopes,omitempty" jsonschema:"Additional authentication scopes"`
 }
 
 // RegisterAuthRefreshTool registers the gh auth refresh tool
@@ -150,9 +150,9 @@ func RegisterAuthRefreshTool(server *mcp.Server, exec *executor.Executor) {
 
 // AuthStatusArgs defines parameters for gh auth status
 type AuthStatusArgs struct {
-	ActiveAccount bool   `json:"active_account,omitempty" jsonschema:"description=Display the active account"`
-	Hostname      string `json:"hostname,omitempty" jsonschema:"description=GitHub hostname"`
-	ShowToken     bool   `json:"show_token,omitempty" jsonschema:"description=Display authentication token"`
+	ActiveAccount bool   `json:"active_account,omitempty" jsonschema:"Display the active account"`
+	Hostname      string `json:"hostname,omitempty" jsonschema:"GitHub hostname"`
+	ShowToken     bool   `json:"show_token,omitempty" jsonschema:"Display authentication token"`
 }
 
 // RegisterAuthStatusTool registers the gh auth status tool
@@ -190,8 +190,8 @@ func RegisterAuthStatusTool(server *mcp.Server, exec *executor.Executor) {
 
 // AuthTokenArgs defines parameters for gh auth token
 type AuthTokenArgs struct {
-	Hostname string `json:"hostname,omitempty" jsonschema:"description=GitHub hostname"`
-	User     string `json:"user,omitempty" jsonschema:"description=GitHub username"`
+	Hostname string `json:"hostname,omitempty" jsonschema:"GitHub hostname"`
+	User     string `json:"user,omitempty" jsonschema:"GitHub username"`
 }
 
 // RegisterAuthTokenTool registers the gh auth token tool
@@ -225,8 +225,8 @@ func RegisterAuthTokenTool(server *mcp.Server, exec *executor.Executor) {
 
 // AuthSetupGitArgs defines parameters for gh auth setup_git
 type AuthSetupGitArgs struct {
-	Force    bool   `json:"force,omitempty" jsonschema:"description=Force setup even if already configured"`
-	Hostname string `json:"hostname,omitempty" jsonschema:"description=GitHub hostname"`
+	Force    bool   `json:"force,omitempty" jsonschema:"Force setup even if already configured"`
+	Hostname string `json:"hostname,omitempty" jsonschema:"GitHub hostname"`
 }
 
 // RegisterAuthSetupGitTool registers the gh auth setup_git tool

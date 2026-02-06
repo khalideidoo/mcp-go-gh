@@ -10,21 +10,21 @@ import (
 	"time"
 )
 
-// Executor handles execution of gh CLI commands
+// Executor handles execution of gh CLI commands.
 type Executor struct {
+	logger  *slog.Logger
 	ghPath  string
 	timeout time.Duration
-	logger  *slog.Logger
 }
 
-// Result contains the output of a command execution
+// Result contains the output of a command execution.
 type Result struct {
 	Stdout   string
 	Stderr   string
 	ExitCode int
 }
 
-// New creates a new Executor instance
+// New creates a new Executor instance.
 func New(logger *slog.Logger) (*Executor, error) {
 	// Find gh CLI in PATH
 	ghPath, err := exec.LookPath("gh")
@@ -39,7 +39,7 @@ func New(logger *slog.Logger) (*Executor, error) {
 	}, nil
 }
 
-// Execute runs a gh command with the given arguments
+// Execute runs a gh command with the given arguments.
 func (e *Executor) Execute(ctx context.Context, args ...string) (*Result, error) {
 	// Apply timeout
 	ctx, cancel := context.WithTimeout(ctx, e.timeout)
@@ -90,12 +90,12 @@ func (e *Executor) Execute(ctx context.Context, args ...string) (*Result, error)
 	return result, nil
 }
 
-// SetTimeout changes the default command timeout
+// SetTimeout changes the default command timeout.
 func (e *Executor) SetTimeout(timeout time.Duration) {
 	e.timeout = timeout
 }
 
-// GetGhPath returns the path to the gh binary
+// GetGhPath returns the path to the gh binary.
 func (e *Executor) GetGhPath() string {
 	return e.ghPath
 }

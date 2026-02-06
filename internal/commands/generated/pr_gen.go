@@ -10,26 +10,26 @@ import (
 
 // PrCreateArgs defines parameters for gh pr create
 type PrCreateArgs struct {
-	Title            string   `json:"title,omitempty" jsonschema:"description=Title for the pull request"`
-	Body             string   `json:"body,omitempty" jsonschema:"description=Body text for the pull request"`
-	BodyFile         string   `json:"body_file,omitempty" jsonschema:"description=Read body text from file (use - for stdin)"`
-	Fill             bool     `json:"fill,omitempty" jsonschema:"description=Use commit info for title and body"`
-	FillFirst        bool     `json:"fill_first,omitempty" jsonschema:"description=Use first commit for title and body"`
-	FillVerbose      bool     `json:"fill_verbose,omitempty" jsonschema:"description=Use commits msg+body for description"`
-	Base             string   `json:"base,omitempty" jsonschema:"description=The base branch to merge into"`
-	Head             string   `json:"head,omitempty" jsonschema:"description=The head branch containing commits"`
-	Draft            bool     `json:"draft,omitempty" jsonschema:"description=Mark pull request as a draft"`
-	NoMaintainerEdit bool     `json:"no_maintainer_edit,omitempty" jsonschema:"description=Disable maintainer ability to modify PR"`
-	Assignee         []string `json:"assignee,omitempty" jsonschema:"description=Assign people by their login (use @me for self)"`
-	Reviewer         []string `json:"reviewer,omitempty" jsonschema:"description=Request reviews from people or teams"`
-	Label            []string `json:"label,omitempty" jsonschema:"description=Add labels by name"`
-	Milestone        string   `json:"milestone,omitempty" jsonschema:"description=Add the pull request to a milestone by name"`
-	Project          []string `json:"project,omitempty" jsonschema:"description=Add the pull request to projects by title"`
-	Template         string   `json:"template,omitempty" jsonschema:"description=Template file to use as starting body text"`
-	Recover          string   `json:"recover,omitempty" jsonschema:"description=Recover input from a failed run"`
-	Web              bool     `json:"web,omitempty" jsonschema:"description=Open the web browser to create a pull request"`
-	DryRun           bool     `json:"dry_run,omitempty" jsonschema:"description=Print details instead of creating the PR"`
-	Repo             string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Title            string   `json:"title,omitempty" jsonschema:"Title for the pull request"`
+	Body             string   `json:"body,omitempty" jsonschema:"Body text for the pull request"`
+	BodyFile         string   `json:"body_file,omitempty" jsonschema:"Read body text from file (use - for stdin)"`
+	Fill             bool     `json:"fill,omitempty" jsonschema:"Use commit info for title and body"`
+	FillFirst        bool     `json:"fill_first,omitempty" jsonschema:"Use first commit for title and body"`
+	FillVerbose      bool     `json:"fill_verbose,omitempty" jsonschema:"Use commits msg+body for description"`
+	Base             string   `json:"base,omitempty" jsonschema:"The base branch to merge into"`
+	Head             string   `json:"head,omitempty" jsonschema:"The head branch containing commits"`
+	Draft            bool     `json:"draft,omitempty" jsonschema:"Mark pull request as a draft"`
+	NoMaintainerEdit bool     `json:"no_maintainer_edit,omitempty" jsonschema:"Disable maintainer ability to modify PR"`
+	Assignee         []string `json:"assignee,omitempty" jsonschema:"Assign people by their login (use @me for self)"`
+	Reviewer         []string `json:"reviewer,omitempty" jsonschema:"Request reviews from people or teams"`
+	Label            []string `json:"label,omitempty" jsonschema:"Add labels by name"`
+	Milestone        string   `json:"milestone,omitempty" jsonschema:"Add the pull request to a milestone by name"`
+	Project          []string `json:"project,omitempty" jsonschema:"Add the pull request to projects by title"`
+	Template         string   `json:"template,omitempty" jsonschema:"Template file to use as starting body text"`
+	Recover          string   `json:"recover,omitempty" jsonschema:"Recover input from a failed run"`
+	Web              bool     `json:"web,omitempty" jsonschema:"Open the web browser to create a pull request"`
+	DryRun           bool     `json:"dry_run,omitempty" jsonschema:"Print details instead of creating the PR"`
+	Repo             string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 }
 
 // RegisterPrCreateTool registers the gh pr create tool
@@ -135,21 +135,21 @@ func RegisterPrCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrListArgs defines parameters for gh pr list
 type PrListArgs struct {
-	Assignee string   `json:"assignee,omitempty" jsonschema:"description=Filter by assignee"`
-	Author   string   `json:"author,omitempty" jsonschema:"description=Filter by author"`
-	Base     string   `json:"base,omitempty" jsonschema:"description=Filter by base branch"`
-	Head     string   `json:"head,omitempty" jsonschema:"description=Filter by head branch"`
-	Label    []string `json:"label,omitempty" jsonschema:"description=Filter by label"`
-	State    string   `json:"state,omitempty" jsonschema:"description=Filter by state,enum=open,enum=closed,enum=merged,enum=all"`
-	Search   string   `json:"search,omitempty" jsonschema:"description=Search pull requests with query"`
-	App      string   `json:"app,omitempty" jsonschema:"description=Filter by GitHub App author"`
-	Draft    bool     `json:"draft,omitempty" jsonschema:"description=Filter by draft state"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of items to fetch"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool     `json:"web,omitempty" jsonschema:"description=List pull requests in the web browser"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Assignee string   `json:"assignee,omitempty" jsonschema:"Filter by assignee"`
+	Author   string   `json:"author,omitempty" jsonschema:"Filter by author"`
+	Base     string   `json:"base,omitempty" jsonschema:"Filter by base branch"`
+	Head     string   `json:"head,omitempty" jsonschema:"Filter by head branch"`
+	Label    []string `json:"label,omitempty" jsonschema:"Filter by label"`
+	State    string   `json:"state,omitempty" jsonschema:"Filter by state"`
+	Search   string   `json:"search,omitempty" jsonschema:"Search pull requests with query"`
+	App      string   `json:"app,omitempty" jsonschema:"Filter by GitHub App author"`
+	Draft    bool     `json:"draft,omitempty" jsonschema:"Filter by draft state"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"Maximum number of items to fetch"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool     `json:"web,omitempty" jsonschema:"List pull requests in the web browser"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 }
 
 // RegisterPrListTool registers the gh pr list tool
@@ -235,14 +235,14 @@ func RegisterPrListTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrViewArgs defines parameters for gh pr view
 type PrViewArgs struct {
-	Comments bool     `json:"comments,omitempty" jsonschema:"description=View pull request comments"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool     `json:"web,omitempty" jsonschema:"description=Open pull request in the browser"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Comments bool     `json:"comments,omitempty" jsonschema:"View pull request comments"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool     `json:"web,omitempty" jsonschema:"Open pull request in the browser"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrViewTool registers the gh pr view tool
@@ -297,11 +297,11 @@ func RegisterPrViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrCloseArgs defines parameters for gh pr close
 type PrCloseArgs struct {
-	Comment      string `json:"comment,omitempty" jsonschema:"description=Leave a closing comment"`
-	DeleteBranch bool   `json:"delete_branch,omitempty" jsonschema:"description=Delete the local and remote branch after close"`
-	Repo         string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Comment      string `json:"comment,omitempty" jsonschema:"Leave a closing comment"`
+	DeleteBranch bool   `json:"delete_branch,omitempty" jsonschema:"Delete the local and remote branch after close"`
+	Repo         string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrCloseTool registers the gh pr close tool
@@ -344,20 +344,20 @@ func RegisterPrCloseTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrMergeArgs defines parameters for gh pr merge
 type PrMergeArgs struct {
-	Admin           bool   `json:"admin,omitempty" jsonschema:"description=Use administrator privileges to merge"`
-	Auto            bool   `json:"auto,omitempty" jsonschema:"description=Automatically merge when requirements are met"`
-	Body            string `json:"body,omitempty" jsonschema:"description=Body text for the merge commit"`
-	BodyFile        string `json:"body_file,omitempty" jsonschema:"description=Read body from file (use - for stdin)"`
-	DeleteBranch    bool   `json:"delete_branch,omitempty" jsonschema:"description=Delete the local and remote branch after merge"`
-	DisableAuto     bool   `json:"disable_auto,omitempty" jsonschema:"description=Disable auto-merge for pull request"`
-	Merge           bool   `json:"merge,omitempty" jsonschema:"description=Merge the commits with merge commit"`
-	Rebase          bool   `json:"rebase,omitempty" jsonschema:"description=Rebase the commits onto the base branch"`
-	Squash          bool   `json:"squash,omitempty" jsonschema:"description=Squash the commits into one commit"`
-	Subject         string `json:"subject,omitempty" jsonschema:"description=Subject for the merge commit"`
-	MatchHeadCommit string `json:"match_head_commit,omitempty" jsonschema:"description=Commit SHA the PR head must match"`
-	Repo            string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Admin           bool   `json:"admin,omitempty" jsonschema:"Use administrator privileges to merge"`
+	Auto            bool   `json:"auto,omitempty" jsonschema:"Automatically merge when requirements are met"`
+	Body            string `json:"body,omitempty" jsonschema:"Body text for the merge commit"`
+	BodyFile        string `json:"body_file,omitempty" jsonschema:"Read body from file (use - for stdin)"`
+	DeleteBranch    bool   `json:"delete_branch,omitempty" jsonschema:"Delete the local and remote branch after merge"`
+	DisableAuto     bool   `json:"disable_auto,omitempty" jsonschema:"Disable auto-merge for pull request"`
+	Merge           bool   `json:"merge,omitempty" jsonschema:"Merge the commits with merge commit"`
+	Rebase          bool   `json:"rebase,omitempty" jsonschema:"Rebase the commits onto the base branch"`
+	Squash          bool   `json:"squash,omitempty" jsonschema:"Squash the commits into one commit"`
+	Subject         string `json:"subject,omitempty" jsonschema:"Subject for the merge commit"`
+	MatchHeadCommit string `json:"match_head_commit,omitempty" jsonschema:"Commit SHA the PR head must match"`
+	Repo            string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrMergeTool registers the gh pr merge tool
@@ -436,13 +436,13 @@ func RegisterPrMergeTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrCheckoutArgs defines parameters for gh pr checkout
 type PrCheckoutArgs struct {
-	Branch            string `json:"branch,omitempty" jsonschema:"description=Local branch name to use"`
-	Detach            bool   `json:"detach,omitempty" jsonschema:"description=Checkout PR with a detached HEAD"`
-	Force             bool   `json:"force,omitempty" jsonschema:"description=Reset the existing local branch to the latest state"`
-	RecurseSubmodules bool   `json:"recurse_submodules,omitempty" jsonschema:"description=Update all submodules after checkout"`
-	Repo              string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Branch            string `json:"branch,omitempty" jsonschema:"Local branch name to use"`
+	Detach            bool   `json:"detach,omitempty" jsonschema:"Checkout PR with a detached HEAD"`
+	Force             bool   `json:"force,omitempty" jsonschema:"Reset the existing local branch to the latest state"`
+	RecurseSubmodules bool   `json:"recurse_submodules,omitempty" jsonschema:"Update all submodules after checkout"`
+	Repo              string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL or branch (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL or branch (positional argument)"`
 }
 
 // RegisterPrCheckoutTool registers the gh pr checkout tool
@@ -493,13 +493,13 @@ func RegisterPrCheckoutTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrChecksArgs defines parameters for gh pr checks
 type PrChecksArgs struct {
-	FailFast bool   `json:"fail_fast,omitempty" jsonschema:"description=Exit watch mode on first failure"`
-	Interval int    `json:"interval,omitempty" jsonschema:"description=Refresh interval in seconds for watch mode"`
-	Watch    bool   `json:"watch,omitempty" jsonschema:"description=Watch checks until they finish"`
-	Web      bool   `json:"web,omitempty" jsonschema:"description=Open the web browser to show checks"`
-	Repo     string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	FailFast bool   `json:"fail_fast,omitempty" jsonschema:"Exit watch mode on first failure"`
+	Interval int    `json:"interval,omitempty" jsonschema:"Refresh interval in seconds for watch mode"`
+	Watch    bool   `json:"watch,omitempty" jsonschema:"Watch checks until they finish"`
+	Web      bool   `json:"web,omitempty" jsonschema:"Open the web browser to show checks"`
+	Repo     string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrChecksTool registers the gh pr checks tool
@@ -550,13 +550,13 @@ func RegisterPrChecksTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrDiffArgs defines parameters for gh pr diff
 type PrDiffArgs struct {
-	Color    string `json:"color,omitempty" jsonschema:"description=Use colored output,enum=always,enum=never,enum=auto"`
-	NameOnly bool   `json:"name_only,omitempty" jsonschema:"description=Display only names of changed files"`
-	Patch    bool   `json:"patch,omitempty" jsonschema:"description=Display diff in patch format"`
-	Web      bool   `json:"web,omitempty" jsonschema:"description=Open the pull request diff in the browser"`
-	Repo     string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Color    string `json:"color,omitempty" jsonschema:"Use colored output"`
+	NameOnly bool   `json:"name_only,omitempty" jsonschema:"Display only names of changed files"`
+	Patch    bool   `json:"patch,omitempty" jsonschema:"Display diff in patch format"`
+	Web      bool   `json:"web,omitempty" jsonschema:"Open the pull request diff in the browser"`
+	Repo     string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrDiffTool registers the gh pr diff tool
@@ -607,13 +607,13 @@ func RegisterPrDiffTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrCommentArgs defines parameters for gh pr comment
 type PrCommentArgs struct {
-	Body     string `json:"body,omitempty" jsonschema:"description=The comment body text"`
-	BodyFile string `json:"body_file,omitempty" jsonschema:"description=Read body from file (use - for stdin)"`
-	Editor   bool   `json:"editor,omitempty" jsonschema:"description=Skip prompts and open text editor for body"`
-	Web      bool   `json:"web,omitempty" jsonschema:"description=Add comment in the web browser"`
-	Repo     string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Body     string `json:"body,omitempty" jsonschema:"The comment body text"`
+	BodyFile string `json:"body_file,omitempty" jsonschema:"Read body from file (use - for stdin)"`
+	Editor   bool   `json:"editor,omitempty" jsonschema:"Skip prompts and open text editor for body"`
+	Web      bool   `json:"web,omitempty" jsonschema:"Add comment in the web browser"`
+	Repo     string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrCommentTool registers the gh pr comment tool
@@ -664,22 +664,22 @@ func RegisterPrCommentTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrEditArgs defines parameters for gh pr edit
 type PrEditArgs struct {
-	Title          string   `json:"title,omitempty" jsonschema:"description=Set the new title"`
-	Body           string   `json:"body,omitempty" jsonschema:"description=Set the new body"`
-	BodyFile       string   `json:"body_file,omitempty" jsonschema:"description=Read body from file (use - for stdin)"`
-	AddAssignee    []string `json:"add_assignee,omitempty" jsonschema:"description=Add assignees by their login"`
-	RemoveAssignee []string `json:"remove_assignee,omitempty" jsonschema:"description=Remove assignees by their login"`
-	AddLabel       []string `json:"add_label,omitempty" jsonschema:"description=Add labels by name"`
-	RemoveLabel    []string `json:"remove_label,omitempty" jsonschema:"description=Remove labels by name"`
-	AddProject     []string `json:"add_project,omitempty" jsonschema:"description=Add the pull request to projects by title"`
-	RemoveProject  []string `json:"remove_project,omitempty" jsonschema:"description=Remove the pull request from projects by title"`
-	AddReviewer    []string `json:"add_reviewer,omitempty" jsonschema:"description=Add reviewers by their login"`
-	RemoveReviewer []string `json:"remove_reviewer,omitempty" jsonschema:"description=Remove reviewers by their login"`
-	Milestone      string   `json:"milestone,omitempty" jsonschema:"description=Edit the milestone (name or number)"`
-	Base           string   `json:"base,omitempty" jsonschema:"description=Change the base branch"`
-	Repo           string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Title          string   `json:"title,omitempty" jsonschema:"Set the new title"`
+	Body           string   `json:"body,omitempty" jsonschema:"Set the new body"`
+	BodyFile       string   `json:"body_file,omitempty" jsonschema:"Read body from file (use - for stdin)"`
+	AddAssignee    []string `json:"add_assignee,omitempty" jsonschema:"Add assignees by their login"`
+	RemoveAssignee []string `json:"remove_assignee,omitempty" jsonschema:"Remove assignees by their login"`
+	AddLabel       []string `json:"add_label,omitempty" jsonschema:"Add labels by name"`
+	RemoveLabel    []string `json:"remove_label,omitempty" jsonschema:"Remove labels by name"`
+	AddProject     []string `json:"add_project,omitempty" jsonschema:"Add the pull request to projects by title"`
+	RemoveProject  []string `json:"remove_project,omitempty" jsonschema:"Remove the pull request from projects by title"`
+	AddReviewer    []string `json:"add_reviewer,omitempty" jsonschema:"Add reviewers by their login"`
+	RemoveReviewer []string `json:"remove_reviewer,omitempty" jsonschema:"Remove reviewers by their login"`
+	Milestone      string   `json:"milestone,omitempty" jsonschema:"Edit the milestone (name or number)"`
+	Base           string   `json:"base,omitempty" jsonschema:"Change the base branch"`
+	Repo           string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrEditTool registers the gh pr edit tool
@@ -766,10 +766,10 @@ func RegisterPrEditTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrReadyArgs defines parameters for gh pr ready
 type PrReadyArgs struct {
-	Undo bool   `json:"undo,omitempty" jsonschema:"description=Convert a ready pull request to draft"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Undo bool   `json:"undo,omitempty" jsonschema:"Convert a ready pull request to draft"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrReadyTool registers the gh pr ready tool
@@ -808,10 +808,10 @@ func RegisterPrReadyTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrReopenArgs defines parameters for gh pr reopen
 type PrReopenArgs struct {
-	Comment string `json:"comment,omitempty" jsonschema:"description=Add a reopening comment"`
-	Repo    string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Comment string `json:"comment,omitempty" jsonschema:"Add a reopening comment"`
+	Repo    string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrReopenTool registers the gh pr reopen tool
@@ -850,14 +850,14 @@ func RegisterPrReopenTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrReviewArgs defines parameters for gh pr review
 type PrReviewArgs struct {
-	Approve        bool   `json:"approve,omitempty" jsonschema:"description=Approve pull request"`
-	Comment        bool   `json:"comment,omitempty" jsonschema:"description=Comment on pull request"`
-	RequestChanges bool   `json:"request_changes,omitempty" jsonschema:"description=Request changes on pull request"`
-	Body           string `json:"body,omitempty" jsonschema:"description=Specify the body of a review"`
-	BodyFile       string `json:"body_file,omitempty" jsonschema:"description=Read body from file (use - for stdin)"`
-	Repo           string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Approve        bool   `json:"approve,omitempty" jsonschema:"Approve pull request"`
+	Comment        bool   `json:"comment,omitempty" jsonschema:"Comment on pull request"`
+	RequestChanges bool   `json:"request_changes,omitempty" jsonschema:"Request changes on pull request"`
+	Body           string `json:"body,omitempty" jsonschema:"Specify the body of a review"`
+	BodyFile       string `json:"body_file,omitempty" jsonschema:"Read body from file (use - for stdin)"`
+	Repo           string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Pull request number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Pull request number or URL (positional argument)"`
 }
 
 // RegisterPrReviewTool registers the gh pr review tool
@@ -912,10 +912,10 @@ func RegisterPrReviewTool(server *mcp.Server, exec *executor.Executor) {
 
 // PrStatusArgs defines parameters for gh pr status
 type PrStatusArgs struct {
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 }
 
 // RegisterPrStatusTool registers the gh pr status tool

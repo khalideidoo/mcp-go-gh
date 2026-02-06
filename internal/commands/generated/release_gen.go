@@ -10,20 +10,20 @@ import (
 
 // ReleaseCreateArgs defines parameters for gh release create
 type ReleaseCreateArgs struct {
-	Draft              bool   `json:"draft,omitempty" jsonschema:"description=Save the release as a draft"`
-	GenerateNotes      bool   `json:"generate_notes,omitempty" jsonschema:"description=Automatically generate title and notes"`
-	Latest             bool   `json:"latest,omitempty" jsonschema:"description=Mark as latest release"`
-	Notes              string `json:"notes,omitempty" jsonschema:"description=Release notes"`
-	NotesFile          string `json:"notes_file,omitempty" jsonschema:"description=Read release notes from file"`
-	NotesStartTag      string `json:"notes_start_tag,omitempty" jsonschema:"description=Tag to use as the starting point for notes"`
-	Prerelease         bool   `json:"prerelease,omitempty" jsonschema:"description=Mark as a prerelease"`
-	Target             string `json:"target,omitempty" jsonschema:"description=Target branch or commit SHA"`
-	Title              string `json:"title,omitempty" jsonschema:"description=Release title"`
-	VerifyTag          bool   `json:"verify_tag,omitempty" jsonschema:"description=Abort if the git tag doesn't exist"`
-	DiscussionCategory string `json:"discussion_category,omitempty" jsonschema:"description=Start a discussion in the specified category"`
-	Repo               string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Draft              bool   `json:"draft,omitempty" jsonschema:"Save the release as a draft"`
+	GenerateNotes      bool   `json:"generate_notes,omitempty" jsonschema:"Automatically generate title and notes"`
+	Latest             bool   `json:"latest,omitempty" jsonschema:"Mark as latest release"`
+	Notes              string `json:"notes,omitempty" jsonschema:"Release notes"`
+	NotesFile          string `json:"notes_file,omitempty" jsonschema:"Read release notes from file"`
+	NotesStartTag      string `json:"notes_start_tag,omitempty" jsonschema:"Tag to use as the starting point for notes"`
+	Prerelease         bool   `json:"prerelease,omitempty" jsonschema:"Mark as a prerelease"`
+	Target             string `json:"target,omitempty" jsonschema:"Target branch or commit SHA"`
+	Title              string `json:"title,omitempty" jsonschema:"Release title"`
+	VerifyTag          bool   `json:"verify_tag,omitempty" jsonschema:"Abort if the git tag doesn't exist"`
+	DiscussionCategory string `json:"discussion_category,omitempty" jsonschema:"Start a discussion in the specified category"`
+	Repo               string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Tag string `json:"tag,omitempty" jsonschema:"description=Tag name (positional argument),required"`
+	Tag string `json:"tag,omitempty" jsonschema:"Tag name (positional argument)"`
 }
 
 // RegisterReleaseCreateTool registers the gh release create tool
@@ -102,13 +102,13 @@ func RegisterReleaseCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // ReleaseListArgs defines parameters for gh release list
 type ReleaseListArgs struct {
-	ExcludeDrafts      bool     `json:"exclude_drafts,omitempty" jsonschema:"description=Exclude draft releases"`
-	ExcludePreReleases bool     `json:"exclude_pre_releases,omitempty" jsonschema:"description=Exclude pre-releases"`
-	Limit              int      `json:"limit,omitempty" jsonschema:"description=Maximum number of items to fetch"`
-	Json               []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq                 string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template           string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo               string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	ExcludeDrafts      bool     `json:"exclude_drafts,omitempty" jsonschema:"Exclude draft releases"`
+	ExcludePreReleases bool     `json:"exclude_pre_releases,omitempty" jsonschema:"Exclude pre-releases"`
+	Limit              int      `json:"limit,omitempty" jsonschema:"Maximum number of items to fetch"`
+	Json               []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq                 string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template           string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo               string   `json:"repo,omitempty" jsonschema:"Select repository"`
 }
 
 // RegisterReleaseListTool registers the gh release list tool
@@ -162,13 +162,13 @@ func RegisterReleaseListTool(server *mcp.Server, exec *executor.Executor) {
 
 // ReleaseViewArgs defines parameters for gh release view
 type ReleaseViewArgs struct {
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool     `json:"web,omitempty" jsonschema:"description=Open the release in the browser"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool     `json:"web,omitempty" jsonschema:"Open the release in the browser"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Tag string `json:"tag,omitempty" jsonschema:"description=The tag name or "latest" (positional argument)"`
+	Tag string `json:"tag,omitempty" jsonschema:"The tag name or 'latest' (positional argument)"`
 }
 
 // RegisterReleaseViewTool registers the gh release view tool
@@ -219,11 +219,11 @@ func RegisterReleaseViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // ReleaseDeleteArgs defines parameters for gh release delete
 type ReleaseDeleteArgs struct {
-	CleanupTag bool   `json:"cleanup_tag,omitempty" jsonschema:"description=Delete the associated git tag"`
-	Yes        bool   `json:"yes,omitempty" jsonschema:"description=Skip the confirmation prompt"`
-	Repo       string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	CleanupTag bool   `json:"cleanup_tag,omitempty" jsonschema:"Delete the associated git tag"`
+	Yes        bool   `json:"yes,omitempty" jsonschema:"Skip the confirmation prompt"`
+	Repo       string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Tag string `json:"tag,omitempty" jsonschema:"description=Tag name (positional argument),required"`
+	Tag string `json:"tag,omitempty" jsonschema:"Tag name (positional argument)"`
 }
 
 // RegisterReleaseDeleteTool registers the gh release delete tool
@@ -266,15 +266,15 @@ func RegisterReleaseDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // ReleaseDownloadArgs defines parameters for gh release download
 type ReleaseDownloadArgs struct {
-	Archive      string   `json:"archive,omitempty" jsonschema:"description=Download archive format,enum=tar.gz,enum=zip"`
-	Clobber      bool     `json:"clobber,omitempty" jsonschema:"description=Overwrite existing files"`
-	Dir          string   `json:"dir,omitempty" jsonschema:"description=Directory to download files into"`
-	Output       string   `json:"output,omitempty" jsonschema:"description=Save a single asset to a file"`
-	Pattern      []string `json:"pattern,omitempty" jsonschema:"description=Download only assets matching glob pattern"`
-	SkipExisting bool     `json:"skip_existing,omitempty" jsonschema:"description=Skip downloading files that exist"`
-	Repo         string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Archive      string   `json:"archive,omitempty" jsonschema:"Download archive format"`
+	Clobber      bool     `json:"clobber,omitempty" jsonschema:"Overwrite existing files"`
+	Dir          string   `json:"dir,omitempty" jsonschema:"Directory to download files into"`
+	Output       string   `json:"output,omitempty" jsonschema:"Save a single asset to a file"`
+	Pattern      []string `json:"pattern,omitempty" jsonschema:"Download only assets matching glob pattern"`
+	SkipExisting bool     `json:"skip_existing,omitempty" jsonschema:"Skip downloading files that exist"`
+	Repo         string   `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Tag string `json:"tag,omitempty" jsonschema:"description=The tag name or "latest" (positional argument)"`
+	Tag string `json:"tag,omitempty" jsonschema:"The tag name or 'latest' (positional argument)"`
 }
 
 // RegisterReleaseDownloadTool registers the gh release download tool
@@ -333,11 +333,11 @@ func RegisterReleaseDownloadTool(server *mcp.Server, exec *executor.Executor) {
 
 // ReleaseUploadArgs defines parameters for gh release upload
 type ReleaseUploadArgs struct {
-	Clobber bool   `json:"clobber,omitempty" jsonschema:"description=Overwrite existing assets"`
-	Repo    string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Clobber bool   `json:"clobber,omitempty" jsonschema:"Overwrite existing assets"`
+	Repo    string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Tag    string   `json:"tag,omitempty" jsonschema:"description=Tag name (positional argument),required"`
-	Assets []string `json:"assets,omitempty" jsonschema:"description=Asset files to upload (positional arguments)"`
+	Tag    string   `json:"tag,omitempty" jsonschema:"Tag name (positional argument)"`
+	Assets []string `json:"assets,omitempty" jsonschema:"Asset files to upload (positional arguments)"`
 }
 
 // RegisterReleaseUploadTool registers the gh release upload tool
@@ -379,19 +379,19 @@ func RegisterReleaseUploadTool(server *mcp.Server, exec *executor.Executor) {
 
 // ReleaseEditArgs defines parameters for gh release edit
 type ReleaseEditArgs struct {
-	Draft              bool   `json:"draft,omitempty" jsonschema:"description=Mark release as a draft"`
-	Latest             bool   `json:"latest,omitempty" jsonschema:"description=Mark as the latest release"`
-	Notes              string `json:"notes,omitempty" jsonschema:"description=Release notes"`
-	NotesFile          string `json:"notes_file,omitempty" jsonschema:"description=Read release notes from file"`
-	Prerelease         bool   `json:"prerelease,omitempty" jsonschema:"description=Mark as a prerelease"`
-	TagName            string `json:"tag_name,omitempty" jsonschema:"description=Target tag to edit"`
-	Target             string `json:"target,omitempty" jsonschema:"description=Target branch or commit SHA"`
-	Title              string `json:"title,omitempty" jsonschema:"description=Release title"`
-	DiscussionCategory string `json:"discussion_category,omitempty" jsonschema:"description=Discussion category"`
-	VerifyTag          bool   `json:"verify_tag,omitempty" jsonschema:"description=Verify the git tag exists"`
-	Repo               string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Draft              bool   `json:"draft,omitempty" jsonschema:"Mark release as a draft"`
+	Latest             bool   `json:"latest,omitempty" jsonschema:"Mark as the latest release"`
+	Notes              string `json:"notes,omitempty" jsonschema:"Release notes"`
+	NotesFile          string `json:"notes_file,omitempty" jsonschema:"Read release notes from file"`
+	Prerelease         bool   `json:"prerelease,omitempty" jsonschema:"Mark as a prerelease"`
+	TagName            string `json:"tag_name,omitempty" jsonschema:"Target tag to edit"`
+	Target             string `json:"target,omitempty" jsonschema:"Target branch or commit SHA"`
+	Title              string `json:"title,omitempty" jsonschema:"Release title"`
+	DiscussionCategory string `json:"discussion_category,omitempty" jsonschema:"Discussion category"`
+	VerifyTag          bool   `json:"verify_tag,omitempty" jsonschema:"Verify the git tag exists"`
+	Repo               string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Tag string `json:"tag,omitempty" jsonschema:"description=Tag name (positional argument),required"`
+	Tag string `json:"tag,omitempty" jsonschema:"Tag name (positional argument)"`
 }
 
 // RegisterReleaseEditTool registers the gh release edit tool

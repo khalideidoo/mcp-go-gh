@@ -10,17 +10,17 @@ import (
 
 // BrowseBrowseArgs defines parameters for gh browse browse
 type BrowseBrowseArgs struct {
-	Actions   bool   `json:"actions,omitempty" jsonschema:"description=Open repository actions"`
-	Branch    string `json:"branch,omitempty" jsonschema:"description=Select another branch by passing in the branch name"`
-	Commit    string `json:"commit,omitempty" jsonschema:"description=Select another commit by passing in the commit SHA"`
-	NoBrowser bool   `json:"no_browser,omitempty" jsonschema:"description=Print destination URL instead of opening the browser"`
-	Projects  bool   `json:"projects,omitempty" jsonschema:"description=Open repository projects"`
-	Releases  bool   `json:"releases,omitempty" jsonschema:"description=Open repository releases"`
-	Settings  bool   `json:"settings,omitempty" jsonschema:"description=Open repository settings"`
-	Wiki      bool   `json:"wiki,omitempty" jsonschema:"description=Open repository wiki"`
-	Repo      string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Actions   bool   `json:"actions,omitempty" jsonschema:"Open repository actions"`
+	Branch    string `json:"branch,omitempty" jsonschema:"Select another branch by passing in the branch name"`
+	Commit    string `json:"commit,omitempty" jsonschema:"Select another commit by passing in the commit SHA"`
+	NoBrowser bool   `json:"no_browser,omitempty" jsonschema:"Print destination URL instead of opening the browser"`
+	Projects  bool   `json:"projects,omitempty" jsonschema:"Open repository projects"`
+	Releases  bool   `json:"releases,omitempty" jsonschema:"Open repository releases"`
+	Settings  bool   `json:"settings,omitempty" jsonschema:"Open repository settings"`
+	Wiki      bool   `json:"wiki,omitempty" jsonschema:"Open repository wiki"`
+	Repo      string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	Target string `json:"target,omitempty" jsonschema:"description=Target to browse (number, path, or commit SHA) (positional)"`
+	Target string `json:"target,omitempty" jsonschema:"Target to browse (number, path, or commit SHA) (positional)"`
 }
 
 // RegisterBrowseBrowseTool registers the gh browse browse tool

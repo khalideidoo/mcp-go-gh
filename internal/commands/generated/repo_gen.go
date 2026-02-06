@@ -10,24 +10,24 @@ import (
 
 // RepoCreateArgs defines parameters for gh repo create
 type RepoCreateArgs struct {
-	Clone         bool   `json:"clone,omitempty" jsonschema:"description=Clone the new repository to the current directory"`
-	Description   string `json:"description,omitempty" jsonschema:"description=Description of the repository"`
-	Homepage      string `json:"homepage,omitempty" jsonschema:"description=Repository home page URL"`
-	Team          string `json:"team,omitempty" jsonschema:"description=The name of the organization team to grant access"`
-	Template      string `json:"template,omitempty" jsonschema:"description=Make the new repository based on a template repository"`
-	Public        bool   `json:"public,omitempty" jsonschema:"description=Make the new repository public"`
-	Private       bool   `json:"private,omitempty" jsonschema:"description=Make the new repository private"`
-	Internal      bool   `json:"internal,omitempty" jsonschema:"description=Make the new repository internal"`
-	DisableIssues bool   `json:"disable_issues,omitempty" jsonschema:"description=Disable issues in the new repository"`
-	DisableWiki   bool   `json:"disable_wiki,omitempty" jsonschema:"description=Disable wiki in the new repository"`
-	Gitignore     string `json:"gitignore,omitempty" jsonschema:"description=Specify a gitignore template for the repository"`
-	License       string `json:"license,omitempty" jsonschema:"description=Specify an Open Source License for the repository"`
-	Push          bool   `json:"push,omitempty" jsonschema:"description=Push local commits to the new repository"`
-	Source        string `json:"source,omitempty" jsonschema:"description=Specify path to local repository to use as source"`
-	Remote        string `json:"remote,omitempty" jsonschema:"description=Specify remote name for the new repository"`
-	AddReadme     bool   `json:"add_readme,omitempty" jsonschema:"description=Add a README file to the new repository"`
+	Clone         bool   `json:"clone,omitempty" jsonschema:"Clone the new repository to the current directory"`
+	Description   string `json:"description,omitempty" jsonschema:"Description of the repository"`
+	Homepage      string `json:"homepage,omitempty" jsonschema:"Repository home page URL"`
+	Team          string `json:"team,omitempty" jsonschema:"The name of the organization team to grant access"`
+	Template      string `json:"template,omitempty" jsonschema:"Make the new repository based on a template repository"`
+	Public        bool   `json:"public,omitempty" jsonschema:"Make the new repository public"`
+	Private       bool   `json:"private,omitempty" jsonschema:"Make the new repository private"`
+	Internal      bool   `json:"internal,omitempty" jsonschema:"Make the new repository internal"`
+	DisableIssues bool   `json:"disable_issues,omitempty" jsonschema:"Disable issues in the new repository"`
+	DisableWiki   bool   `json:"disable_wiki,omitempty" jsonschema:"Disable wiki in the new repository"`
+	Gitignore     string `json:"gitignore,omitempty" jsonschema:"Specify a gitignore template for the repository"`
+	License       string `json:"license,omitempty" jsonschema:"Specify an Open Source License for the repository"`
+	Push          bool   `json:"push,omitempty" jsonschema:"Push local commits to the new repository"`
+	Source        string `json:"source,omitempty" jsonschema:"Specify path to local repository to use as source"`
+	Remote        string `json:"remote,omitempty" jsonschema:"Specify remote name for the new repository"`
+	AddReadme     bool   `json:"add_readme,omitempty" jsonschema:"Add a README file to the new repository"`
 
-	Name string `json:"name,omitempty" jsonschema:"description=Name of the repository (positional argument)"`
+	Name string `json:"name,omitempty" jsonschema:"Name of the repository (positional argument)"`
 }
 
 // RegisterRepoCreateTool registers the gh repo create tool
@@ -122,19 +122,19 @@ func RegisterRepoCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoListArgs defines parameters for gh repo list
 type RepoListArgs struct {
-	Archived   bool     `json:"archived,omitempty" jsonschema:"description=Show only archived repositories"`
-	Fork       bool     `json:"fork,omitempty" jsonschema:"description=Show only forked repositories"`
-	Source     bool     `json:"source,omitempty" jsonschema:"description=Show only non-forked repositories"`
-	Language   string   `json:"language,omitempty" jsonschema:"description=Filter by primary coding language"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of repositories to list"`
-	NoArchived bool     `json:"no_archived,omitempty" jsonschema:"description=Omit archived repositories"`
-	Topic      string   `json:"topic,omitempty" jsonschema:"description=Filter by topic"`
-	Visibility string   `json:"visibility,omitempty" jsonschema:"description=Filter by visibility,enum=public,enum=private,enum=internal"`
-	Json       []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq         string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template   string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Archived   bool     `json:"archived,omitempty" jsonschema:"Show only archived repositories"`
+	Fork       bool     `json:"fork,omitempty" jsonschema:"Show only forked repositories"`
+	Source     bool     `json:"source,omitempty" jsonschema:"Show only non-forked repositories"`
+	Language   string   `json:"language,omitempty" jsonschema:"Filter by primary coding language"`
+	Limit      int      `json:"limit,omitempty" jsonschema:"Maximum number of repositories to list"`
+	NoArchived bool     `json:"no_archived,omitempty" jsonschema:"Omit archived repositories"`
+	Topic      string   `json:"topic,omitempty" jsonschema:"Filter by topic"`
+	Visibility string   `json:"visibility,omitempty" jsonschema:"Filter by visibility"`
+	Json       []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq         string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template   string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 
-	Owner string `json:"owner,omitempty" jsonschema:"description=Owner (user or organization) (positional argument)"`
+	Owner string `json:"owner,omitempty" jsonschema:"Owner (user or organization) (positional argument)"`
 }
 
 // RegisterRepoListTool registers the gh repo list tool
@@ -209,13 +209,13 @@ func RegisterRepoListTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoViewArgs defines parameters for gh repo view
 type RepoViewArgs struct {
-	Branch   string   `json:"branch,omitempty" jsonschema:"description=View a specific branch of the repository"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool     `json:"web,omitempty" jsonschema:"description=Open repository in the browser"`
+	Branch   string   `json:"branch,omitempty" jsonschema:"View a specific branch of the repository"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool     `json:"web,omitempty" jsonschema:"Open repository in the browser"`
 
-	Repository string `json:"repository,omitempty" jsonschema:"description=Repository to view (OWNER/REPO or URL) (positional argument)"`
+	Repository string `json:"repository,omitempty" jsonschema:"Repository to view (OWNER/REPO or URL) (positional argument)"`
 }
 
 // RegisterRepoViewTool registers the gh repo view tool
@@ -266,11 +266,11 @@ func RegisterRepoViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoCloneArgs defines parameters for gh repo clone
 type RepoCloneArgs struct {
-	Depth             int  `json:"depth,omitempty" jsonschema:"description=Create a shallow clone with history truncated"`
-	RecurseSubmodules bool `json:"recurse_submodules,omitempty" jsonschema:"description=Clone with submodules"`
+	Depth             int  `json:"depth,omitempty" jsonschema:"Create a shallow clone with history truncated"`
+	RecurseSubmodules bool `json:"recurse_submodules,omitempty" jsonschema:"Clone with submodules"`
 
-	Repository string `json:"repository,omitempty" jsonschema:"description=Repository to clone (OWNER/REPO or URL) (positional argument),required"`
-	Directory  string `json:"directory,omitempty" jsonschema:"description=Directory to clone into (positional argument)"`
+	Repository string `json:"repository,omitempty" jsonschema:"Repository to clone (OWNER/REPO or URL) (positional argument)"`
+	Directory  string `json:"directory,omitempty" jsonschema:"Directory to clone into (positional argument)"`
 }
 
 // RegisterRepoCloneTool registers the gh repo clone tool
@@ -314,14 +314,14 @@ func RegisterRepoCloneTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoForkArgs defines parameters for gh repo fork
 type RepoForkArgs struct {
-	Clone             bool   `json:"clone,omitempty" jsonschema:"description=Clone the fork"`
-	DefaultBranchOnly bool   `json:"default_branch_only,omitempty" jsonschema:"description=Only include the default branch"`
-	ForkName          string `json:"fork_name,omitempty" jsonschema:"description=Rename the forked repository"`
-	Org               string `json:"org,omitempty" jsonschema:"description=Create the fork in an organization"`
-	Remote            bool   `json:"remote,omitempty" jsonschema:"description=Add a git remote for the fork"`
-	RemoteName        string `json:"remote_name,omitempty" jsonschema:"description=Specify the remote name"`
+	Clone             bool   `json:"clone,omitempty" jsonschema:"Clone the fork"`
+	DefaultBranchOnly bool   `json:"default_branch_only,omitempty" jsonschema:"Only include the default branch"`
+	ForkName          string `json:"fork_name,omitempty" jsonschema:"Rename the forked repository"`
+	Org               string `json:"org,omitempty" jsonschema:"Create the fork in an organization"`
+	Remote            bool   `json:"remote,omitempty" jsonschema:"Add a git remote for the fork"`
+	RemoteName        string `json:"remote_name,omitempty" jsonschema:"Specify the remote name"`
 
-	Repository string `json:"repository,omitempty" jsonschema:"description=Repository to fork (OWNER/REPO or URL) (positional argument)"`
+	Repository string `json:"repository,omitempty" jsonschema:"Repository to fork (OWNER/REPO or URL) (positional argument)"`
 }
 
 // RegisterRepoForkTool registers the gh repo fork tool
@@ -376,9 +376,9 @@ func RegisterRepoForkTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoDeleteArgs defines parameters for gh repo delete
 type RepoDeleteArgs struct {
-	Yes bool `json:"yes,omitempty" jsonschema:"description=Skip the confirmation prompt"`
+	Yes bool `json:"yes,omitempty" jsonschema:"Skip the confirmation prompt"`
 
-	Repository string `json:"repository,omitempty" jsonschema:"description=Repository to delete (OWNER/REPO) (positional argument),required"`
+	Repository string `json:"repository,omitempty" jsonschema:"Repository to delete (OWNER/REPO) (positional argument)"`
 }
 
 // RegisterRepoDeleteTool registers the gh repo delete tool
@@ -413,10 +413,10 @@ func RegisterRepoDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoArchiveArgs defines parameters for gh repo archive
 type RepoArchiveArgs struct {
-	Yes  bool   `json:"yes,omitempty" jsonschema:"description=Skip the confirmation prompt"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Yes  bool   `json:"yes,omitempty" jsonschema:"Skip the confirmation prompt"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Repository string `json:"repository,omitempty" jsonschema:"description=Repository to archive (OWNER/REPO) (positional argument)"`
+	Repository string `json:"repository,omitempty" jsonschema:"Repository to archive (OWNER/REPO) (positional argument)"`
 }
 
 // RegisterRepoArchiveTool registers the gh repo archive tool
@@ -455,10 +455,10 @@ func RegisterRepoArchiveTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoUnarchiveArgs defines parameters for gh repo unarchive
 type RepoUnarchiveArgs struct {
-	Yes  bool   `json:"yes,omitempty" jsonschema:"description=Skip the confirmation prompt"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Yes  bool   `json:"yes,omitempty" jsonschema:"Skip the confirmation prompt"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Repository string `json:"repository,omitempty" jsonschema:"description=Repository to unarchive (OWNER/REPO) (positional argument)"`
+	Repository string `json:"repository,omitempty" jsonschema:"Repository to unarchive (OWNER/REPO) (positional argument)"`
 }
 
 // RegisterRepoUnarchiveTool registers the gh repo unarchive tool
@@ -497,26 +497,26 @@ func RegisterRepoUnarchiveTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoEditArgs defines parameters for gh repo edit
 type RepoEditArgs struct {
-	AddTopic            []string `json:"add_topic,omitempty" jsonschema:"description=Add repository topic"`
-	RemoveTopic         []string `json:"remove_topic,omitempty" jsonschema:"description=Remove repository topic"`
-	AllowForking        bool     `json:"allow_forking,omitempty" jsonschema:"description=Allow forking"`
-	DefaultBranch       string   `json:"default_branch,omitempty" jsonschema:"description=Set the default branch name"`
-	DeleteBranchOnMerge bool     `json:"delete_branch_on_merge,omitempty" jsonschema:"description=Delete head branch on merge"`
-	Description         string   `json:"description,omitempty" jsonschema:"description=Repository description"`
-	EnableAutoMerge     bool     `json:"enable_auto_merge,omitempty" jsonschema:"description=Enable auto-merge"`
-	EnableDiscussions   bool     `json:"enable_discussions,omitempty" jsonschema:"description=Enable discussions"`
-	EnableIssues        bool     `json:"enable_issues,omitempty" jsonschema:"description=Enable issues"`
-	EnableMergeCommit   bool     `json:"enable_merge_commit,omitempty" jsonschema:"description=Enable merge commits"`
-	EnableProjects      bool     `json:"enable_projects,omitempty" jsonschema:"description=Enable projects"`
-	EnableRebaseMerge   bool     `json:"enable_rebase_merge,omitempty" jsonschema:"description=Enable rebase merging"`
-	EnableSquashMerge   bool     `json:"enable_squash_merge,omitempty" jsonschema:"description=Enable squash merging"`
-	EnableWiki          bool     `json:"enable_wiki,omitempty" jsonschema:"description=Enable wiki"`
-	Homepage            string   `json:"homepage,omitempty" jsonschema:"description=Repository home page URL"`
-	Template            bool     `json:"template,omitempty" jsonschema:"description=Make the repository a template"`
-	Visibility          string   `json:"visibility,omitempty" jsonschema:"description=Repository visibility,enum=public,enum=private,enum=internal"`
-	Repo                string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	AddTopic            []string `json:"add_topic,omitempty" jsonschema:"Add repository topic"`
+	RemoveTopic         []string `json:"remove_topic,omitempty" jsonschema:"Remove repository topic"`
+	AllowForking        bool     `json:"allow_forking,omitempty" jsonschema:"Allow forking"`
+	DefaultBranch       string   `json:"default_branch,omitempty" jsonschema:"Set the default branch name"`
+	DeleteBranchOnMerge bool     `json:"delete_branch_on_merge,omitempty" jsonschema:"Delete head branch on merge"`
+	Description         string   `json:"description,omitempty" jsonschema:"Repository description"`
+	EnableAutoMerge     bool     `json:"enable_auto_merge,omitempty" jsonschema:"Enable auto-merge"`
+	EnableDiscussions   bool     `json:"enable_discussions,omitempty" jsonschema:"Enable discussions"`
+	EnableIssues        bool     `json:"enable_issues,omitempty" jsonschema:"Enable issues"`
+	EnableMergeCommit   bool     `json:"enable_merge_commit,omitempty" jsonschema:"Enable merge commits"`
+	EnableProjects      bool     `json:"enable_projects,omitempty" jsonschema:"Enable projects"`
+	EnableRebaseMerge   bool     `json:"enable_rebase_merge,omitempty" jsonschema:"Enable rebase merging"`
+	EnableSquashMerge   bool     `json:"enable_squash_merge,omitempty" jsonschema:"Enable squash merging"`
+	EnableWiki          bool     `json:"enable_wiki,omitempty" jsonschema:"Enable wiki"`
+	Homepage            string   `json:"homepage,omitempty" jsonschema:"Repository home page URL"`
+	Template            bool     `json:"template,omitempty" jsonschema:"Make the repository a template"`
+	Visibility          string   `json:"visibility,omitempty" jsonschema:"Repository visibility"`
+	Repo                string   `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Repository string `json:"repository,omitempty" jsonschema:"description=Repository to edit (OWNER/REPO) (positional argument)"`
+	Repository string `json:"repository,omitempty" jsonschema:"Repository to edit (OWNER/REPO) (positional argument)"`
 }
 
 // RegisterRepoEditTool registers the gh repo edit tool
@@ -619,10 +619,10 @@ func RegisterRepoEditTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoRenameArgs defines parameters for gh repo rename
 type RepoRenameArgs struct {
-	Yes  bool   `json:"yes,omitempty" jsonschema:"description=Skip confirmation prompt"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Yes  bool   `json:"yes,omitempty" jsonschema:"Skip confirmation prompt"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	NewName string `json:"new_name,omitempty" jsonschema:"description=New name for the repository (positional argument),required"`
+	NewName string `json:"new_name,omitempty" jsonschema:"New name for the repository (positional argument)"`
 }
 
 // RegisterRepoRenameTool registers the gh repo rename tool
@@ -661,10 +661,10 @@ func RegisterRepoRenameTool(server *mcp.Server, exec *executor.Executor) {
 
 // RepoSyncArgs defines parameters for gh repo sync
 type RepoSyncArgs struct {
-	Source string `json:"source,omitempty" jsonschema:"description=Source repository (OWNER/REPO)"`
-	Branch string `json:"branch,omitempty" jsonschema:"description=Branch to sync"`
-	Force  bool   `json:"force,omitempty" jsonschema:"description=Hard reset if source diverged"`
-	Repo   string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Source string `json:"source,omitempty" jsonschema:"Source repository (OWNER/REPO)"`
+	Branch string `json:"branch,omitempty" jsonschema:"Branch to sync"`
+	Force  bool   `json:"force,omitempty" jsonschema:"Hard reset if source diverged"`
+	Repo   string `json:"repo,omitempty" jsonschema:"Select repository"`
 }
 
 // RegisterRepoSyncTool registers the gh repo sync tool

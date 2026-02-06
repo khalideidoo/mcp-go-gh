@@ -10,32 +10,32 @@ import (
 
 // SearchReposArgs defines parameters for gh search repos
 type SearchReposArgs struct {
-	Archived         bool     `json:"archived,omitempty" jsonschema:"description=Include archived repositories"`
-	Created          string   `json:"created,omitempty" jsonschema:"description=Filter by creation date"`
-	Followers        string   `json:"followers,omitempty" jsonschema:"description=Filter by number of followers"`
-	Forks            string   `json:"forks,omitempty" jsonschema:"description=Filter by number of forks"`
-	GoodFirstIssue   string   `json:"good_first_issue,omitempty" jsonschema:"description=Filter by number of good first issues"`
-	HelpWantedIssues string   `json:"help_wanted_issues,omitempty" jsonschema:"description=Filter by number of help wanted issues"`
-	IncludeForks     string   `json:"include_forks,omitempty" jsonschema:"description=Include forks,enum=true,enum=false,enum=only"`
-	Language         string   `json:"language,omitempty" jsonschema:"description=Filter by programming language"`
-	License          []string `json:"license,omitempty" jsonschema:"description=Filter by license"`
-	Match            string   `json:"match,omitempty" jsonschema:"description=Restrict search to specific field,enum=name,enum=description,enum=readme"`
-	NumberTopics     string   `json:"number_topics,omitempty" jsonschema:"description=Filter by number of topics"`
-	Order            string   `json:"order,omitempty" jsonschema:"description=Order of results,enum=asc,enum=desc"`
-	Owner            []string `json:"owner,omitempty" jsonschema:"description=Filter by owner"`
-	Size             string   `json:"size,omitempty" jsonschema:"description=Filter by size in KB"`
-	Sort             string   `json:"sort,omitempty" jsonschema:"description=Sort results,enum=forks,enum=help-wanted-issues,enum=stars,enum=updated"`
-	Stars            string   `json:"stars,omitempty" jsonschema:"description=Filter by number of stars"`
-	Topic            []string `json:"topic,omitempty" jsonschema:"description=Filter by topic"`
-	Updated          string   `json:"updated,omitempty" jsonschema:"description=Filter by last update date"`
-	Visibility       []string `json:"visibility,omitempty" jsonschema:"description=Filter by visibility,enum=public,enum=private,enum=internal"`
-	Limit            int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results"`
-	Json             []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq               string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template         string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web              bool     `json:"web,omitempty" jsonschema:"description=Open search in browser"`
+	Archived         bool     `json:"archived,omitempty" jsonschema:"Include archived repositories"`
+	Created          string   `json:"created,omitempty" jsonschema:"Filter by creation date"`
+	Followers        string   `json:"followers,omitempty" jsonschema:"Filter by number of followers"`
+	Forks            string   `json:"forks,omitempty" jsonschema:"Filter by number of forks"`
+	GoodFirstIssue   string   `json:"good_first_issue,omitempty" jsonschema:"Filter by number of good first issues"`
+	HelpWantedIssues string   `json:"help_wanted_issues,omitempty" jsonschema:"Filter by number of help wanted issues"`
+	IncludeForks     string   `json:"include_forks,omitempty" jsonschema:"Include forks"`
+	Language         string   `json:"language,omitempty" jsonschema:"Filter by programming language"`
+	License          []string `json:"license,omitempty" jsonschema:"Filter by license"`
+	Match            string   `json:"match,omitempty" jsonschema:"Restrict search to specific field"`
+	NumberTopics     string   `json:"number_topics,omitempty" jsonschema:"Filter by number of topics"`
+	Order            string   `json:"order,omitempty" jsonschema:"Order of results"`
+	Owner            []string `json:"owner,omitempty" jsonschema:"Filter by owner"`
+	Size             string   `json:"size,omitempty" jsonschema:"Filter by size in KB"`
+	Sort             string   `json:"sort,omitempty" jsonschema:"Sort results"`
+	Stars            string   `json:"stars,omitempty" jsonschema:"Filter by number of stars"`
+	Topic            []string `json:"topic,omitempty" jsonschema:"Filter by topic"`
+	Updated          string   `json:"updated,omitempty" jsonschema:"Filter by last update date"`
+	Visibility       []string `json:"visibility,omitempty" jsonschema:"Filter by visibility"`
+	Limit            int      `json:"limit,omitempty" jsonschema:"Maximum number of results"`
+	Json             []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq               string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template         string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web              bool     `json:"web,omitempty" jsonschema:"Open search in browser"`
 
-	Query string `json:"query,omitempty" jsonschema:"description=Search query (positional argument),required"`
+	Query string `json:"query,omitempty" jsonschema:"Search query (positional argument)"`
 }
 
 // RegisterSearchReposTool registers the gh search repos tool
@@ -162,34 +162,34 @@ func RegisterSearchReposTool(server *mcp.Server, exec *executor.Executor) {
 
 // SearchIssuesArgs defines parameters for gh search issues
 type SearchIssuesArgs struct {
-	Assignee    string   `json:"assignee,omitempty" jsonschema:"description=Filter by assignee"`
-	Author      string   `json:"author,omitempty" jsonschema:"description=Filter by author"`
-	Closed      string   `json:"closed,omitempty" jsonschema:"description=Filter by closed date"`
-	Comments    string   `json:"comments,omitempty" jsonschema:"description=Filter by number of comments"`
-	Created     string   `json:"created,omitempty" jsonschema:"description=Filter by created date"`
-	IncludePrs  bool     `json:"include_prs,omitempty" jsonschema:"description=Include pull requests"`
-	Label       []string `json:"label,omitempty" jsonschema:"description=Filter by label"`
-	Locked      bool     `json:"locked,omitempty" jsonschema:"description=Filter by locked status"`
-	Match       string   `json:"match,omitempty" jsonschema:"description=Restrict search to specific field,enum=title,enum=body,enum=comments"`
-	Mentions    string   `json:"mentions,omitempty" jsonschema:"description=Filter by user mentions"`
-	Milestone   string   `json:"milestone,omitempty" jsonschema:"description=Filter by milestone"`
-	NoAssignee  bool     `json:"no_assignee,omitempty" jsonschema:"description=Filter by missing assignee"`
-	NoLabel     bool     `json:"no_label,omitempty" jsonschema:"description=Filter by missing label"`
-	NoMilestone bool     `json:"no_milestone,omitempty" jsonschema:"description=Filter by missing milestone"`
-	NoProject   bool     `json:"no_project,omitempty" jsonschema:"description=Filter by missing project"`
-	Order       string   `json:"order,omitempty" jsonschema:"description=Order of results,enum=asc,enum=desc"`
-	Owner       []string `json:"owner,omitempty" jsonschema:"description=Filter by repository owner"`
-	Repo        []string `json:"repo,omitempty" jsonschema:"description=Filter by repository"`
-	Sort        string   `json:"sort,omitempty" jsonschema:"description=Sort results,enum=comments,enum=created,enum=updated,enum=reactions"`
-	State       string   `json:"state,omitempty" jsonschema:"description=Filter by state,enum=open,enum=closed"`
-	Updated     string   `json:"updated,omitempty" jsonschema:"description=Filter by updated date"`
-	Limit       int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results"`
-	Json        []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq          string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template    string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web         bool     `json:"web,omitempty" jsonschema:"description=Open search in browser"`
+	Assignee    string   `json:"assignee,omitempty" jsonschema:"Filter by assignee"`
+	Author      string   `json:"author,omitempty" jsonschema:"Filter by author"`
+	Closed      string   `json:"closed,omitempty" jsonschema:"Filter by closed date"`
+	Comments    string   `json:"comments,omitempty" jsonschema:"Filter by number of comments"`
+	Created     string   `json:"created,omitempty" jsonschema:"Filter by created date"`
+	IncludePrs  bool     `json:"include_prs,omitempty" jsonschema:"Include pull requests"`
+	Label       []string `json:"label,omitempty" jsonschema:"Filter by label"`
+	Locked      bool     `json:"locked,omitempty" jsonschema:"Filter by locked status"`
+	Match       string   `json:"match,omitempty" jsonschema:"Restrict search to specific field"`
+	Mentions    string   `json:"mentions,omitempty" jsonschema:"Filter by user mentions"`
+	Milestone   string   `json:"milestone,omitempty" jsonschema:"Filter by milestone"`
+	NoAssignee  bool     `json:"no_assignee,omitempty" jsonschema:"Filter by missing assignee"`
+	NoLabel     bool     `json:"no_label,omitempty" jsonschema:"Filter by missing label"`
+	NoMilestone bool     `json:"no_milestone,omitempty" jsonschema:"Filter by missing milestone"`
+	NoProject   bool     `json:"no_project,omitempty" jsonschema:"Filter by missing project"`
+	Order       string   `json:"order,omitempty" jsonschema:"Order of results"`
+	Owner       []string `json:"owner,omitempty" jsonschema:"Filter by repository owner"`
+	Repo        []string `json:"repo,omitempty" jsonschema:"Filter by repository"`
+	Sort        string   `json:"sort,omitempty" jsonschema:"Sort results"`
+	State       string   `json:"state,omitempty" jsonschema:"Filter by state"`
+	Updated     string   `json:"updated,omitempty" jsonschema:"Filter by updated date"`
+	Limit       int      `json:"limit,omitempty" jsonschema:"Maximum number of results"`
+	Json        []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq          string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template    string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web         bool     `json:"web,omitempty" jsonschema:"Open search in browser"`
 
-	Query string `json:"query,omitempty" jsonschema:"description=Search query (positional argument),required"`
+	Query string `json:"query,omitempty" jsonschema:"Search query (positional argument)"`
 }
 
 // RegisterSearchIssuesTool registers the gh search issues tool
@@ -324,37 +324,37 @@ func RegisterSearchIssuesTool(server *mcp.Server, exec *executor.Executor) {
 
 // SearchPrsArgs defines parameters for gh search prs
 type SearchPrsArgs struct {
-	Archived   bool     `json:"archived,omitempty" jsonschema:"description=Filter by archived repositories"`
-	Assignee   string   `json:"assignee,omitempty" jsonschema:"description=Filter by assignee"`
-	Author     string   `json:"author,omitempty" jsonschema:"description=Filter by author"`
-	Base       string   `json:"base,omitempty" jsonschema:"description=Filter by base branch"`
-	Closed     string   `json:"closed,omitempty" jsonschema:"description=Filter by closed date"`
-	Comments   string   `json:"comments,omitempty" jsonschema:"description=Filter by number of comments"`
-	Created    string   `json:"created,omitempty" jsonschema:"description=Filter by created date"`
-	Draft      bool     `json:"draft,omitempty" jsonschema:"description=Filter by draft PRs"`
-	Head       string   `json:"head,omitempty" jsonschema:"description=Filter by head branch"`
-	Label      []string `json:"label,omitempty" jsonschema:"description=Filter by label"`
-	Locked     bool     `json:"locked,omitempty" jsonschema:"description=Filter by locked status"`
-	Match      string   `json:"match,omitempty" jsonschema:"description=Restrict search to specific field,enum=title,enum=body,enum=comments"`
-	Merged     bool     `json:"merged,omitempty" jsonschema:"description=Filter by merged PRs"`
-	MergedAt   string   `json:"merged_at,omitempty" jsonschema:"description=Filter by merge date"`
-	Milestone  string   `json:"milestone,omitempty" jsonschema:"description=Filter by milestone"`
-	Order      string   `json:"order,omitempty" jsonschema:"description=Order of results,enum=asc,enum=desc"`
-	Owner      []string `json:"owner,omitempty" jsonschema:"description=Filter by repository owner"`
-	Repo       []string `json:"repo,omitempty" jsonschema:"description=Filter by repository"`
-	Review     string   `json:"review,omitempty" jsonschema:"description=Filter by review status,enum=none,enum=required,enum=approved,enum=changes_requested"`
-	ReviewedBy string   `json:"reviewed_by,omitempty" jsonschema:"description=Filter by reviewer"`
-	Sort       string   `json:"sort,omitempty" jsonschema:"description=Sort results,enum=comments,enum=created,enum=updated,enum=reactions"`
-	State      string   `json:"state,omitempty" jsonschema:"description=Filter by state,enum=open,enum=closed,enum=merged"`
-	TeamReview string   `json:"team_review,omitempty" jsonschema:"description=Filter by team requested to review"`
-	Updated    string   `json:"updated,omitempty" jsonschema:"description=Filter by updated date"`
-	Limit      int      `json:"limit,omitempty" jsonschema:"description=Maximum number of results"`
-	Json       []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq         string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template   string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web        bool     `json:"web,omitempty" jsonschema:"description=Open search in browser"`
+	Archived   bool     `json:"archived,omitempty" jsonschema:"Filter by archived repositories"`
+	Assignee   string   `json:"assignee,omitempty" jsonschema:"Filter by assignee"`
+	Author     string   `json:"author,omitempty" jsonschema:"Filter by author"`
+	Base       string   `json:"base,omitempty" jsonschema:"Filter by base branch"`
+	Closed     string   `json:"closed,omitempty" jsonschema:"Filter by closed date"`
+	Comments   string   `json:"comments,omitempty" jsonschema:"Filter by number of comments"`
+	Created    string   `json:"created,omitempty" jsonschema:"Filter by created date"`
+	Draft      bool     `json:"draft,omitempty" jsonschema:"Filter by draft PRs"`
+	Head       string   `json:"head,omitempty" jsonschema:"Filter by head branch"`
+	Label      []string `json:"label,omitempty" jsonschema:"Filter by label"`
+	Locked     bool     `json:"locked,omitempty" jsonschema:"Filter by locked status"`
+	Match      string   `json:"match,omitempty" jsonschema:"Restrict search to specific field"`
+	Merged     bool     `json:"merged,omitempty" jsonschema:"Filter by merged PRs"`
+	MergedAt   string   `json:"merged_at,omitempty" jsonschema:"Filter by merge date"`
+	Milestone  string   `json:"milestone,omitempty" jsonschema:"Filter by milestone"`
+	Order      string   `json:"order,omitempty" jsonschema:"Order of results"`
+	Owner      []string `json:"owner,omitempty" jsonschema:"Filter by repository owner"`
+	Repo       []string `json:"repo,omitempty" jsonschema:"Filter by repository"`
+	Review     string   `json:"review,omitempty" jsonschema:"Filter by review status"`
+	ReviewedBy string   `json:"reviewed_by,omitempty" jsonschema:"Filter by reviewer"`
+	Sort       string   `json:"sort,omitempty" jsonschema:"Sort results"`
+	State      string   `json:"state,omitempty" jsonschema:"Filter by state"`
+	TeamReview string   `json:"team_review,omitempty" jsonschema:"Filter by team requested to review"`
+	Updated    string   `json:"updated,omitempty" jsonschema:"Filter by updated date"`
+	Limit      int      `json:"limit,omitempty" jsonschema:"Maximum number of results"`
+	Json       []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq         string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template   string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web        bool     `json:"web,omitempty" jsonschema:"Open search in browser"`
 
-	Query string `json:"query,omitempty" jsonschema:"description=Search query (positional argument),required"`
+	Query string `json:"query,omitempty" jsonschema:"Search query (positional argument)"`
 }
 
 // RegisterSearchPrsTool registers the gh search prs tool

@@ -10,17 +10,17 @@ import (
 
 // IssueCreateArgs defines parameters for gh issue create
 type IssueCreateArgs struct {
-	Title     string   `json:"title,omitempty" jsonschema:"description=Title for the issue"`
-	Body      string   `json:"body,omitempty" jsonschema:"description=Body text for the issue"`
-	BodyFile  string   `json:"body_file,omitempty" jsonschema:"description=Read body text from file (use - for stdin)"`
-	Assignee  []string `json:"assignee,omitempty" jsonschema:"description=Assign people by their login (use @me for self)"`
-	Label     []string `json:"label,omitempty" jsonschema:"description=Add labels by name"`
-	Milestone string   `json:"milestone,omitempty" jsonschema:"description=Add the issue to a milestone by name"`
-	Project   []string `json:"project,omitempty" jsonschema:"description=Add the issue to projects by title"`
-	Template  string   `json:"template,omitempty" jsonschema:"description=Template file to use as starting body text"`
-	Web       bool     `json:"web,omitempty" jsonschema:"description=Open the web browser to create an issue"`
-	Recover   string   `json:"recover,omitempty" jsonschema:"description=Recover input from a failed run"`
-	Repo      string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Title     string   `json:"title,omitempty" jsonschema:"Title for the issue"`
+	Body      string   `json:"body,omitempty" jsonschema:"Body text for the issue"`
+	BodyFile  string   `json:"body_file,omitempty" jsonschema:"Read body text from file (use - for stdin)"`
+	Assignee  []string `json:"assignee,omitempty" jsonschema:"Assign people by their login (use @me for self)"`
+	Label     []string `json:"label,omitempty" jsonschema:"Add labels by name"`
+	Milestone string   `json:"milestone,omitempty" jsonschema:"Add the issue to a milestone by name"`
+	Project   []string `json:"project,omitempty" jsonschema:"Add the issue to projects by title"`
+	Template  string   `json:"template,omitempty" jsonschema:"Template file to use as starting body text"`
+	Web       bool     `json:"web,omitempty" jsonschema:"Open the web browser to create an issue"`
+	Recover   string   `json:"recover,omitempty" jsonschema:"Recover input from a failed run"`
+	Repo      string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 }
 
 // RegisterIssueCreateTool registers the gh issue create tool
@@ -90,20 +90,20 @@ func RegisterIssueCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueListArgs defines parameters for gh issue list
 type IssueListArgs struct {
-	Assignee  string   `json:"assignee,omitempty" jsonschema:"description=Filter by assignee"`
-	Author    string   `json:"author,omitempty" jsonschema:"description=Filter by author"`
-	Label     []string `json:"label,omitempty" jsonschema:"description=Filter by label"`
-	Mention   string   `json:"mention,omitempty" jsonschema:"description=Filter by mention of a user"`
-	Milestone string   `json:"milestone,omitempty" jsonschema:"description=Filter by milestone number or title"`
-	State     string   `json:"state,omitempty" jsonschema:"description=Filter by state,enum=open,enum=closed,enum=all"`
-	Search    string   `json:"search,omitempty" jsonschema:"description=Search issues with a query"`
-	App       string   `json:"app,omitempty" jsonschema:"description=Filter by GitHub App author"`
-	Limit     int      `json:"limit,omitempty" jsonschema:"description=Maximum number of items to fetch"`
-	Json      []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq        string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template  string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web       bool     `json:"web,omitempty" jsonschema:"description=List issues in the web browser"`
-	Repo      string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Assignee  string   `json:"assignee,omitempty" jsonschema:"Filter by assignee"`
+	Author    string   `json:"author,omitempty" jsonschema:"Filter by author"`
+	Label     []string `json:"label,omitempty" jsonschema:"Filter by label"`
+	Mention   string   `json:"mention,omitempty" jsonschema:"Filter by mention of a user"`
+	Milestone string   `json:"milestone,omitempty" jsonschema:"Filter by milestone number or title"`
+	State     string   `json:"state,omitempty" jsonschema:"Filter by state"`
+	Search    string   `json:"search,omitempty" jsonschema:"Search issues with a query"`
+	App       string   `json:"app,omitempty" jsonschema:"Filter by GitHub App author"`
+	Limit     int      `json:"limit,omitempty" jsonschema:"Maximum number of items to fetch"`
+	Json      []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq        string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template  string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web       bool     `json:"web,omitempty" jsonschema:"List issues in the web browser"`
+	Repo      string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 }
 
 // RegisterIssueListTool registers the gh issue list tool
@@ -185,14 +185,14 @@ func RegisterIssueListTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueViewArgs defines parameters for gh issue view
 type IssueViewArgs struct {
-	Comments bool     `json:"comments,omitempty" jsonschema:"description=View issue comments"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Web      bool     `json:"web,omitempty" jsonschema:"description=Open issue in the browser"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Comments bool     `json:"comments,omitempty" jsonschema:"View issue comments"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Web      bool     `json:"web,omitempty" jsonschema:"Open issue in the browser"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueViewTool registers the gh issue view tool
@@ -247,11 +247,11 @@ func RegisterIssueViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueCloseArgs defines parameters for gh issue close
 type IssueCloseArgs struct {
-	Comment string `json:"comment,omitempty" jsonschema:"description=Leave a closing comment"`
-	Reason  string `json:"reason,omitempty" jsonschema:"description=Reason for closing,enum=completed,enum=not planned"`
-	Repo    string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Comment string `json:"comment,omitempty" jsonschema:"Leave a closing comment"`
+	Reason  string `json:"reason,omitempty" jsonschema:"Reason for closing"`
+	Repo    string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueCloseTool registers the gh issue close tool
@@ -294,13 +294,13 @@ func RegisterIssueCloseTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueCommentArgs defines parameters for gh issue comment
 type IssueCommentArgs struct {
-	Body     string `json:"body,omitempty" jsonschema:"description=The comment body text"`
-	BodyFile string `json:"body_file,omitempty" jsonschema:"description=Read body from file (use - for stdin)"`
-	Editor   bool   `json:"editor,omitempty" jsonschema:"description=Skip prompts and open text editor for body"`
-	Web      bool   `json:"web,omitempty" jsonschema:"description=Add comment in the web browser"`
-	Repo     string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Body     string `json:"body,omitempty" jsonschema:"The comment body text"`
+	BodyFile string `json:"body_file,omitempty" jsonschema:"Read body from file (use - for stdin)"`
+	Editor   bool   `json:"editor,omitempty" jsonschema:"Skip prompts and open text editor for body"`
+	Web      bool   `json:"web,omitempty" jsonschema:"Add comment in the web browser"`
+	Repo     string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueCommentTool registers the gh issue comment tool
@@ -351,10 +351,10 @@ func RegisterIssueCommentTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueDeleteArgs defines parameters for gh issue delete
 type IssueDeleteArgs struct {
-	Yes  bool   `json:"yes,omitempty" jsonschema:"description=Skip the confirmation prompt"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Yes  bool   `json:"yes,omitempty" jsonschema:"Skip the confirmation prompt"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueDeleteTool registers the gh issue delete tool
@@ -393,19 +393,19 @@ func RegisterIssueDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueEditArgs defines parameters for gh issue edit
 type IssueEditArgs struct {
-	Title          string   `json:"title,omitempty" jsonschema:"description=Set the new title"`
-	Body           string   `json:"body,omitempty" jsonschema:"description=Set the new body"`
-	BodyFile       string   `json:"body_file,omitempty" jsonschema:"description=Read body from file (use - for stdin)"`
-	AddAssignee    []string `json:"add_assignee,omitempty" jsonschema:"description=Add assignees by their login"`
-	RemoveAssignee []string `json:"remove_assignee,omitempty" jsonschema:"description=Remove assignees by their login"`
-	AddLabel       []string `json:"add_label,omitempty" jsonschema:"description=Add labels by name"`
-	RemoveLabel    []string `json:"remove_label,omitempty" jsonschema:"description=Remove labels by name"`
-	AddProject     []string `json:"add_project,omitempty" jsonschema:"description=Add the issue to projects by title"`
-	RemoveProject  []string `json:"remove_project,omitempty" jsonschema:"description=Remove the issue from projects by title"`
-	Milestone      string   `json:"milestone,omitempty" jsonschema:"description=Edit the milestone (name or number)"`
-	Repo           string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Title          string   `json:"title,omitempty" jsonschema:"Set the new title"`
+	Body           string   `json:"body,omitempty" jsonschema:"Set the new body"`
+	BodyFile       string   `json:"body_file,omitempty" jsonschema:"Read body from file (use - for stdin)"`
+	AddAssignee    []string `json:"add_assignee,omitempty" jsonschema:"Add assignees by their login"`
+	RemoveAssignee []string `json:"remove_assignee,omitempty" jsonschema:"Remove assignees by their login"`
+	AddLabel       []string `json:"add_label,omitempty" jsonschema:"Add labels by name"`
+	RemoveLabel    []string `json:"remove_label,omitempty" jsonschema:"Remove labels by name"`
+	AddProject     []string `json:"add_project,omitempty" jsonschema:"Add the issue to projects by title"`
+	RemoveProject  []string `json:"remove_project,omitempty" jsonschema:"Remove the issue from projects by title"`
+	Milestone      string   `json:"milestone,omitempty" jsonschema:"Edit the milestone (name or number)"`
+	Repo           string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueEditTool registers the gh issue edit tool
@@ -480,10 +480,10 @@ func RegisterIssueEditTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueLockArgs defines parameters for gh issue lock
 type IssueLockArgs struct {
-	Reason string `json:"reason,omitempty" jsonschema:"description=Reason for locking,enum=off-topic,enum=spam,enum=resolved,enum=too heated"`
-	Repo   string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Reason string `json:"reason,omitempty" jsonschema:"Reason for locking"`
+	Repo   string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueLockTool registers the gh issue lock tool
@@ -522,9 +522,9 @@ func RegisterIssueLockTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssuePinArgs defines parameters for gh issue pin
 type IssuePinArgs struct {
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssuePinTool registers the gh issue pin tool
@@ -559,10 +559,10 @@ func RegisterIssuePinTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueReopenArgs defines parameters for gh issue reopen
 type IssueReopenArgs struct {
-	Comment string `json:"comment,omitempty" jsonschema:"description=Add a reopening comment"`
-	Repo    string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Comment string `json:"comment,omitempty" jsonschema:"Add a reopening comment"`
+	Repo    string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueReopenTool registers the gh issue reopen tool
@@ -601,10 +601,10 @@ func RegisterIssueReopenTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueStatusArgs defines parameters for gh issue status
 type IssueStatusArgs struct {
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 }
 
 // RegisterIssueStatusTool registers the gh issue status tool
@@ -646,10 +646,10 @@ func RegisterIssueStatusTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueTransferArgs defines parameters for gh issue transfer
 type IssueTransferArgs struct {
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select source repository in OWNER/REPO format"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select source repository in OWNER/REPO format"`
 
-	Number      string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
-	Destination string `json:"destination,omitempty" jsonschema:"description=Destination repository in OWNER/REPO format (positional argument)"`
+	Number      string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
+	Destination string `json:"destination,omitempty" jsonschema:"Destination repository in OWNER/REPO format (positional argument)"`
 }
 
 // RegisterIssueTransferTool registers the gh issue transfer tool
@@ -689,9 +689,9 @@ func RegisterIssueTransferTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueUnlockArgs defines parameters for gh issue unlock
 type IssueUnlockArgs struct {
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueUnlockTool registers the gh issue unlock tool
@@ -726,9 +726,9 @@ func RegisterIssueUnlockTool(server *mcp.Server, exec *executor.Executor) {
 
 // IssueUnpinArgs defines parameters for gh issue unpin
 type IssueUnpinArgs struct {
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select target repository in OWNER/REPO format"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select target repository in OWNER/REPO format"`
 
-	Number string `json:"number,omitempty" jsonschema:"description=Issue number or URL (positional argument)"`
+	Number string `json:"number,omitempty" jsonschema:"Issue number or URL (positional argument)"`
 }
 
 // RegisterIssueUnpinTool registers the gh issue unpin tool

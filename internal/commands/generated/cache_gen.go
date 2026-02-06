@@ -10,15 +10,15 @@ import (
 
 // CacheListArgs defines parameters for gh cache list
 type CacheListArgs struct {
-	Key      string   `json:"key,omitempty" jsonschema:"description=Filter by cache key prefix"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of caches to fetch"`
-	Order    string   `json:"order,omitempty" jsonschema:"description=Order of caches returned,enum=asc,enum=desc"`
-	Ref      string   `json:"ref,omitempty" jsonschema:"description=Filter by ref (formatted as refs/heads/<branch> or refs/pull/<number>/merge)"`
-	Sort     string   `json:"sort,omitempty" jsonschema:"description=Sort fetched caches,enum=created_at,enum=last_accessed_at,enum=size_in_bytes"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	Key      string   `json:"key,omitempty" jsonschema:"Filter by cache key prefix"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"Maximum number of caches to fetch"`
+	Order    string   `json:"order,omitempty" jsonschema:"Order of caches returned"`
+	Ref      string   `json:"ref,omitempty" jsonschema:"Filter by ref (formatted as refs/heads/<branch> or refs/pull/<number>/merge)"`
+	Sort     string   `json:"sort,omitempty" jsonschema:"Sort fetched caches"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 }
 
 // RegisterCacheListTool registers the gh cache list tool
@@ -80,12 +80,12 @@ func RegisterCacheListTool(server *mcp.Server, exec *executor.Executor) {
 
 // CacheDeleteArgs defines parameters for gh cache delete
 type CacheDeleteArgs struct {
-	All               bool   `json:"all,omitempty" jsonschema:"description=Delete all caches"`
-	Ref               string `json:"ref,omitempty" jsonschema:"description=Delete by cache key and ref (formatted as refs/heads/<branch> or refs/pull/<number>/merge)"`
-	SucceedOnNoCaches bool   `json:"succeed_on_no_caches,omitempty" jsonschema:"description=Return exit code 0 if no caches found (must be used with --all)"`
-	Repo              string `json:"repo,omitempty" jsonschema:"description=Select repository in OWNER/REPO format"`
+	All               bool   `json:"all,omitempty" jsonschema:"Delete all caches"`
+	Ref               string `json:"ref,omitempty" jsonschema:"Delete by cache key and ref (formatted as refs/heads/<branch> or refs/pull/<number>/merge)"`
+	SucceedOnNoCaches bool   `json:"succeed_on_no_caches,omitempty" jsonschema:"Return exit code 0 if no caches found (must be used with --all)"`
+	Repo              string `json:"repo,omitempty" jsonschema:"Select repository in OWNER/REPO format"`
 
-	CacheId string `json:"cache_id,omitempty" jsonschema:"description=Cache ID or cache key (positional argument)"`
+	CacheId string `json:"cache_id,omitempty" jsonschema:"Cache ID or cache key (positional argument)"`
 }
 
 // RegisterCacheDeleteTool registers the gh cache delete tool

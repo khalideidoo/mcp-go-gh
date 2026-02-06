@@ -10,12 +10,12 @@ import (
 
 // WorkflowListArgs defines parameters for gh workflow list
 type WorkflowListArgs struct {
-	All      bool     `json:"all,omitempty" jsonschema:"description=Include disabled workflows"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of workflows to fetch"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	All      bool     `json:"all,omitempty" jsonschema:"Include disabled workflows"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"Maximum number of workflows to fetch"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select repository"`
 }
 
 // RegisterWorkflowListTool registers the gh workflow list tool
@@ -65,12 +65,12 @@ func RegisterWorkflowListTool(server *mcp.Server, exec *executor.Executor) {
 
 // WorkflowViewArgs defines parameters for gh workflow view
 type WorkflowViewArgs struct {
-	Ref  string `json:"ref,omitempty" jsonschema:"description=Branch or tag name to view"`
-	Web  bool   `json:"web,omitempty" jsonschema:"description=Open workflow in the browser"`
-	Yaml bool   `json:"yaml,omitempty" jsonschema:"description=Output workflow YAML"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Ref  string `json:"ref,omitempty" jsonschema:"Branch or tag name to view"`
+	Web  bool   `json:"web,omitempty" jsonschema:"Open workflow in the browser"`
+	Yaml bool   `json:"yaml,omitempty" jsonschema:"Output workflow YAML"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Workflow string `json:"workflow,omitempty" jsonschema:"description=Workflow ID, name, or filename (positional argument),required"`
+	Workflow string `json:"workflow,omitempty" jsonschema:"Workflow ID, name, or filename (positional argument)"`
 }
 
 // RegisterWorkflowViewTool registers the gh workflow view tool
@@ -117,13 +117,13 @@ func RegisterWorkflowViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // WorkflowRunArgs defines parameters for gh workflow run
 type WorkflowRunArgs struct {
-	Ref      string            `json:"ref,omitempty" jsonschema:"description=Branch or tag name"`
-	Field    map[string]string `json:"field,omitempty" jsonschema:"description=Add typed parameter in key=value format"`
-	RawField map[string]string `json:"raw_field,omitempty" jsonschema:"description=Add string parameter in key=value format"`
-	Json     bool              `json:"json,omitempty" jsonschema:"description=Read workflow inputs as JSON via STDIN"`
-	Repo     string            `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Ref      string            `json:"ref,omitempty" jsonschema:"Branch or tag name"`
+	Field    map[string]string `json:"field,omitempty" jsonschema:"Add typed parameter in key=value format"`
+	RawField map[string]string `json:"raw_field,omitempty" jsonschema:"Add string parameter in key=value format"`
+	Json     bool              `json:"json,omitempty" jsonschema:"Read workflow inputs as JSON via STDIN"`
+	Repo     string            `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Workflow string `json:"workflow,omitempty" jsonschema:"description=Workflow ID, name, or filename (positional argument),required"`
+	Workflow string `json:"workflow,omitempty" jsonschema:"Workflow ID, name, or filename (positional argument)"`
 }
 
 // RegisterWorkflowRunTool registers the gh workflow run tool
@@ -174,9 +174,9 @@ func RegisterWorkflowRunTool(server *mcp.Server, exec *executor.Executor) {
 
 // WorkflowEnableArgs defines parameters for gh workflow enable
 type WorkflowEnableArgs struct {
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Workflow string `json:"workflow,omitempty" jsonschema:"description=Workflow ID, name, or filename (positional argument),required"`
+	Workflow string `json:"workflow,omitempty" jsonschema:"Workflow ID, name, or filename (positional argument)"`
 }
 
 // RegisterWorkflowEnableTool registers the gh workflow enable tool
@@ -211,9 +211,9 @@ func RegisterWorkflowEnableTool(server *mcp.Server, exec *executor.Executor) {
 
 // WorkflowDisableArgs defines parameters for gh workflow disable
 type WorkflowDisableArgs struct {
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	Workflow string `json:"workflow,omitempty" jsonschema:"description=Workflow ID, name, or filename (positional argument),required"`
+	Workflow string `json:"workflow,omitempty" jsonschema:"Workflow ID, name, or filename (positional argument)"`
 }
 
 // RegisterWorkflowDisableTool registers the gh workflow disable tool

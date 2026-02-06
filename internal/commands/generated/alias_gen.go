@@ -35,11 +35,11 @@ func RegisterAliasListTool(server *mcp.Server, exec *executor.Executor) {
 
 // AliasSetArgs defines parameters for gh alias set
 type AliasSetArgs struct {
-	Clobber bool `json:"clobber,omitempty" jsonschema:"description=Overwrite existing aliases of the same name"`
-	Shell   bool `json:"shell,omitempty" jsonschema:"description=Declare an alias to be passed through a shell interpreter"`
+	Clobber bool `json:"clobber,omitempty" jsonschema:"Overwrite existing aliases of the same name"`
+	Shell   bool `json:"shell,omitempty" jsonschema:"Declare an alias to be passed through a shell interpreter"`
 
-	Alias     string `json:"alias,omitempty" jsonschema:"description=Alias name (positional argument),required"`
-	Expansion string `json:"expansion,omitempty" jsonschema:"description=Expansion string (positional argument),required"`
+	Alias     string `json:"alias,omitempty" jsonschema:"Alias name (positional argument)"`
+	Expansion string `json:"expansion,omitempty" jsonschema:"Expansion string (positional argument)"`
 }
 
 // RegisterAliasSetTool registers the gh alias set tool
@@ -83,9 +83,9 @@ func RegisterAliasSetTool(server *mcp.Server, exec *executor.Executor) {
 
 // AliasDeleteArgs defines parameters for gh alias delete
 type AliasDeleteArgs struct {
-	All bool `json:"all,omitempty" jsonschema:"description=Delete all aliases"`
+	All bool `json:"all,omitempty" jsonschema:"Delete all aliases"`
 
-	Alias string `json:"alias,omitempty" jsonschema:"description=Alias name to delete (positional argument)"`
+	Alias string `json:"alias,omitempty" jsonschema:"Alias name to delete (positional argument)"`
 }
 
 // RegisterAliasDeleteTool registers the gh alias delete tool
@@ -120,9 +120,9 @@ func RegisterAliasDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // AliasImportArgs defines parameters for gh alias import
 type AliasImportArgs struct {
-	Clobber bool `json:"clobber,omitempty" jsonschema:"description=Overwrite existing aliases of the same name"`
+	Clobber bool `json:"clobber,omitempty" jsonschema:"Overwrite existing aliases of the same name"`
 
-	Filename string `json:"filename,omitempty" jsonschema:"description=Path to YAML file containing aliases (positional argument)"`
+	Filename string `json:"filename,omitempty" jsonschema:"Path to YAML file containing aliases (positional argument)"`
 }
 
 // RegisterAliasImportTool registers the gh alias import tool

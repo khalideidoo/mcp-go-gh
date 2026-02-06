@@ -10,14 +10,14 @@ import (
 
 // CodespaceListArgs defines parameters for gh codespace list
 type CodespaceListArgs struct {
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Limit    int      `json:"limit,omitempty" jsonschema:"description=Maximum number of codespaces to list"`
-	Org      string   `json:"org,omitempty" jsonschema:"description=The login handle of the organization to list codespaces for (admin-only)"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Repository name with owner (user/repo)"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	User     string   `json:"user,omitempty" jsonschema:"description=The username to list codespaces for (used with --org)"`
-	Web      bool     `json:"web,omitempty" jsonschema:"description=List codespaces in the web browser"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Limit    int      `json:"limit,omitempty" jsonschema:"Maximum number of codespaces to list"`
+	Org      string   `json:"org,omitempty" jsonschema:"The login handle of the organization to list codespaces for (admin-only)"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Repository name with owner (user/repo)"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	User     string   `json:"user,omitempty" jsonschema:"The username to list codespaces for (used with --org)"`
+	Web      bool     `json:"web,omitempty" jsonschema:"List codespaces in the web browser"`
 }
 
 // RegisterCodespaceListTool registers the gh codespace list tool
@@ -75,17 +75,17 @@ func RegisterCodespaceListTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceCreateArgs defines parameters for gh codespace create
 type CodespaceCreateArgs struct {
-	Branch             string `json:"branch,omitempty" jsonschema:"description=Repository branch"`
-	DefaultPermissions bool   `json:"default_permissions,omitempty" jsonschema:"description=Do not prompt to accept additional permissions requested by the codespace"`
-	DevcontainerPath   string `json:"devcontainer_path,omitempty" jsonschema:"description=Path to the devcontainer.json file to use when creating codespace"`
-	DisplayName        string `json:"display_name,omitempty" jsonschema:"description=Display name for the codespace (48 characters or less)"`
-	IdleTimeout        string `json:"idle_timeout,omitempty" jsonschema:"description=Allowed inactivity before codespace is stopped (e.g. "10m", "1h")"`
-	Location           string `json:"location,omitempty" jsonschema:"description=Location (EastUs|SouthEastAsia|WestEurope|WestUs2)"`
-	Machine            string `json:"machine,omitempty" jsonschema:"description=Hardware specifications for the VM"`
-	Repo               string `json:"repo,omitempty" jsonschema:"description=Repository name with owner (user/repo)"`
-	RetentionPeriod    string `json:"retention_period,omitempty" jsonschema:"description=Allowed time after shutting down before auto-deletion (e.g. "1h", "72h")"`
-	Status             bool   `json:"status,omitempty" jsonschema:"description=Show status of post-create command and dotfiles"`
-	Web                bool   `json:"web,omitempty" jsonschema:"description=Create codespace from browser"`
+	Branch             string `json:"branch,omitempty" jsonschema:"Repository branch"`
+	DefaultPermissions bool   `json:"default_permissions,omitempty" jsonschema:"Do not prompt to accept additional permissions requested by the codespace"`
+	DevcontainerPath   string `json:"devcontainer_path,omitempty" jsonschema:"Path to the devcontainer.json file to use when creating codespace"`
+	DisplayName        string `json:"display_name,omitempty" jsonschema:"Display name for the codespace (48 characters or less)"`
+	IdleTimeout        string `json:"idle_timeout,omitempty" jsonschema:"Allowed inactivity before codespace is stopped (e.g. '10m', '1h')"`
+	Location           string `json:"location,omitempty" jsonschema:"Location (EastUs|SouthEastAsia|WestEurope|WestUs2)"`
+	Machine            string `json:"machine,omitempty" jsonschema:"Hardware specifications for the VM"`
+	Repo               string `json:"repo,omitempty" jsonschema:"Repository name with owner (user/repo)"`
+	RetentionPeriod    string `json:"retention_period,omitempty" jsonschema:"Allowed time after shutting down before auto-deletion (e.g. '1h', '72h')"`
+	Status             bool   `json:"status,omitempty" jsonschema:"Show status of post-create command and dotfiles"`
+	Web                bool   `json:"web,omitempty" jsonschema:"Create codespace from browser"`
 }
 
 // RegisterCodespaceCreateTool registers the gh codespace create tool
@@ -155,14 +155,14 @@ func RegisterCodespaceCreateTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceDeleteArgs defines parameters for gh codespace delete
 type CodespaceDeleteArgs struct {
-	All       bool   `json:"all,omitempty" jsonschema:"description=Delete all codespaces"`
-	Codespace string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Days      int    `json:"days,omitempty" jsonschema:"description=Delete codespaces older than N days"`
-	Force     bool   `json:"force,omitempty" jsonschema:"description=Skip confirmation for codespaces that contain unsaved changes"`
-	Org       string `json:"org,omitempty" jsonschema:"description=The login handle of the organization (admin-only)"`
-	Repo      string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
-	User      string `json:"user,omitempty" jsonschema:"description=The username to delete codespaces for (used with --org)"`
+	All       bool   `json:"all,omitempty" jsonschema:"Delete all codespaces"`
+	Codespace string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Days      int    `json:"days,omitempty" jsonschema:"Delete codespaces older than N days"`
+	Force     bool   `json:"force,omitempty" jsonschema:"Skip confirmation for codespaces that contain unsaved changes"`
+	Org       string `json:"org,omitempty" jsonschema:"The login handle of the organization (admin-only)"`
+	Repo      string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
+	User      string `json:"user,omitempty" jsonschema:"The username to delete codespaces for (used with --org)"`
 }
 
 // RegisterCodespaceDeleteTool registers the gh codespace delete tool
@@ -220,12 +220,12 @@ func RegisterCodespaceDeleteTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceViewArgs defines parameters for gh codespace view
 type CodespaceViewArgs struct {
-	Codespace string   `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Jq        string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Json      []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Repo      string   `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string   `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
-	Template  string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Codespace string   `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Jq        string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Json      []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Repo      string   `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string   `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
+	Template  string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 }
 
 // RegisterCodespaceViewTool registers the gh codespace view tool
@@ -275,11 +275,11 @@ func RegisterCodespaceViewTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceStopArgs defines parameters for gh codespace stop
 type CodespaceStopArgs struct {
-	Codespace string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Org       string `json:"org,omitempty" jsonschema:"description=The login handle of the organization (admin-only)"`
-	Repo      string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
-	User      string `json:"user,omitempty" jsonschema:"description=The username to stop codespace for (used with --org)"`
+	Codespace string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Org       string `json:"org,omitempty" jsonschema:"The login handle of the organization (admin-only)"`
+	Repo      string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
+	User      string `json:"user,omitempty" jsonschema:"The username to stop codespace for (used with --org)"`
 }
 
 // RegisterCodespaceStopTool registers the gh codespace stop tool
@@ -325,14 +325,14 @@ func RegisterCodespaceStopTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceSshArgs defines parameters for gh codespace ssh
 type CodespaceSshArgs struct {
-	Codespace  string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Config     bool   `json:"config,omitempty" jsonschema:"description=Write OpenSSH configuration to stdout"`
-	Debug      bool   `json:"debug,omitempty" jsonschema:"description=Log debug data to a file"`
-	DebugFile  string `json:"debug_file,omitempty" jsonschema:"description=Path of the file log to"`
-	Profile    string `json:"profile,omitempty" jsonschema:"description=Name of the SSH profile to use"`
-	Repo       string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner  string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
-	ServerPort int    `json:"server_port,omitempty" jsonschema:"description=SSH server port number (0 => pick unused)"`
+	Codespace  string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Config     bool   `json:"config,omitempty" jsonschema:"Write OpenSSH configuration to stdout"`
+	Debug      bool   `json:"debug,omitempty" jsonschema:"Log debug data to a file"`
+	DebugFile  string `json:"debug_file,omitempty" jsonschema:"Path of the file log to"`
+	Profile    string `json:"profile,omitempty" jsonschema:"Name of the SSH profile to use"`
+	Repo       string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner  string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
+	ServerPort int    `json:"server_port,omitempty" jsonschema:"SSH server port number (0 => pick unused)"`
 }
 
 // RegisterCodespaceSshTool registers the gh codespace ssh tool
@@ -390,10 +390,10 @@ func RegisterCodespaceSshTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceLogsArgs defines parameters for gh codespace logs
 type CodespaceLogsArgs struct {
-	Codespace string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Follow    bool   `json:"follow,omitempty" jsonschema:"description=Tail and follow the logs"`
-	Repo      string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
+	Codespace string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Follow    bool   `json:"follow,omitempty" jsonschema:"Tail and follow the logs"`
+	Repo      string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
 }
 
 // RegisterCodespaceLogsTool registers the gh codespace logs tool
@@ -435,12 +435,12 @@ func RegisterCodespaceLogsTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespacePortsArgs defines parameters for gh codespace ports
 type CodespacePortsArgs struct {
-	Codespace string   `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Jq        string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Json      []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Repo      string   `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string   `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
-	Template  string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
+	Codespace string   `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Jq        string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Json      []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Repo      string   `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string   `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
+	Template  string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
 }
 
 // RegisterCodespacePortsTool registers the gh codespace ports tool
@@ -490,11 +490,11 @@ func RegisterCodespacePortsTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceEditArgs defines parameters for gh codespace edit
 type CodespaceEditArgs struct {
-	Codespace   string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	DisplayName string `json:"display_name,omitempty" jsonschema:"description=Set the display name"`
-	Machine     string `json:"machine,omitempty" jsonschema:"description=Set hardware specifications for the VM"`
-	Repo        string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner   string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
+	Codespace   string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	DisplayName string `json:"display_name,omitempty" jsonschema:"Set the display name"`
+	Machine     string `json:"machine,omitempty" jsonschema:"Set hardware specifications for the VM"`
+	Repo        string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner   string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
 }
 
 // RegisterCodespaceEditTool registers the gh codespace edit tool
@@ -540,10 +540,10 @@ func RegisterCodespaceEditTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceRebuildArgs defines parameters for gh codespace rebuild
 type CodespaceRebuildArgs struct {
-	Codespace string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Full      bool   `json:"full,omitempty" jsonschema:"description=Perform a full rebuild"`
-	Repo      string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
+	Codespace string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Full      bool   `json:"full,omitempty" jsonschema:"Perform a full rebuild"`
+	Repo      string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
 }
 
 // RegisterCodespaceRebuildTool registers the gh codespace rebuild tool
@@ -585,11 +585,11 @@ func RegisterCodespaceRebuildTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceCodeArgs defines parameters for gh codespace code
 type CodespaceCodeArgs struct {
-	Codespace string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Insiders  bool   `json:"insiders,omitempty" jsonschema:"description=Use the insiders version of Visual Studio Code"`
-	Repo      string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
-	Web       bool   `json:"web,omitempty" jsonschema:"description=Use the web version of Visual Studio Code"`
+	Codespace string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Insiders  bool   `json:"insiders,omitempty" jsonschema:"Use the insiders version of Visual Studio Code"`
+	Repo      string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
+	Web       bool   `json:"web,omitempty" jsonschema:"Use the web version of Visual Studio Code"`
 }
 
 // RegisterCodespaceCodeTool registers the gh codespace code tool
@@ -635,9 +635,9 @@ func RegisterCodespaceCodeTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceJupyterArgs defines parameters for gh codespace jupyter
 type CodespaceJupyterArgs struct {
-	Codespace string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Repo      string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
+	Codespace string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Repo      string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
 }
 
 // RegisterCodespaceJupyterTool registers the gh codespace jupyter tool
@@ -675,14 +675,14 @@ func RegisterCodespaceJupyterTool(server *mcp.Server, exec *executor.Executor) {
 
 // CodespaceCpArgs defines parameters for gh codespace cp
 type CodespaceCpArgs struct {
-	Codespace string `json:"codespace,omitempty" jsonschema:"description=Name of the codespace"`
-	Expand    bool   `json:"expand,omitempty" jsonschema:"description=Expand remote file names on remote shell"`
-	Profile   string `json:"profile,omitempty" jsonschema:"description=Name of the SSH profile to use"`
-	Recursive bool   `json:"recursive,omitempty" jsonschema:"description=Recursively copy directories"`
-	Repo      string `json:"repo,omitempty" jsonschema:"description=Filter codespace selection by repository name (user/repo)"`
-	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"description=Filter codespace selection by repository owner"`
+	Codespace string `json:"codespace,omitempty" jsonschema:"Name of the codespace"`
+	Expand    bool   `json:"expand,omitempty" jsonschema:"Expand remote file names on remote shell"`
+	Profile   string `json:"profile,omitempty" jsonschema:"Name of the SSH profile to use"`
+	Recursive bool   `json:"recursive,omitempty" jsonschema:"Recursively copy directories"`
+	Repo      string `json:"repo,omitempty" jsonschema:"Filter codespace selection by repository name (user/repo)"`
+	RepoOwner string `json:"repo_owner,omitempty" jsonschema:"Filter codespace selection by repository owner"`
 
-	Sources []string `json:"sources,omitempty" jsonschema:"description=Source paths (positional arguments),required"`
+	Sources []string `json:"sources,omitempty" jsonschema:"Source paths (positional arguments)"`
 }
 
 // RegisterCodespaceCpTool registers the gh codespace cp tool

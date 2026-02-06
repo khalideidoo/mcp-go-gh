@@ -10,14 +10,14 @@ import (
 
 // SecretListArgs defines parameters for gh secret list
 type SecretListArgs struct {
-	App      string   `json:"app,omitempty" jsonschema:"description=List secrets for Actions or Dependabot,enum=actions,enum=dependabot"`
-	Env      string   `json:"env,omitempty" jsonschema:"description=List secrets for an environment"`
-	Org      string   `json:"org,omitempty" jsonschema:"description=List secrets for an organization"`
-	User     bool     `json:"user,omitempty" jsonschema:"description=List user secrets"`
-	Json     []string `json:"json,omitempty" jsonschema:"description=Output JSON with the specified fields"`
-	Jq       string   `json:"jq,omitempty" jsonschema:"description=Filter JSON output using a jq expression"`
-	Template string   `json:"template,omitempty" jsonschema:"description=Format JSON output using a Go template"`
-	Repo     string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	App      string   `json:"app,omitempty" jsonschema:"List secrets for Actions or Dependabot"`
+	Env      string   `json:"env,omitempty" jsonschema:"List secrets for an environment"`
+	Org      string   `json:"org,omitempty" jsonschema:"List secrets for an organization"`
+	User     bool     `json:"user,omitempty" jsonschema:"List user secrets"`
+	Json     []string `json:"json,omitempty" jsonschema:"Output JSON with the specified fields"`
+	Jq       string   `json:"jq,omitempty" jsonschema:"Filter JSON output using a jq expression"`
+	Template string   `json:"template,omitempty" jsonschema:"Format JSON output using a Go template"`
+	Repo     string   `json:"repo,omitempty" jsonschema:"Select repository"`
 }
 
 // RegisterSecretListTool registers the gh secret list tool
@@ -75,18 +75,18 @@ func RegisterSecretListTool(server *mcp.Server, exec *executor.Executor) {
 
 // SecretSetArgs defines parameters for gh secret set
 type SecretSetArgs struct {
-	App        string   `json:"app,omitempty" jsonschema:"description=Set secret for Actions or Dependabot,enum=actions,enum=dependabot,enum=codespaces"`
-	Body       string   `json:"body,omitempty" jsonschema:"description=Secret value (reads from STDIN if not specified)"`
-	BodyFile   string   `json:"body_file,omitempty" jsonschema:"description=Read secret value from file"`
-	Env        string   `json:"env,omitempty" jsonschema:"description=Set secret for an environment"`
-	NoStore    bool     `json:"no_store,omitempty" jsonschema:"description=Do not store secret in org/repo secret manager"`
-	Org        string   `json:"org,omitempty" jsonschema:"description=Set organization secret"`
-	Repos      []string `json:"repos,omitempty" jsonschema:"description=List of repositories with access (org secrets only)"`
-	User       bool     `json:"user,omitempty" jsonschema:"description=Set user secret"`
-	Visibility string   `json:"visibility,omitempty" jsonschema:"description=Secret visibility (org secrets only),enum=all,enum=private,enum=selected"`
-	Repo       string   `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	App        string   `json:"app,omitempty" jsonschema:"Set secret for Actions or Dependabot"`
+	Body       string   `json:"body,omitempty" jsonschema:"Secret value (reads from STDIN if not specified)"`
+	BodyFile   string   `json:"body_file,omitempty" jsonschema:"Read secret value from file"`
+	Env        string   `json:"env,omitempty" jsonschema:"Set secret for an environment"`
+	NoStore    bool     `json:"no_store,omitempty" jsonschema:"Do not store secret in org/repo secret manager"`
+	Org        string   `json:"org,omitempty" jsonschema:"Set organization secret"`
+	Repos      []string `json:"repos,omitempty" jsonschema:"List of repositories with access (org secrets only)"`
+	User       bool     `json:"user,omitempty" jsonschema:"Set user secret"`
+	Visibility string   `json:"visibility,omitempty" jsonschema:"Secret visibility (org secrets only)"`
+	Repo       string   `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	SecretName string `json:"secret_name,omitempty" jsonschema:"description=Name of the secret (positional argument),required"`
+	SecretName string `json:"secret_name,omitempty" jsonschema:"Name of the secret (positional argument)"`
 }
 
 // RegisterSecretSetTool registers the gh secret set tool
@@ -157,13 +157,13 @@ func RegisterSecretSetTool(server *mcp.Server, exec *executor.Executor) {
 
 // SecretRemoveArgs defines parameters for gh secret remove
 type SecretRemoveArgs struct {
-	App  string `json:"app,omitempty" jsonschema:"description=Remove secret for Actions or Dependabot,enum=actions,enum=dependabot,enum=codespaces"`
-	Env  string `json:"env,omitempty" jsonschema:"description=Remove secret from environment"`
-	Org  string `json:"org,omitempty" jsonschema:"description=Remove organization secret"`
-	User bool   `json:"user,omitempty" jsonschema:"description=Remove user secret"`
-	Repo string `json:"repo,omitempty" jsonschema:"description=Select repository"`
+	App  string `json:"app,omitempty" jsonschema:"Remove secret for Actions or Dependabot"`
+	Env  string `json:"env,omitempty" jsonschema:"Remove secret from environment"`
+	Org  string `json:"org,omitempty" jsonschema:"Remove organization secret"`
+	User bool   `json:"user,omitempty" jsonschema:"Remove user secret"`
+	Repo string `json:"repo,omitempty" jsonschema:"Select repository"`
 
-	SecretName string `json:"secret_name,omitempty" jsonschema:"description=Name of the secret (positional argument),required"`
+	SecretName string `json:"secret_name,omitempty" jsonschema:"Name of the secret (positional argument)"`
 }
 
 // RegisterSecretRemoveTool registers the gh secret remove tool

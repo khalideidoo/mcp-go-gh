@@ -27,7 +27,15 @@
       "Bash(grep:*)",
       "Read(//Users/khalid/Development/mcp-go-gh/**)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(go test:*)",
+      "Bash(go mod graph:*)",
+      "Bash(go tool cover:*)",
+      "Bash(golangci-lint config dump:*)",
+      "Bash(golangci-lint run:*)",
+      "WebFetch(domain:golangci-lint.run)",
+      "Bash(golangci-lint config verify:*)",
+      "Bash(golangci-lint linters:*)"
     ]
   }
 }
