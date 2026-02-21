@@ -188,6 +188,67 @@ func TestResult(t *testing.T) {
 	})
 }
 
+func TestSanitizeArgs(t *testing.T) {
+	tests := []struct {
+		name string
+		args []string
+		want string
+	}{
+		{
+			name: "empty args",
+			args: []string{},
+			want: "",
+		},
+		{
+			name: "non-sensitive command passes through",
+			args: []string{"issue", "list", "--repo", "owner/repo"},
+			want: "issue list --repo owner/repo",
+		},
+		{
+			name: "secret set redacts --body value",
+			args: []string{"secret", "set", "MY_SECRET", "--body", "super-secret-value"},
+			want: "secret set MY_SECRET --body [REDACTED]",
+		},
+		{
+			name: "variable set redacts --body value",
+			args: []string{"variable", "set", "MY_VAR", "--body", "some-value"},
+			want: "variable set MY_VAR --body [REDACTED]",
+		},
+		{
+			name: "secret set with multiple flags redacts only --body",
+			args: []string{"secret", "set", "DB_PASS", "--app", "Actions", "--body", "p@ssw0rd", "--repo", "owner/repo"},
+			want: "secret set DB_PASS --app Actions --body [REDACTED] --repo owner/repo",
+		},
+		{
+			name: "secret list is not redacted",
+			args: []string{"secret", "list", "--repo", "owner/repo"},
+			want: "secret list --repo owner/repo",
+		},
+		{
+			name: "non-sensitive command with --body is not redacted",
+			args: []string{"issue", "create", "--title", "Bug", "--body", "Description here"},
+			want: "issue create --title Bug --body Description here",
+		},
+		{
+			name: "secret set without --body passes through",
+			args: []string{"secret", "set", "MY_SECRET", "--body-file", "secret.txt"},
+			want: "secret set MY_SECRET --body-file secret.txt",
+		},
+		{
+			name: "--body at end of args with no value",
+			args: []string{"secret", "set", "MY_SECRET", "--body"},
+			want: "secret set MY_SECRET --body",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := sanitizeArgs(tt.args)
+			assert.Equal(t, tt.want, got)
+		})
+	}
+}
+
 // Benchmark tests.
 func BenchmarkExecutor_Execute(b *testing.B) {
 	logger := createTestLogger()

@@ -10,6 +10,52 @@ import (
 	"time"
 )
 
+// sensitiveCommands identifies command groups that handle secret data.
+var sensitiveCommands = map[string]bool{
+	"secret":   true,
+	"variable": true,
+}
+
+// sensitiveFlags identifies flags whose values should be redacted in logs.
+var sensitiveFlags = map[string]bool{
+	"--body": true,
+}
+
+// sanitizeArgs returns a sanitized copy of args suitable for logging.
+// For commands that handle secrets, sensitive flag values are redacted.
+func sanitizeArgs(args []string) string {
+	if len(args) == 0 {
+		return ""
+	}
+
+	isSensitive := false
+	for _, arg := range args {
+		if sensitiveCommands[arg] {
+			isSensitive = true
+			break
+		}
+	}
+
+	if !isSensitive {
+		return strings.Join(args, " ")
+	}
+
+	sanitized := make([]string, 0, len(args))
+	skipNext := false
+	for _, arg := range args {
+		if skipNext {
+			sanitized = append(sanitized, "[REDACTED]")
+			skipNext = false
+			continue
+		}
+		sanitized = append(sanitized, arg)
+		if sensitiveFlags[arg] {
+			skipNext = true
+		}
+	}
+	return strings.Join(sanitized, " ")
+}
+
 // Executor handles execution of gh CLI commands.
 type Executor struct {
 	logger  *slog.Logger
@@ -53,10 +99,10 @@ func (e *Executor) Execute(ctx context.Context, args ...string) (*Result, error)
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
 
-	// Log command execution
+	// Log command execution (with sensitive values redacted)
 	e.logger.Info("executing gh command",
 		"command", "gh",
-		"args", strings.Join(args, " "))
+		"args", sanitizeArgs(args))
 
 	// Execute command
 	err := cmd.Run()
@@ -78,14 +124,14 @@ func (e *Executor) Execute(ctx context.Context, args ...string) (*Result, error)
 			"error", err,
 			"stderr", result.Stderr,
 			"exit_code", exitCode,
-			"args", strings.Join(args, " "))
+			"args", sanitizeArgs(args))
 
 		return result, fmt.Errorf("gh command failed (exit %d): %s", exitCode, result.Stderr)
 	}
 
 	e.logger.Debug("gh command succeeded",
 		"exit_code", exitCode,
-		"args", strings.Join(args, " "))
+		"args", sanitizeArgs(args))
 
 	return result, nil
 }
